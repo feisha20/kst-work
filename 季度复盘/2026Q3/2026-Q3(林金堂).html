@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026年Q3季度测试复盘</title>
+<style>
+:root{
+  --c-primary:#1F3D63; --c-head:#2C5580; --c-deep:#16293F;
+  --c-soft:#EDF2F8; --c-zebra:#F5F8FC; --c-line:#C6D4E3;
+  --c-text:#1F2937; --c-muted:#5A6B7D; --c-bg:#E9EEF5; --c-card:#FFFFFF;
+  --c-accent:#B45309; --c-green:#15803D; --c-red:#B91C1C;
+  --radius:12px; --shadow:0 1px 3px rgba(22,41,63,.09),0 6px 18px rgba(22,41,63,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--c-bg);color:var(--c-text);font-size:14px;line-height:1.75}
+.layout{display:flex;max-width:1460px;margin:0 auto}
+.sidebar{width:268px;flex:0 0 268px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:linear-gradient(180deg,var(--c-deep) 0%,#1B3450 100%);color:#CBD8E8;padding:26px 0 40px}
+.main{flex:1;min-width:0;padding:26px 34px 90px}
+.sidebar::-webkit-scrollbar{width:6px}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:3px}
+.brand{padding:0 24px 16px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:12px}
+.brand b{display:block;color:#fff;font-size:17px;letter-spacing:.04em}
+.brand span{font-size:10.5px;color:#8FA6C2;letter-spacing:.24em}
+.sidebar nav a{display:block;padding:5px 24px;color:#B9C9DD;text-decoration:none;font-size:12.5px;
+  border-left:3px solid transparent;line-height:1.5}
+.sidebar nav a.lv1{color:#fff;font-weight:700;margin-top:12px;font-size:13.5px}
+.sidebar nav a.lv2{padding-left:38px}
+.sidebar nav a:hover{background:rgba(255,255,255,.08);border-left-color:#5B84B4;color:#fff}
+/* 封面 */
+.cover{background:linear-gradient(135deg,var(--c-deep) 0%,var(--c-primary) 58%,#2E5A8C 100%);
+  border-radius:var(--radius);color:#fff;padding:64px 56px 52px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.cover::after{content:"";position:absolute;right:-70px;top:-70px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 68%)}
+.cover .mark{font-size:12px;letter-spacing:.3em;color:#A9C2DE;font-weight:700;margin-bottom:18px}
+.cover h1{font-size:42px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin-bottom:10px}
+.cover .sub{font-size:15px;color:#C7D8EC;margin-bottom:34px}
+.cover .meta{display:flex;flex-wrap:wrap;gap:26px;font-size:12.5px;color:#9FB6D2;border-top:1px solid rgba(255,255,255,.18);padding-top:18px}
+.cover .meta b{color:#E4EEF8;font-weight:600}
+/* 卡片与章节 */
+.doc{margin-top:22px}
+.card{background:var(--c-card);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 34px;margin-bottom:22px}
+h2.ch{font-size:24px;color:var(--c-primary);padding-bottom:12px;border-bottom:3px solid var(--c-primary);margin-bottom:20px;letter-spacing:.02em}
+h2.ch small{font-size:12px;color:var(--c-muted);font-weight:400;margin-left:12px;letter-spacing:.14em}
+h3{font-size:18px;color:var(--c-primary);margin:30px 0 12px;padding-left:12px;border-left:5px solid var(--c-head);line-height:1.4}
+h4{font-size:15.5px;color:var(--c-deep);margin:24px 0 10px}
+h5{font-size:13.5px;color:var(--c-head);margin:20px 0 8px;letter-spacing:.02em}
+.lead{font-size:13px;color:var(--c-muted);margin:-6px 0 14px}
+p+p{margin-top:8px}
+ul.dots{margin:6px 0 10px 1.4em}
+ul.dots li{margin:4px 0}
+ol.steps{margin:6px 0 10px 1.6em}
+ol.steps li{margin:5px 0}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin:16px 0 6px}
+.kpi{background:linear-gradient(180deg,#F7FAFD 0%,#EFF4FA 100%);border:1px solid var(--c-line);border-radius:10px;padding:14px 16px 12px;position:relative}
+.kpi::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:4px;border-radius:2px;background:var(--c-head)}
+.kpi .n{font-size:26px;font-weight:700;color:var(--c-primary);line-height:1.2;font-variant-numeric:tabular-nums}
+.kpi .n small{font-size:13px;font-weight:600;color:var(--c-head)}
+.kpi .t{font-size:12px;color:var(--c-deep);font-weight:600;margin-top:2px}
+.kpi .s{font-size:11px;color:var(--c-muted);line-height:1.5;margin-top:2px}
+/* 表格 */
+.tw{overflow-x:auto;margin:10px 0 6px}
+table.t{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.55}
+table.t th{background:var(--c-head);color:#fff;font-weight:600;padding:8px 10px;border:1px solid var(--c-head);text-align:center;white-space:nowrap}
+table.t td{padding:7px 10px;border:1px solid var(--c-line);vertical-align:top}
+table.t tbody tr:nth-child(even){background:var(--c-zebra)}
+table.t tbody tr:hover{background:#EDF3FA}
+table.t .c{text-align:center}
+table.t .num{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.t tr.sum td{background:#E3ECF5;font-weight:700;color:var(--c-deep)}
+table.t.compact{font-size:11.5px}
+table.t.compact td,table.t.compact th{padding:5px 7px}
+.tnote{font-size:11.5px;color:var(--c-muted);margin:6px 0 4px;line-height:1.6}
+/* 徽标 */
+.b{display:inline-block;font-size:11px;font-weight:600;border-radius:20px;padding:1px 9px;line-height:1.7;white-space:nowrap}
+.b-fix{background:#DCFCE7;color:var(--c-green)}
+.b-obs{background:#FEF3C7;color:#92400E}
+.b-open{background:#FEE2E2;color:var(--c-red)}
+.b-dup,.b-trans,.b-ext,.b-data{background:#E5EAF0;color:#41566E}
+.b-todo{background:#FEF9C3;color:#854D0E;border:1px dashed #CAAB37}
+.a{color:var(--c-head);text-decoration:none;border-bottom:1px dotted #8FAFC9}
+.a:hover{color:var(--c-primary);border-bottom-style:solid}
+/* 提示块 */
+.notice{background:var(--c-soft);border-left:4px solid var(--c-head);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:12.8px}
+.notice.warn{background:#FFFBEB;border-left-color:var(--c-accent)}
+.notice b{color:var(--c-deep)}
+/* 图表 */
+.chart-wrap{background:#FBFCFE;border:1px solid var(--c-line);border-radius:10px;padding:18px 18px 8px;margin:12px 0}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:11.5px;color:var(--c-muted);padding:4px 4px 8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+/* 移动端目录 */
+.mtoc{display:none}
+@media (max-width:1080px){
+  .sidebar{display:none}
+  .main{padding:18px 16px 60px}
+  .cover{padding:44px 26px 38px}
+  .cover h1{font-size:30px}
+  .card{padding:20px 16px}
+  .mtoc{display:block;background:var(--c-deep);border-radius:10px;color:#fff;margin-bottom:16px;overflow:hidden}
+  .mtoc summary{padding:12px 18px;font-weight:700;cursor:pointer;list-style:none}
+  .mtoc summary::before{content:"☰ "}
+  .mtoc a{display:block;color:#C7D8EC;text-decoration:none;padding:7px 22px;font-size:13px;border-top:1px solid rgba(255,255,255,.09)}
+  .mtoc a.lv1{color:#fff;font-weight:700}
+  .mtoc a.lv2{padding-left:38px;font-size:12.5px}
+}
+@media print{
+  body{background:#fff}
+  .sidebar,.mtoc{display:none}
+  .layout{display:block;max-width:none}
+  .main{padding:0}
+  .card{box-shadow:none;border:1px solid var(--c-line);padding:14px 18px;page-break-inside:avoid;margin-bottom:12px}
+  .cover{border-radius:0}
+  table.t{font-size:10px}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><span>QUARTERLY REVIEW</span><b>测试部 · 2026 Q3</b></div>
+  <nav>
+    <a class="lv1" href="#cover">报告首页</a>
+    <a class="lv1" href="#summary">执行摘要</a>
+    <a class="lv1" href="#sec1">一、上季度目标达成情况说明</a>
+    <a class="lv2" href="#sec1-1">1、目标与实际完成情况分析</a>
+    <a class="lv2" href="#sec1-2">2、做得不好的过程与动作</a>
+    <a class="lv2" href="#sec1-3">3、赋能业务部门事项</a>
+    <a class="lv2" href="#sec1-4">4、技术调研报告</a>
+    <a class="lv2" href="#sanhao">5、三好一改进</a>
+    <a class="lv1" href="#sec2">二、下季度工作目标规划</a>
+    <a class="lv1" href="#sec3">三、人与团队分析</a>
+    <a class="lv2" href="#sec3-1">1、团队成长与管理分析</a>
+    <a class="lv2" href="#sec3-2">2、能力成长值突破</a>
+    <a class="lv1" href="#sec4">四、下季度系统建设目标规划</a>
+    <a class="lv1" href="#sec5">五、如果重来一次</a>
+    <a class="lv1" href="#sec6">六、下季度需要的支持</a>
+  </nav>
+</aside>
+<div class="main">
+
+<header id="cover" class="cover">
+  <div class="mark">QUARTERLY REVIEW · 2026 Q3</div>
+  <h1>2026年Q3季度测试复盘</h1>
+  <div class="sub">目标达成情况 · 过程分析 · 赋能与调研 · 三好一改进 · Q4目标规划 · 人与团队分析 · 系统建设 · 支持事项</div>
+  <div class="meta">
+    <span>汇报单位：<b>快商通 · 测试部</b></span>
+    <span>汇报周期：<b>2026年7月1日 — 9月30日</b></span>
+    <span>编制日期：<b>2026年9月30日</b></span>
+    <span>数据来源：<b>禅道项目管理系统 · 7/8/9月份复盘材料</b></span>
+  </div>
+</header>
+
+<div class="doc">
+<details class="mtoc"><summary>目录</summary>
+  <a class="lv1" href="#summary">执行摘要</a>
+  <a class="lv1" href="#sec1">一、上季度目标达成情况说明</a>
+  <a class="lv1" href="#sec2">二、下季度工作目标规划</a>
+  <a class="lv1" href="#sec3">三、人与团队分析</a>
+  <a class="lv1" href="#sec4">四、下季度系统建设目标规划</a>
+  <a class="lv1" href="#sec5">五、如果重来一次</a>
+  <a class="lv1" href="#sec6">六、下季度需要的支持</a>
+</details>
+
+<!-- ============ 执行摘要 ============ -->
+<section id="summary" class="card">
+<h2 class="ch">执行摘要<small>EXECUTIVE SUMMARY</small></h2>
+<p>2026年Q3，测试部围绕<b>「按期交付、质量收敛、自动化与AI能力建设」</b>三条主线开展工作：三条主线全部达成——5 条产品线季度内 50 余次发版<b>零延期</b>；线上有效遗漏仅 <b>9 条</b>、季度遗漏率 <b>0.63%</b>，在线客服与 KICP 全季零遗漏；pw 智能测试平台脚本迁移于 9 月<b>全面收官</b>并进入每日定时运行阶段，agent 测试、知识库、月度质量数据自动化统计等 AI 能力持续落地。</p>
+
+<div class="kpis">
+  <div class="kpi"><div class="n">0 <small>次</small></div><div class="t">版本延期 · 全季零延期</div><div class="s">9月20次发版全部按期，含在线7次凌晨更新</div></div>
+  <div class="kpi"><div class="n">1430 <small>个</small></div><div class="t">提交 Bug（有效 1353）</div><div class="s">7月430 / 8月518 / 9月482，有效率约 94.6%</div></div>
+  <div class="kpi"><div class="n">0.63<small>%</small></div><div class="t">Q3 全部门遗漏率</div><div class="s">线上有效遗漏 9 条，8月 6 条 → 9月 3 条回落</div></div>
+  <div class="kpi"><div class="n">0 <small>%</small></div><div class="t">在线 / KICP 全季遗漏率</div><div class="s">KICP 连续 9 个月线上有效遗漏≤1条</div></div>
+  <div class="kpi"><div class="n">36 <small>条</small></div><div class="t">pw 脚本迁移收官</div><div class="s">SCRM 34+云客 2 链路，千锤重要模块，每日定时运行</div></div>
+  <div class="kpi"><div class="n">148 <small>次</small></div><div class="t">算法版本迭代</div><div class="s">7月61 / 8月45 / 9月42，覆盖 7 个服务模块</div></div>
+</div>
+
+<div class="notice"><b>季度要点：</b>① 延期率与遗漏率双达标，Q3 原定目标全部达成；② SCRM 遗漏率 2.97%→2.99% 基本持平（8月改进目标≤3% 达成），历史存在问题与跨项目代码改动评审为主要收敛方向；③ KuaiBuddy 7月中旬新介入，完成 V1.03~V1.08 六个迭代交付并暴露「200 步不回复」等稳定性风险，10 月以长链路压测根治；④「上线即故障」类可预防事件、非缺陷类线上反馈占比偏高为 Q3 过程改进重点，已沉淀为 Q4 系统建设事项。</div>
+</section>
+
+<!-- ============ 一、上季度目标达成情况说明 ============ -->
+<section id="sec1" class="card">
+<h2 class="ch">一、上季度目标达成情况说明<small>Q3 REVIEW</small></h2>
+
+<h3 id="sec1-1">1、上季度原定目标是什么？实际完成目标是什么？制定目标的达成率如何？与年度目标对比，季度达成情况分析？如果重做一遍应该如何做？重做一遍距离目标会差多少？如果结合AI重做一遍什么做，距离目标会差多少？</h3>
+
+<h4>原定目标（Q3 OKR）：</h4>
+<ul class="dots">
+  <li><b>O1（30%）：按预期完成所有产品线的上线要求</b>——在线客服、KICP、SCRM、其他产品（千锤、KuaiBuddy）按计划上线；</li>
+  <li><b>O2（40%）：提高项目迭代质量，减少线上 bug</b>——在线客服遗漏率≤6%、KICP&amp;销冠话术宝遗漏率≤2%、SCRM 遗漏率≤6%，各级线上 bug 按等级扣分；</li>
+  <li><b>O3（25%）：SLA 服务可用性≥99.99%</b>——【在线客服】【KICP】月度平均 SLA≥99.99%。</li>
+</ul>
+
+<h4>实际完成目标：</h4>
+<p><b>1、产品延期率：Q3 全部版本按期交付，延期率 0%。</b></p>
+<ul class="dots">
+  <li>7月：延期率 0%，在线 11 次发布（V10.14 拆三批灰度）、KICP/SCRM 各版本均按计划上线；</li>
+  <li>8月：提测与上线均未出现延期（千锤2期 8.3 提测/8.6 上线、KICP V10.15/V10.16、SCRM V6.14/V6.15、KuaiBuddy V1.04/V1.05/V1.06 均按期）；</li>
+  <li>9月：5 条产品线共 20 次发版全部按期、零延期（含在线客服 7 次凌晨更新）。千锤 V10.18 第二次 9.28 正常封板后，经产品交付确认调整至 10.8 节后上线，属计划调整、非延期。</li>
+</ul>
+
+<p><b>2、Q3 季度产品迭代：</b></p>
+<ul class="dots">
+  <li>在线客服完成 V10.13 至 V10.18 版本迭代（含多波次临时需求、三批灰度发布、多批服务器拉平及 9 月 7 次凌晨更新），并上线抖音来客新界面适配、抖音企业号/来客私信等渠道能力；</li>
+  <li>KICP 完成 V10.12 至 V10.18 版本迭代（含引用消息触发条件、对话设计 2.0 新媒体渠道物料、AB 测试每日数据、Trace 看板等）；</li>
+  <li>拓客CRM/SCRM 完成 V6.11 至 V6.17 版本迭代（含云客对接闭环、企微消息解析与语音转文本、回访工作台 AI 分析、CLI 企微语音等）；</li>
+  <li>KuaiBuddy（7月中旬新介入）完成 V1.03 至 V1.08 六个迭代交付（管理后台搭建、Skill Hub、IM 通道、定时任务推送体系重构等）；</li>
+  <li>千锤OS 完成 1 期测试与 2 期上线（8.6）；销冠话术宝完成 V1.13 交付（9月）。</li>
+</ul>
+
+<p><b>3、Bug 遗漏率：Q3 各业务线遗漏率均控制在 KR 目标范围内。</b>在线客服、KICP 全季零遗漏；SCRM 季度遗漏率 1.73%（≤6% 达标，8 月起控制在 3% 改进线内）；KuaiBuddy 8 月纳入统计以来遗漏率 2.20%（新项目基线观察）。全部门季度遗漏率 <b>0.63%</b>（9/1430）。</p>
+
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:14%">产品线</th><th>Q3 季度线上有效 Bug（不含 P4 级）</th><th>Q3 季度 Bug 提交总数</th><th>Q3 季度总遗漏率</th><th>KR 目标</th><th>达成情况</th></tr></thead>
+<tbody>
+  <tr><td class="c">在线客服</td><td class="num">0</td><td class="num">564</td><td class="num">0.00%</td><td class="c">≤6%</td><td class="c"><span class="b b-fix">达标</span></td></tr>
+  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">305</td><td class="num">0.00%</td><td class="c">≤2%</td><td class="c"><span class="b b-fix">达标</span></td></tr>
+  <tr><td class="c">SCRM（拓客CRM）</td><td class="num">5</td><td class="num">289</td><td class="num">1.73%</td><td class="c">≤6%</td><td class="c"><span class="b b-fix">达标（8/9月控制在3%改进线内）</span></td></tr>
+  <tr><td class="c">KuaiBuddy（含销冠话术宝）</td><td class="num">4</td><td class="num">248</td><td class="num">1.61%</td><td class="c">—（基线观察）</td><td class="c"><span class="b b-obs">基线观察</span></td></tr>
+  <tr class="sum"><td class="c">全部门合计</td><td class="num">9</td><td class="num">1430</td><td class="num">0.63%</td><td class="c">—</td><td class="c">—</td></tr>
+</tbody>
+</table>
+<p class="tnote">口径说明：① Bug 总数按各月复盘「遗漏情况表」业务线口径汇总（在线 167+194+203、KICP 64+119+122、SCRM 121+101+67、KuaiBuddy 66+104+78）；② KuaiBuddy 7 月中旬新介入，66 条为 7 月冲刺提交数，遗漏率自 8 月纳入统计；③ SCRM 7 月登记 1 条 P4 级线上问题（无法复现），按口径不纳入遗漏率计算；④ 各月有效率判定与业务线归属沿用月度复盘统一口径。</p>
+</div>
+
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:16%">产品线</th><th>7月总遗漏数</th><th>8月总遗漏数</th><th>9月总遗漏数</th><th>7月Bug总数</th><th>8月Bug总数</th><th>9月Bug总数</th></tr></thead>
+<tbody>
+  <tr><td class="c">在线客服</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">167</td><td class="num">194</td><td class="num">203</td></tr>
+  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">64</td><td class="num">119</td><td class="num">122</td></tr>
+  <tr><td class="c">SCRM</td><td class="num">0</td><td class="num">3</td><td class="num">2</td><td class="num">121</td><td class="num">101</td><td class="num">67</td></tr>
+  <tr><td class="c">KuaiBuddy</td><td class="num">—</td><td class="num">3</td><td class="num">1</td><td class="num">66</td><td class="num">104</td><td class="num">78</td></tr>
+  <tr class="sum"><td class="c">全部门合计</td><td class="num">0</td><td class="num">6</td><td class="num">3</td><td class="num">430</td><td class="num">518</td><td class="num">482</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>4、1—9 月份各业务线线上问题环比（Q3 持续低位收敛）</h4>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th>业务线</th><th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>Q3合计</th><th>环比趋势</th></tr></thead>
+<tbody>
+  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="c"><span class="b b-fix">持续平稳</span></td></tr>
+  <tr><td class="c">SCRM</td><td class="num">12</td><td class="num">6</td><td class="num">2</td><td class="num">3</td><td class="num">5</td><td class="num">6</td><td class="num">1</td><td class="num">3</td><td class="num">2</td><td class="num">6</td><td class="c"><span class="b b-fix">1月12条→季度末2条</span></td></tr>
+  <tr><td class="c">在线客服</td><td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="c"><span class="b b-fix">持续平稳</span></td></tr>
+  <tr><td class="c">KuaiBuddy</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">3</td><td class="num">1</td><td class="num">4</td><td class="c"><span class="b b-obs">新项目基线观察</span></td></tr>
+  <tr class="sum"><td class="c">合计</td><td class="num">21</td><td class="num">10</td><td class="num">2</td><td class="num">4</td><td class="num">8</td><td class="num">7</td><td class="num">1</td><td class="num">6</td><td class="num">3</td><td class="num">10</td><td class="c">—</td></tr>
+</tbody>
+</table>
+<p class="tnote">历史数据沿用各月复盘原表；SCRM 与 KuaiBuddy 的 8 月数据按各线复盘归类口径统计（8 月 SCRM 线上有效 6 条中 3 条归类遗漏、KuaiBuddy 3 条）；Q3 合计含 SCRM 6 条、KuaiBuddy 4 条。</p>
+</div>
+
+<div class="chart-wrap">
+<div style="font-size:12.5px;font-weight:700;color:var(--c-deep);margin-bottom:2px">1—9 月线上有效问题合计趋势（条）</div>
+<svg viewBox="0 0 660 190" width="100%" height="190" role="img" aria-label="1至9月线上有效问题合计趋势">
+  <g stroke="#DDE6F0" stroke-width="1">
+    <line x1="36" y1="20" x2="648" y2="20"></line><line x1="36" y1="60" x2="648" y2="60"></line>
+    <line x1="36" y1="100" x2="648" y2="100"></line><line x1="36" y1="130" x2="648" y2="130"></line>
+  </g>
+  <line x1="36" y1="160" x2="648" y2="160" stroke="#9DB2C8" stroke-width="1.2"></line>
+  <g font-size="9.5" fill="#8195AB" text-anchor="end">
+    <text x="32" y="23">24</text><text x="32" y="63">16</text><text x="32" y="103">8</text><text x="32" y="133">3</text>
+  </g>
+  <g>
+    <rect x="50"  y="60"  width="34" height="100" fill="#8A9BB0"></rect>
+    <rect x="118" y="112" width="34" height="48"  fill="#8A9BB0"></rect>
+    <rect x="186" y="150" width="34" height="10"  fill="#8A9BB0"></rect>
+    <rect x="254" y="141" width="34" height="19"  fill="#8A9BB0"></rect>
+    <rect x="322" y="122" width="34" height="38"  fill="#8A9BB0"></rect>
+    <rect x="390" y="127" width="34" height="33"  fill="#8A9BB0"></rect>
+    <rect x="458" y="155" width="34" height="5"   fill="#2C5580"></rect>
+    <rect x="526" y="131" width="34" height="29"  fill="#2C5580"></rect>
+    <rect x="594" y="146" width="34" height="14"  fill="#2C5580"></rect>
+  </g>
+  <g font-size="10" font-weight="700" fill="#1F2937" text-anchor="middle">
+    <text x="67" y="52">21</text><text x="135" y="104">10</text><text x="203" y="142">2</text><text x="271" y="133">4</text>
+    <text x="339" y="114">8</text><text x="407" y="119">7</text><text x="475" y="147">1</text><text x="543" y="123">6</text><text x="611" y="138">3</text>
+  </g>
+  <g font-size="10" fill="#5A6B7D" text-anchor="middle">
+    <text x="67" y="175">1月</text><text x="135" y="175">2月</text><text x="203" y="175">3月</text><text x="271" y="175">4月</text>
+    <text x="339" y="175">5月</text><text x="407" y="175">6月</text><text x="475" y="175">7月</text><text x="543" y="175">8月</text><text x="611" y="175">9月</text>
+  </g>
+</svg>
+<div class="legend"><span><i style="background:#8A9BB0"></i>Q1/Q2（历史）</span><span><i style="background:#2C5580"></i>Q3（本季度）</span></div>
+</div>
+
+<h4>与年度目标对比，季度达成情况分析：</h4>
+<ul class="dots">
+  <li><b>延期率：</b>年度目标为各产品线按计划上线，Q3 连续三个月零延期，较 Q1（话术宝 V1.09 延期 12 天）显著改善，交付节奏进入稳定区间；</li>
+  <li><b>遗漏率：</b>Q1 拓客CRM 遗漏率 3.60% 为主要短板，Q3 SCRM 遗漏率收敛至 1.73%（月度均在 3% 改进线内），在线客服/KICP 保持零遗漏，各线均优于年度目标线；</li>
+  <li><b>新变量：</b>KuaiBuddy 7 月新介入（无既有 KR 目标），从无需求文档、无验收标准的基线起步，已建立测试体系并暴露安全/稳定性/模型额度三类风险，Q4 需纳入正式 OKR 管理。</li>
+</ul>
+
+<h4>如果重做一遍应该如何做？重做一遍距离目标会差多少？如果结合AI重做一遍怎么做，距离目标会差多少？</h4>
+<ol class="steps">
+  <li><b>重做一遍：</b>将三件事前置到季度初——①与产品约定在线客服月度临时需求配额与影响评估机制（Q3 实际 7 月临时/定制需求占发布次数 54.5%，靠个人加班承压）；②发布/变更上线前检查清单（第三方灰度覆盖度、全局配置性能评估、存量长连接切换预案）落地（Q3 前期出现 3 起「上线即故障」可预防事件）；③KuaiBuddy 介入前先锁定最小可用需求说明与验收标准。重做一遍预计在线临时插单占比可降至 30% 以内，「上线即故障」事件归零，SCRM 季度遗漏率可进一步控制在 1% 以内——距离目标差距可再缩小约 0.7 个百分点。</li>
+  <li><b>结合 AI 重做一遍：</b>①月度质量数据禅道 API 自动拉取统计（9 月已实现）前置到 7 月，季度内各线 bug 分布、线上问题清单可随时一键生成，统计口径可复现，预计节省每周期统计人力约 0.5 天/周；②用 AI Agent 对线上反馈做自动分类与「设计如此/配置问题」预判，配合《线上反馈自助排查手册》，非缺陷类反馈（7 月占比 98.1%）排查人力可减少 50% 以上；③借助 AI 辅助历史模块定期排查（SCRM 历史存在问题收敛）与 agent trace 自动分析，SCRM/KuaiBuddy 遗漏率预计可再下降 0.5~1 个百分点。</li>
+</ol>
+
+<h3 id="sec1-2">2、上季度哪些过程和动作做得不好？不好的原因是什么？</h3>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:22%">做得不好的过程/动作</th><th>具体表现与原因分析</th></tr></thead>
+<tbody>
+  <tr><td><b>在线客服临时插单频繁，交付节奏依赖个人承压</b></td><td>7月定制/临时需求占发布次数 54.5%，V10.14 被拆为三批灰度发布，测试人力仅 2 人，节奏依赖个人加班，缺乏缓冲，属可持续性风险而非能力风险；8—9月跨版本更新频繁、版本拉平滞后，跨版本更新风险较高。<b>原因：</b>与产品未提前约定月度临时需求配额与影响评估流程，插单缺乏约束机制。</td></tr>
+  <tr><td><b>发布/变更管控不足，多起「上线即故障」可预防事件</b></td><td>7月发生 3 起典型线上事件（美团开店宝授权页换新界面后单台灰度遗漏 39 台服务器、KICP 全局配置默认全量开放引发性能问题、SCRM wkph→wkph-gateway 切换存量长连接下行丢失），均发生在「上线/变更」环节且可预防。<b>原因：</b>全局性/性能敏感配置变更上线前未做性能评估与灰度；第三方 UI/接口变更时单台灰度不足以覆盖全部受影响客户；长连接类服务切换未处理存量连接。</td></tr>
+  <tr><td><b>SCRM 遗漏率偏高，历史存在问题收敛不足</b></td><td>8月 SCRM 6 个线上有效 bug 中 4 个为历史存在现象，遗漏率一度达 4.9%（归类口径 2.97%）；9月 2.99% 贴近 3% 改进线，2 条遗漏均与历史/配置逻辑相关。<b>原因：</b>历史问题缺专项回归验证清单；跨项目代码改动（KuaiBuddy 迭代引入变量污染 SCRM 代码，91764）缺少评审与影响评估。</td></tr>
+  <tr><td><b>KuaiBuddy 新介入风险：需求缺失 + 稳定性问题根治不彻底</b></td><td>7月介入时项目无需求文档、无验收标准（仅对标 WorkBuddy），「设计如此」类无效 bug 占比高（8月无效 bug 31 个多数源于此）；「对话执行超 200 步不回复」8 月修复后 9 月复发 2 起，长链路压测与根治方案推动不足。<b>原因：</b>介入初期未锁定需求基线；修复时未同步建立步数/额度监控告警与修复效果专项回归。</td></tr>
+  <tr><td><b>非缺陷类线上反馈占比过高，消耗大量排查人力</b></td><td>7月非缺陷类线上反馈占比 98.1%（「设计如此」10 条、「配置问题」9 条等），大量人力消耗在重复解释与排查；运维环境（断网/总后台不可访问）与第三方渠道（抖音/美团/腾讯）稳定性问题频发。<b>原因：</b>缺《线上反馈自助排查手册》与入群前一线自查环节；第三方渠道变更无前置通知机制。</td></tr>
+  <tr><td><b>跨部门协作障碍：需求同步与统计口径</b></td><td>① CLI 类需求与测试范围未同步，前期测试计划缺失、场景覆盖不全；② 禅道统计指标口径不一致（任务被移出冲刺导致冲刺范围变化、线上问题登记口径不明确）；③ KICP 线上冲刺登记 4 条与项目复盘填报「暂无」口径不一致。<b>原因：</b>需求评审环节未强制纳入测试范围确认；「线上登记/线上有效/遗漏」三级口径未固化核对机制。</td></tr>
+  <tr><td><b>KICP 性能类问题外溢</b></td><td>7月出现消息延时线上问题，9月「机器人消息发送慢」（92433）仍在排查中。<b>原因：</b>性能容量评估尚未纳入 KICP 常规回归，功能上线缺性能评估环节。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="sec1-3">3、上季度主要赋能业务部门哪些事项？哪些做的好？</h3>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:20%">赋能方向</th><th>主要事项与成效</th></tr></thead>
+<tbody>
+  <tr><td><b>接口自动化回归</b></td><td>① 在线客服、KICP 接口自动化回归覆盖率达 100%，配置每日晚定时运行、结果反馈到群、测试人员次日确认异常，客户常用场景无需人工回归；② pw 智能测试平台脚本迁移 9 月全面收官：SCRM 34 条 + 云客 2 条链路全部迁移完毕并配置每日早晨 8 点定时运行，千锤完成常规问答、模板问答、触发器、变量、实体、导入等重要模块迁移，全部执行通过；③ 在线 V10.17/V10.18 单元、回归接口按时提交 PW 平台。</td></tr>
+  <tr><td><b>测试知识库建设</b></td><td>① 完成知识库工具 AB 测试与选型，二次开发并部署（目录维护、markdown 在线编辑、回答可溯源、权限管理、query 改写与召回排序优化）；② 推动知识库 AI 分析整理后再入库，提升文档质量；③ 季度内整理上传项目文档 20+ 份（KICP 模板问答/A/B 测试/话术优化、SCRM ASR 转写设计/增值管控/使用说明、在线客服业务逻辑文档等），指导在线测试人员完成营销相关项目文档落库并做效果验证。</td></tr>
+  <tr><td><b>AI 辅助测试能力</b></td><td>① 实现 mcp 服务、agent trace 分析中心（规则 + LLM 裁判）并接入钉钉，快速分析 agent 质量；② agent 测试工作流设计与每日回归测试；③ 编写 jmeter 迁移到新框架的 skill 并验证迁移效果，显著降低迁移成本；④ 实现 agent 脚本（WorkBuddy 用例、KuaiBuddy agent 测试）测试方法沉淀并指导团队实践。</td></tr>
+  <tr><td><b>性能测试赋能</b></td><td>① 完成在线客服 V10.14~V10.18、KICP V10.17/V10.18 性能回归、灰度性能及新旧版本兼容性验证；② KICP 服务器成本重估及按产品线拆分、千锤 GPT 有效对话量核对、碧莲盛 DIFY 转内部 GPT 成本估算，为资源与迁移决策提供依据；③ 雍禾录单/再营销压测、转历史优化性能验证；④ 定位并推动解决 KuaiBuddy CLI 鉴权、模型并发不回复等稳定性问题。</td></tr>
+  <tr><td><b>线上问题分析与规范</b></td><td>① 整理线上问题分析案例（4 个）供在线测试人员参考，主动分析在线客服反馈问题并提供样本；② 推动《线上反馈自助排查手册》与月度重复问题清单机制；③ 实现《禅道问题说明》澄清与线上问题统计口径统一。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="sec1-4">4、上季度技术调研报告</h3>
+<p class="lead">上季度（含各月度）测试部技术创新与 AI 应用情况：</p>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:22%">调研/创新方向</th><th>内容与落地情况</th></tr></thead>
+<tbody>
+  <tr><td><b>知识库 RAG 工具选型与二次开发</b></td><td>对知识库工具进行 AB 测试及选型，不盲目替换旧方案；完成二次开发及部署：团队版改造、目录维护与 markdown 在线编辑（支持在线贴图）、引用查阅原文优化（回答可溯源）、权限管理（阅读/MCP 访问均受控）、查询精度优化（query 改写、召回排序优化）。</td></tr>
+  <tr><td><b>自动化测试框架整合与 pw 智能测试平台</b></td><td>梳理现有自动化实现情况并部署新测试框架，集中治理测试结果产物；编写 jmeter→pw 迁移 skill 并验证迁移效果；实现测试平台多次功能迭代（mcp 服务、trace 分析中心、迁移 skill 脚本编写），支撑成员快速完成 SCRM 36 条链路、千锤重要模块的脚本迁移。</td></tr>
+  <tr><td><b>Agent 测试体系</b></td><td>实现 agent trace 分析中心（规则 + LLM 裁判）+ 钉钉接入，快速分析 agent 质量；设计 agent 测试工作流并落地每日回归测试；沉淀 KuaiBuddy 测试方法：CLI 鉴权、模型并发与备用模型切换、额度监控、长链路稳定性测试用例。</td></tr>
+  <tr><td><b>质量数据自动化统计</b></td><td>基于禅道 v2 API 全量拉取实现月度质量数据自动统计：各线 bug 分布、有效/无效判定、线上问题清单、冲刺分布一键生成，统计口径可复现、可核对；规划扩展 SLA、考勤数据接入。</td></tr>
+  <tr><td><b>性能与成本评估方法</b></td><td>结合 Langfuse Trace 分析 Agent 多步骤执行、异常对话及未交付结果问题；沉淀性能基线、故障排查清单和性能测试工作台/结果数据收集平台；建立服务器成本估算与按产品线拆分方法，支撑容量规划与降本决策。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="sanhao">5、三好一改进（上季度做的好的地方有哪些？犯了哪些错误？有哪些反思？要改进和提升的地方有哪些？）</h3>
+<h4>三好事项（汇总自 7/8/9 月复盘，均可复制推广）</h4>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:8%">月份</th><th>三好事项</th><th style="width:12%">是否可复制</th></tr></thead>
+<tbody>
+  <tr><td class="c">7月</td><td>主动分析在线客服反馈问题，并做好问题分析整理，提供样本</td><td class="c">是</td></tr>
+  <tr><td class="c">7月</td><td>知识库 AB 测试，不盲目替换旧方案，方案改造提供依据</td><td class="c">是</td></tr>
+  <tr><td class="c">7月</td><td>脚本迁移，利用 AI 编写 skill，减少迁移成本</td><td class="c">是</td></tr>
+  <tr><td class="c">8月</td><td>接口脚本治理与迁移，开发 mcp 功能 + 迁移 skill，快速完成不同平台脚本迁移</td><td class="c">是</td></tr>
+  <tr><td class="c">8月</td><td>实现 agent trace 分析中心（规则 + LLM 裁判）+ 钉钉接入，快速分析 agent 质量</td><td class="c">是</td></tr>
+  <tr><td class="c">8月</td><td>知识库重新 AI 分析整理后再入库，提升知识库文档质量</td><td class="c">是</td></tr>
+  <tr><td class="c">9月</td><td>pw 智能测试平台脚本迁移全面收官：SCRM 34 条 + 云客 2 条链路迁移完毕并配置每日 8 点定时运行，千锤重要模块迁移完成、全部执行通过</td><td class="c">是</td></tr>
+  <tr><td class="c">9月</td><td>5 条产品线 20 次发版全部按期、零延期（含在线 7 次凌晨更新），跨版本更新节奏平稳，遗漏率 0.62% 明显回落</td><td class="c">是</td></tr>
+  <tr><td class="c">9月</td><td>月度复盘质量数据实现禅道 API 自动拉取统计：各线 bug 分布、线上问题清单、冲刺分布一键生成，统计口径可复现、可核对</td><td class="c">是</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>需要改进和提升事项（汇总自 7/8/9 月复盘改进项）</h4>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th style="width:20%">部门人员</th><th style="width:20%">需要改进和提升事项（反思、错误、改进）</th><th>改进策略</th><th style="width:9%">改进时间</th><th style="width:16%">预计可达成的目标</th><th style="width:12%">验收人</th></tr></thead>
+<tbody>
+  <tr><td class="c">林金堂 / 各业务线负责人</td><td>发布/变更管控不足，多起「上线即故障」可预防事件（美团开店宝灰度遗漏、KICP 全局配置性能、SCRM 存量长连接）</td><td>建立变更上线前检查清单：第三方灰度覆盖度、全局配置性能评估、存量连接/链路切换预案、切换前后关键指标对比；第三方平台变更影响的灰度需覆盖全部受影响客户</td><td class="c">2026/8~10</td><td>同类「上线即故障」可预防事件归零，检查清单落地</td><td class="c">部门负责人 / 运维</td></tr>
+  <tr><td class="c">林金堂 / 在线产品负责人</td><td>在线客服临时插单频繁（7月占发布次数 54.5%），跨版本更新风险高</td><td>与产品约定月度临时需求配额与影响评估流程；提升接口/UI 自动化覆盖降低回归人力占用；推动版本拉平</td><td class="c">2026/8~10</td><td>临时需求占比下降至 30% 以内；核心迭代版本测试时长不被挤占</td><td class="c">部门负责人</td></tr>
+  <tr><td class="c">周卓醒</td><td>SCRM 遗漏率偏高（8月 2.97%、9月 2.99%），多数为历史存在现象</td><td>历史存在问题专项收敛，建立回归验证清单；跨项目代码改动（如 KuaiBuddy 引入变量）增加评审与影响评估；AI 辅助定期排查历史模块</td><td class="c">2026/9~10</td><td>SCRM 遗漏率下降至 ≤2%；历史存在问题闭环</td><td class="c">林金堂</td></tr>
+  <tr><td class="c">杜跃斌</td><td>KuaiBuddy「200 步不回复」8 月修复后 9 月复发 2 起；长链路压测与根治方案推动不足</td><td>长链路压测与根治方案落地；建立步数/额度监控告警；91696 修复效果专项回归验证</td><td class="c">2026/10</td><td>同类复发问题归零；建立 KB 额度/稳定性监控</td><td class="c">林金堂</td></tr>
+  <tr><td class="c">沙淑琼 / 在线产品负责人</td><td>在线存量遗留 bug 积压，多轮排期未消化；非缺陷类线上反馈占比高（7月 98.1%），消耗排查人力</td><td>与产品建立遗留 bug 排期消化机制；建立《线上反馈自助排查手册》（设计如此/配置问题标准结论）并入群前一线自查；每月更新重复问题清单</td><td class="c">2026/8~10</td><td>存量遗留 bug 下降；非缺陷类反馈中「设计如此 + 配置问题」占比降至 30% 以内，重复问题归零</td><td class="c">林金堂</td></tr>
+  <tr><td class="c">林金堂 / 各线主测</td><td>线上问题登记口径不一致（KICP 线上冲刺登记与项目复盘填报差异、禅道统计口径不一）</td><td>按《禅道问题说明》统一「线上登记/线上有效/遗漏」三级口径；月度复盘逐线核对差异并标注；产品、研发、测试统一统计口径</td><td class="c">2026/10</td><td>口径统一，差异清零</td><td class="c">部门负责人</td></tr>
+  <tr><td class="c">林金堂 / 运维负责人</td><td>运维环境与第三方渠道稳定性问题频发（7月至少 5 个工作日断网/总后台不可访问；腾讯云存储桶权限变更引发故障）</td><td>运维类事件正式反馈并要求变更前置评审；建立第三方渠道（抖音/美团/腾讯）变更通知机制；环境类问题独立打标纳入月度统计</td><td class="c">2026/8~10</td><td>运维/第三方类线上反馈下降 20%；第三方变更提前知晓率 100%</td><td class="c">部门负责人</td></tr>
+  <tr><td class="c">林金堂 / 杜跃斌 / 林瑞卿</td><td>KICP 性能类问题外溢（消息延时、机器人消息发送慢）</td><td>将性能容量评估纳入 KICP 常规回归；每季度做一次 KICP 性能压测，与在线客服同步节奏；建立延时监控基线</td><td class="c">2026/8~10</td><td>性能类线上问题提前在压测阶段发现</td><td class="c">林金堂</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============ 二、下季度工作目标规划 ============ -->
+<section id="sec2" class="card">
+<h2 class="ch">二、下季度工作目标规划<small>Q4 PLAN · 数据展示可根据实际情况迭代</small></h2>
+
+<h3>1、我下季度的OKR目标计划是什么？下季度如何用AI定路径？同时达到什么目标？定出各阶段目标的时间节点？</h3>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:26%">目标 O</th><th>关键结果 KR</th></tr></thead>
+<tbody>
+  <tr><td><b>O1（30%）：按预期完成所有产品线的上线要求</b></td>
+      <td>KR1（40%）：按计划完成在线客服上线任务<br>KR2（20%）：按计划完成 KICP 上线任务<br>KR3（30%）：按计划完成 SCRM 上线任务<br>KR4（10%）：按计划完成其他产品（千锤、KuaiBuddy、销冠话术宝）上线任务</td></tr>
+  <tr><td><b>O2（40%）：提高项目迭代质量，减少线上 bug</b></td>
+      <td>KR1（40%）：在线线上 bug，1 级每个扣 50%，2 级每个扣 20%，3 级每个扣 2%<br>KR2（20%）：KICP &amp; 销冠话术宝线上 bug，1 级每个扣 50%，2 级每个扣 25%，3 级每个扣 2.5%<br>KR3（15%）：SCRM 线上 bug，1 级扣 50%，2 级每个扣 20%，3 级每个扣 2%<br>KR4（10%）：在线客服项目遗漏率≤6%，每增加 0.1 扣 5%<br>KR5（5%）：KICP &amp; 销冠话术宝项目遗漏率≤2%，每增加 0.1 扣 5%<br>KR6（10%）：SCRM 项目遗漏率≤6%（季度改进目标≤2%），每增加 0.1 扣 5%</td></tr>
+  <tr><td><b>O3（25%）：提升所负责项目 SLA 服务可用性达 99.99%</b></td>
+      <td>KR1（60%）：【在线客服】月度平均 SLA≥99.99%。扣分标准：99.90%~99.99% 每差 0.01% 扣 10 分，&lt;99.93% 得 0 分。备注：99.93% 不可用时长 31 分钟，99.99% 不可用时长 4 分钟。数据来源&amp;指标评分人：剑和<br>KR2（40%）：【KICP】月度平均 SLA≥99.99%。扣分标准同上。数据来源&amp;指标评分人：剑和</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>AI 定路径与阶段时间节点：</h4>
+<ul class="dots">
+  <li><b>10月上旬（10.1~10.15）：</b>千锤 V10.18 第二次 10.8 节后上线专项封板回归保障；线上问题三级口径核对机制固化（10.15 前完成口径统一）；节后上线检查清单（第三方灰度覆盖、全局配置评估、存量链路切换预案）全面执行；</li>
+  <li><b>10月全月：</b>KuaiBuddy 长链路压测方案落地与 200 步问题根治（结合 agent trace 分析执行链路，输出根治验证报告）；在线遗留 bug 排期消化机制落地；算法 badcase→算法迭代→回归验证闭环建立（9 月登记的 12 条地址识别 badcase 全部闭环）；</li>
+  <li><b>11~12月：</b>SCRM 遗漏率收敛至≤2% 并保持；接口自动化定时任务运营成熟（结果监控与失败重跑机制），各线新增功能脚本同步补充；测试平台整合 agent 测试能力，AI 辅助测试（用例生成、agent 测试、历史模块 AI 定期排查）在各线常态化；</li>
+  <li><b>季度末（12月）：</b>年度质量数据复盘，输出全年遗漏率、延期率、SLA 达成报告；月度数据统计自动化扩展至 SLA、考勤数据接入，形成完整质量数据看板。</li>
+</ul>
+
+<h4>Q4 季度重点工作与路径：</h4>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th style="width:5%">序</th><th style="width:20%">重点事项</th><th style="width:24%">当前现状</th><th>策略与路径（含 AI 应用）</th><th style="width:16%">责任人</th></tr></thead>
+<tbody>
+  <tr><td class="c">1</td><td>节后上线保障与 Q4 各线版本按期交付</td><td>千锤 V10.18 第二次 9.28 封板改 10.8 上线；SCRM V6.18/V6.19 已提测；在线 10 月迭代排期中</td><td>节后封板版本专项回归；上线前检查清单（第三方灰度覆盖、全局配置评估、存量链路切换预案）；各线进度异常及时介入</td><td class="c">林金堂 / 各线负责人</td></tr>
+  <tr><td class="c">2</td><td>KuaiBuddy 200 步问题根治与长链路压测</td><td>8 月修复后 9 月复发 2 起（168168/625555），均为 91696 同类场景</td><td>长链路压测方案落地；步数/额度监控告警；结合 Trace 分析执行链路，输出根治验证报告</td><td class="c">杜跃斌</td></tr>
+  <tr><td class="c">3</td><td>SCRM 遗漏率收敛至 ≤2%</td><td>9 月遗漏率 2.99%，2 条遗漏均与历史/配置逻辑相关</td><td>历史存在问题回归验证清单；跨项目改动评审延续；利用 AI 辅助定期排查历史模块</td><td class="c">周卓醒</td></tr>
+  <tr><td class="c">4</td><td>在线遗留 bug 排期消化</td><td>存量 bug 数量较多，多轮排期未消化，存在质量回归风险</td><td>与产品建立遗留 bug 排期消化机制；月度更新重复问题清单；非缺陷类反馈自助排查手册落地</td><td class="c">沙淑琼 / 在线产品</td></tr>
+  <tr><td class="c">5</td><td>接口自动化持续完善与定时任务运营</td><td>SCRM 36 条链路、千锤重要模块迁移收官并每日 8 点定时运行；在线 V10.17/V10.18 回归按时提交</td><td>定时任务结果监控与失败重跑机制；千锤 V10.18 第二次、各线新增功能脚本同步补充；SCRM 脚本覆盖度评估</td><td class="c">林金堂 / 沙淑琼 / 周卓醒 / 林瑞卿</td></tr>
+  <tr><td class="c">6</td><td>算法 badcase 闭环与迭代统计规范化</td><td>9 月登记地址识别 badcase 12 条，全部 active；算法迭代次数尚未纳入月度统计固定项</td><td>建立 badcase→算法迭代→回归验证闭环；算法迭代统计纳入月度复盘固定项；自动化三块（Apipost/UI-automation/AlgorithmRegression-master）整合方案启动</td><td class="c">钟志鹏</td></tr>
+  <tr><td class="c">7</td><td>KICP 性能容量纳入常规回归</td><td>8—9 月完成专项性能测试与服务器成本重估；机器人消息发送慢（92433）排查中</td><td>性能测试阶段性回归；功能上线增加性能评估环节；建立延时监控基线</td><td class="c">杜跃斌</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============ 三、人与团队分析 ============ -->
+<section id="sec3" class="card">
+<h2 class="ch">三、人与团队分析<small>PEOPLE &amp; TEAM</small></h2>
+
+<h3 id="sec3-1">1、上季度我的团队有哪些成长？我为团队的成长做了哪些？下季度应如何做？</h3>
+<p class="lead">Q3 测试团队按业务线分工协作：在线营销（客服）沙淑琼、杨建伟；KICP 林瑞卿；SCRM 周卓醒；性能测试与 KuaiBuddy 杜跃斌；算法钟志鹏；测试管理林金堂。</p>
+
+<h4>（1）团队成员季度成长与亮点</h4>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th style="width:9%">成员</th><th style="width:36%">季度成长与亮点</th><th>下季度能力提升策略</th></tr></thead>
+<tbody>
+  <tr><td class="c">沙淑琼</td><td>产出稳居团队第一（7月153、8月140、9月137个，有效率 94%~98%），用例产出比最高达 100%；独立保障在线 7—9 月全部版本（含 7 次凌晨更新），遗漏率保持 0%~0.1%；主动帮助组内薄弱同学解决接口测试问题，承接在线全部接口/UI 自动化</td><td>推动遗留 bug 排期消化机制落地；第三方变更同步机制落地跟踪；加强与产品对齐版本节奏与临时需求配额</td></tr>
+  <tr><td class="c">林瑞卿</td><td>独立承接 KICP（含千锤2期）全季交付，三次以上迭代上线零延期，有效率最高达 98.3%（团队第一）；pw 智能测试平台千锤重要模块迁移 100% 执行通过；知识库文档累计整理 6 份；KICP 全季零线上遗漏</td><td>线上问题归类口径与复盘对齐；10.8 节后上线版本封板回归专项保障；KICP 性能容量纳入常规回归（配合杜跃斌）；AI 工具应用进一步提升</td></tr>
+  <tr><td class="c">周卓醒</td><td>独立承接 SCRM 全量测试并支援销冠话术宝 V1.13，全季 14 次发版有序完成；SCRM 历史脚本大幅优化（有效 HTTP 节点 1142→556、XML 节点减少 56.4%）；pw 平台 36 条链路迁移收官并定时化；线上有效 bug 逐一跟进修复闭环（91764、92112、92349 等）</td><td>SCRM 遗漏率收敛至 ≤2%；历史存在问题回归清单落地；定时任务结果监控与失败重跑机制建设</td></tr>
+  <tr><td class="c">杜跃斌</td><td>独立承接性能测试与 KuaiBuddy 两条线：完成在线/KICP 多版本性能回归与灰度验证、KICP 专项性能测试；建成 KuaiBuddy 自动化框架并接入 Jenkins；输出 KuaiBuddy 服务器成本估算、KICP 成本重估（按产品线拆分）、碧莲盛 DIFY 转内部 GPT 成本估算；启动 KB 性能测试专项冲刺，沉淀故障排查和日志排查 Skill</td><td>10 月落地 KB 长链路压测，推动 200 步问题根治、复发归零；建立 KB 额度/稳定性监控；补强性能测试全局视野（容量规划、多模型并发系统性评估）</td></tr>
+  <tr><td class="c">杨建伟</td><td>从新人成长为可独立承接在线迭代版本测试，9 月 bug 产出 89 个、环比 8 月提升 65%、位列团队第三；跨线支援 KuaiBuddy V1.07 测试（15 条），跨线支援能力得到验证；用例产出比保持 92%~98%</td><td>加强提交前自查，降低数据/重复类无效提交；加强 AI 辅助测试（WorkBuddy 用例编写、agent 测试）实践；提升独立承接多版本与跨线测试能力</td></tr>
+  <tr><td class="c">钟志鹏</td><td>独立承接算法线全季迭代测试，支撑 148 次算法版本上线（7月61、8月45、9月42次），稳定性与交付质量保持较好；9 月建立 badcase 登记机制（12 条地址识别问题转算法优化跟进）；在线各版本发版前自动化回归</td><td>算法迭代明细随复盘固定提交；推动算法自动化三块整合归一，主动修复固定跑不过的遗留脚本；建立 badcase→迭代→回归验证闭环</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>（2）我为团队的成长做了哪些？</h4>
+<ul class="dots">
+  <li>搭建测试知识库并组织团队培训：完成知识库工具 AB 测试选型与二次开发部署，指导各线文档落库（季度累计 20+ 份），并做效果验证与检索精度优化；</li>
+  <li>推动测试平台化与自动化转型：部署新测试框架、实现 mcp 服务与 trace 分析中心、编写迁移 skill 并指导测试人员完成原接口脚本迁移（pw 平台迁移收官）；</li>
+  <li>规范质量管理：加强禅道登记规范与线上问题收集分析，输出《禅道问题说明》统一统计口径，整理线上问题分析案例供团队参考；</li>
+  <li>建立月度质量数据禅道 API 自动拉取统计，让团队复盘数据可复现、可核对，减少人工统计成本。</li>
+</ul>
+
+<h4>（3）经理层（含主管/组长）能力评价与改进策略</h4>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th>经理姓名</th><th>共创目标能力</th><th>开会能力</th><th>现场走动管理能力</th><th>借力用力能力</th><th>借势造势能力</th><th>数据能力</th><th>追过程拿结果能力</th><th>事件落地闭环能力</th></tr></thead>
+<tbody>
+  <tr><td class="c">林瑞卿</td><td class="c">比较好</td><td class="c">一般</td><td class="c">一般</td><td class="c">一般</td><td class="c">一般</td><td class="c">比较好</td><td class="c">比较好</td><td class="c">比较好</td></tr>
+  <tr><td class="c">沙淑琼</td><td class="c">比较好</td><td class="c">一般</td><td class="c">一般</td><td class="c">一般</td><td class="c">一般</td><td class="c">比较好</td><td class="c">比较好</td><td class="c">比较好</td></tr>
+  <tr><td colspan="9"><b>经理层（含主管/组长）管理存在的问题及改进策略：</b><br><br><b>1、林瑞卿：</b>KICP 与千锤线全季交付零延期、有效率团队最高（98.3%），pw 平台千锤重要模块迁移 100% 执行通过，问题跟进有始有终（线上冲刺 4 条逐一跟进，92279 已修复、91958 转问题单）。改进点：线上问题冲刺登记与项目复盘填报口径不一致（登记 4 条 vs 复盘「暂无」），需按三级口径对齐归类；AI 工具应用可进一步提升。<br><br><b>2、沙淑琼：</b>产出稳居团队第一，在线 7—9 月全部版本（含 7 次凌晨更新）保障有力、遗漏率保持 0%~0.1%，主动帮带新人与薄弱同学。改进点：在线迭代密集、第三方依赖多，需在版本拉平与临时需求配额上加强与产品对齐；存量遗留 bug 积压需推动排期消化机制，避免长期依赖个人承压。</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 id="sec3-2">2、能力成长值突破（我应为我的成长做些什么规划？）</h3>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:26%">自己上季度心态/价值观情况</th><th style="width:40%">自己上季度硬技能、软实力情况<br>（团队管理/客户/业务/产品/服务等）</th><th>自己上季度成长目标情况</th></tr></thead>
+<tbody>
+  <tr>
+    <td>1、Q3 各产品线迭代全部按期发布，零延期；<br>2、培训测试团队完成知识库收集整理；<br>3、持续优化迭代测试平台；<br>4、强化冲刺质量管理、规范线上问题登记与线上反馈收集分析。</td>
+    <td>1、跟进各产品线迭代进度及测试情况，Q3 五条产品线 50 余次发版按期完成；<br>2、推动 SCRM 36 条链路、千锤重要模块 pw 平台迁移收官并定时化；<br>3、实现 mcp 服务、trace 分析中心、迁移 skill 脚本编写；agent 测试工作流设计及每日回归测试；<br>4、完成测试平台多次功能迭代，满足成员快速迁移脚本的需求；<br>5、实现月度质量数据禅道自动拉取统计（各线 bug、线上问题、冲刺分布可复现）；<br>6、KuaiBuddy 线上问题登记跟进（92278 等），跨线质量问题协调处理。</td>
+    <td>主体完成。待加强项：KuaiBuddy 复盘材料收集、算法迭代统计机制；SLA/考勤数据尚未接入月度统计自动化。</td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:26%">自己下季度价值观提升规划</th><th style="width:40%">自己下季度硬技能、软实力提升规划</th><th>自己下季度成长目标规划</th></tr></thead>
+<tbody>
+  <tr>
+    <td>1、Q4 各产品线迭代顺利发布（含 10.8 节后上线保障）；<br>2、推动遗留 bug 消化机制落地；<br>3、持续更新测试平台；<br>4、持续补充企业知识库，完成培训分享。</td>
+    <td>1、长链路压测方案落地与 200 步问题根治跟踪；<br>2、月度数据统计自动化扩展（SLA、考勤数据接入）；<br>3、线上问题「登记/有效/遗漏」三口径核对机制固化；<br>4、测试平台整合 agent 测试能力。</td>
+    <td>1、强化冲刺质量管理；<br>2、KuaiBuddy 专项测试体系完善；<br>3、AI 调研和使用进一步提升（agent 测试、AI 自动化脚本编写在各线常态化落地）。</td>
+  </tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============ 四、下季度系统建设目标规划 ============ -->
+<section id="sec4" class="card">
+<h2 class="ch">四、下季度系统建设目标规划<small>Q4 SYSTEM BUILDING</small></h2>
+<p class="lead">温馨提示：为支撑公司业绩、产品、客户、人才保障而设立的机制，如管理系统建设、制度建设、高效流程搭建、部门知识库搭建等。</p>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:6%">序号</th><th style="width:30%">系统建设名称</th><th style="width:12%">计划开始时间</th><th style="width:12%">完成时间</th><th style="width:16%">协助部门/责任人</th><th>备注说明</th></tr></thead>
+<tbody>
+  <tr><td class="c">1</td><td>KuaiBuddy 长链路压测与步数/额度监控告警体系</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">杜跃斌</td><td>推动 200 步问题根治、同类复发归零；建立额度/稳定性监控</td></tr>
+  <tr><td class="c">2</td><td>在线遗留 bug 排期消化机制 +《线上反馈自助排查手册》</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">沙淑琼 / 在线产品负责人</td><td>存量遗留 bug 下降；非缺陷类反馈占比下降，重复问题归零</td></tr>
+  <tr><td class="c">3</td><td>算法 badcase→算法迭代→回归验证闭环机制</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">钟志鹏</td><td>9 月登记 12 条 badcase 全部闭环；算法迭代统计纳入月度复盘固定项</td></tr>
+  <tr><td class="c">4</td><td>接口自动化定时任务结果监控与失败重跑机制</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">周卓醒 / 沙淑琼 / 林瑞卿</td><td>保障 pw 平台每日定时运行稳定，异常可感知、失败可重跑</td></tr>
+  <tr><td class="c">5</td><td>线上问题「登记/有效/遗漏」三级口径核对机制</td><td class="c">2026/10/1</td><td class="c">2026/10/15</td><td class="c">林金堂 / 各线主测</td><td>按《禅道问题说明》统一口径，月度复盘逐线核对，差异清零</td></tr>
+  <tr><td class="c">6</td><td>变更上线前检查清单（第三方灰度覆盖、全局配置性能评估、存量链路切换预案）</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">林金堂 / 各业务线负责人 / 运维</td><td>同类「上线即故障」可预防事件归零</td></tr>
+  <tr><td class="c">7</td><td>接口自动化脚本持续补充和维护</td><td class="c">2026/10/1</td><td class="c">2026/12/31</td><td class="c">全体测试人员</td><td>根据各业务线版本迭代的新增功能和修改，持续补充和维护接口脚本</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============ 五、如果重来一次 ============ -->
+<section id="sec5" class="card">
+<h2 class="ch">五、如果重来一次，你会怎么做，可以完成目标<small>IF WE DID IT AGAIN</small></h2>
+<p class="lead">如果上季度重来一次，哪些方面可以做得更好，通过什么方式可以做得更好？</p>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:26%">重来一次的事项</th><th style="width:42%">改进策略</th><th>预计可达成的目标</th></tr></thead>
+<tbody>
+  <tr><td><b>1、KuaiBuddy 7月新介入时无需求文档、无验收标准</b>，导致「设计如此」类无效 bug 占比高（8月无效 bug 31 个多数源于此），安全/稳定性风险靠测试自行补位</td>
+      <td>① 介入前推动产品补齐最小可用需求说明与验收标准（参考对标产品 WorkBuddy 功能），未锁定基线不进入全面测试；<br>② 测试用例前置补充安全校验项（提示词防泄露、越权校验）；<br>③ 建立任务执行稳定性指标与长链路压测，与算法/平台确认模型额度监控与扩容机制</td>
+      <td>原结果：无需求基线介入，8月暴露安全/稳定性/模型额度三类风险；<br><br>优化后：需求与验收标准先行，无效 bug 占比明显下降，风险项有对应测试覆盖，测试介入成本降低</td></tr>
+  <tr><td><b>2、7月 3 起「上线即故障」可预防事件</b>（美团开店宝灰度遗漏客户、KICP 全局配置引发性能问题、SCRM 长连接切换下行丢失）</td>
+      <td>① 季度初即建立变更上线前检查清单：第三方灰度覆盖度、全局配置性能评估、存量连接/链路切换预案、切换前后关键指标对比；<br>② 全局性/性能敏感配置变更上线前强制做性能评估与灰度，避免「临时要求」直接全量</td>
+      <td>原结果：3 起事件均上线后才发现、依赖回滚/重启恢复；<br><br>优化后：同类「上线即故障」可预防事件归零</td></tr>
+  <tr><td><b>3、在线客服临时插单频繁（7月占发布次数 54.5%）</b>，交付节奏依赖个人加班承压，缺乏缓冲</td>
+      <td>① 季度初与产品约定月度临时需求配额，超出部分需评估对迭代版本的影响后再排期；<br>② 推动版本拉平，降低跨版本更新风险；<br>③ 提升接口/UI 自动化覆盖，降低回归人力占用</td>
+      <td>原结果：临时需求占比 54.5%，V10.14 拆三批灰度，2 人团队靠加班维持；<br><br>优化后：临时需求占比降至 30% 以内，核心迭代版本测试时长不被挤占</td></tr>
+  <tr><td><b>4、KuaiBuddy「200 步不回复」问题 8 月修复不彻底，9 月复发 2 起</b></td>
+      <td>① 修复时即同步建立步数/额度监控告警，而非仅修复单点；<br>② 修复后立即安排 91696 同类场景专项回归验证，并落地长链路压测</td>
+      <td>原结果：8月修复、9月复发 2 起（168168/625555），根治方案延后至 10 月；<br><br>优化后：复发在 9 月即被拦截，根治提前 1 个月完成</td></tr>
+  <tr><td><b>5、跨项目代码改动缺少评审与影响评估</b>（91764：KuaiBuddy 迭代引入变量污染 SCRM 代码，导致销售线索新建报错）</td>
+      <td>① 跨组需求（涉及修改他组代码）在需求评审阶段即明确影响面，增加评审与影响评估环节；<br>② 建立跨项目改动清单，纳入对应业务线回归范围</td>
+      <td>原结果：上线后 SCRM 功能报错才定位到跨组改动；<br><br>优化后：变量污染类问题归零，跨组改动 100% 有影响评估记录</td></tr>
+  <tr><td><b>6、结合 AI 重做一遍：</b>质量统计、反馈筛查、历史问题排查仍靠人工</td>
+      <td>① 月度质量数据禅道 API 自动拉取统计从 9 月提前到 7 月上线；<br>② AI Agent 自动分类线上反馈并预判「设计如此/配置问题」，配合自助排查手册；<br>③ AI 辅助 SCRM 历史模块定期排查与 agent trace 自动分析</td>
+      <td>统计人力节省约 0.5 天/周；非缺陷类反馈排查人力减少 50% 以上；SCRM/KuaiBuddy 遗漏率预计再下降 0.5~1 个百分点</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ============ 六、下季度需要的支持 ============ -->
+<section id="sec6" class="card">
+<h2 class="ch">六、下季度需要的支持<small>SUPPORT NEEDED</small></h2>
+<p class="lead">温馨提示：1、如招聘支持、能力提升支持、管理问题答疑、客户/产品/业务/服务支持、采购支持、人力支持、行政支持、财务支持等；2、凡是涉及跨部门协作或闭环的事项，请在本表详细列明。</p>
+<div class="tw">
+<table class="t">
+<thead><tr><th style="width:6%">序号</th><th style="width:44%">下季度应支持事项</th><th style="width:11%">计划开始时间</th><th style="width:11%">完成时间</th><th style="width:17%">协助部门/责任人</th><th>是否需要付费</th></tr></thead>
+<tbody>
+  <tr><td class="c">1</td><td><b>第三方渠道变更前置同步与评审机制落地：</b>在线多项功能依赖第三方接口（抖音/美团/腾讯等），变更未提前同步导致被动响应（7月美团开店宝授权异常、9月在线功能修复受制于对方响应节奏），需建立变更前置通知与评审机制，形成月度重复问题清单</td><td class="c">2026/10/1</td><td class="c">持续</td><td class="c">运维部 / 渠道对接方</td><td class="c">否</td></tr>
+  <tr><td class="c">2</td><td><b>在线遗留 bug 排期消化：</b>存量 bug 多轮排期未消化，存在质量回归风险，需产品侧给出消化排期并建立月度消化机制</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">在线产品负责人</td><td class="c">否</td></tr>
+  <tr><td class="c">3</td><td><b>在线客服临时需求月度配额约定：</b>定制/临时需求占发布次数比例高，需与产品约定月度配额与影响评估流程，保障核心迭代测试时长</td><td class="c">2026/10/1</td><td class="c">2026/10/15</td><td class="c">在线产品负责人</td><td class="c">否</td></tr>
+  <tr><td class="c">4</td><td><b>KuaiBuddy 长链路压测资源：</b>200 步问题根治需压测环境、数据构造与研发配合；模型额度监控需平台/算法侧支持</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">KuaiBuddy 研发 / 运维</td><td class="c">否</td></tr>
+  <tr><td class="c">5</td><td><b>算法地址识别 badcase 优化排期确认：</b>9 月登记 12 条（涉及三棵树、急修到家客户），需算法团队排期消化并建立闭环机制</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">算法团队</td><td class="c">否</td></tr>
+  <tr><td class="c">6</td><td><b>运维环境稳定性专项：</b>7月至少 5 个工作日出现断网/总后台不可访问，腾讯云存储桶权限变更未提前同步曾引发 SCRM 线上故障，需建立变更前置评审与通知机制</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">运维部</td><td class="c">否</td></tr>
+  <tr><td class="c">7</td><td><b>SLA 数据接入月度统计：</b>在线客服、KICP 月度平均 SLA 达成值（O3 目标≥99.99%）需运维侧按月提供，接入质量数据自动统计看板</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">运维（剑和） / 杜跃斌</td><td class="c">否</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<footer style="text-align:center;font-size:12px;color:var(--c-muted);padding:10px 0 30px;line-height:1.8">
+快商通 · 测试部 ｜ 2026年Q3季度测试复盘 ｜ 汇报周期 2026-07-01 ~ 2026-09-30<br>
+数据来源：禅道项目管理系统（截至 2026-09-30）及 7/8/9 月份复盘材料 ｜ 编制：测试部
+</footer>
+</div>
+</div>
+</div>
+</body>
+</html>
