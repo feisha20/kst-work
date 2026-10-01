@@ -8,9 +8,13 @@
 Thumbs.db
 Desktop.ini
 
-# Office 临时文件
+# Office 临时文件（MS Office 为 ~$ 开头，WPS 为 .~ 开头）
 ~$*
+.~*
 *.tmp
+
+# 工具本地配置（ZCode 自动生成，规则同步自 .gitignore，不入库）
+.zcodeignore
 
 # 临时文件区（任务过程文档，不提交）
 临时文件区/
