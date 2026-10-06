@@ -18,3 +18,4 @@ Desktop.ini
 
 # 临时文件区（任务过程文档，不提交）
 临时文件区/
+.playwright-mcp/
