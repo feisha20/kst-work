@@ -182,16 +182,16 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <!-- ============ 执行摘要 ============ -->
 <section class="card" id="summary">
   <h2 class="ch" style="border-bottom-width:2px">执行摘要<small>EXECUTIVE SUMMARY</small></h2>
-  <p style="font-size:13.5px">9月份测试部围绕<strong>「按期交付、质量收敛、自动化收官」</strong>三条主线开展工作：5 条产品线共 <strong>20 次发版全部按期</strong>（含在线客服 7 次凌晨更新），实现零延期；全月提交 Bug <strong>496 个</strong>、有效率 <strong>93.1%</strong>；线上问题冲刺共登记 <strong>16 条</strong>，归类线上有效遗漏 <strong>3 条</strong>（SCRM 2 条均 3 级已修复、KuaiBuddy 1 条已解决），全部门遗漏率 <strong>0.60%</strong>，较 8 月明显回落；pw 智能测试平台脚本迁移全面收官（SCRM 36 条链路 + 千锤重要模块），并进入每日定时运行阶段。</p>
+  <p style="font-size:13.5px">9月份测试部围绕<strong>「按期交付、质量收敛、自动化收官」</strong>三条主线开展工作：5 条产品线共 <strong>20 次发版全部按期</strong>（含在线客服 7 次凌晨更新），实现零延期；全月提交 Bug <strong>496 个</strong>、有效率 <strong>93.1%</strong>；线上问题冲刺共登记 <strong>16 条</strong>，归类线上有效遗漏 <strong>2 条</strong>（SCRM 2 条均 3 级已修复；KuaiBuddy 92278 经复核为 4 级，按「3 级及以上才计遗漏」约定不计遗漏），全部门遗漏率 <strong>0.40%</strong>，较 8 月明显回落；pw 智能测试平台脚本迁移全面收官（SCRM 36 条链路 + 千锤重要模块），并进入每日定时运行阶段。</p>
   <div class="kpis">
     <div class="kpi"><div class="n">20<small> 次</small></div><div class="t">版本发版 · 零延期</div><div class="s">在线7 / KICP 3 / SCRM 6 / KuaiBuddy 3 / 销冠话术宝 1</div></div>
     <div class="kpi"><div class="n">496<small> 个</small></div><div class="t">提交 Bug（有效 462）</div><div class="s">团队 7 人提交 493，系统账号登记 3</div></div>
     <div class="kpi"><div class="n">93.1<small> %</small></div><div class="t">Bug 有效率</div><div class="s">无效 34 个，以无法重现（15）为主</div></div>
-    <div class="kpi"><div class="n">3<small> 个</small></div><div class="t">线上有效遗漏</div><div class="s">SCRM 2（3 级已修复）+ KuaiBuddy 1（已解决）；环比 8 月 6 个下降</div></div>
-    <div class="kpi"><div class="n">0.60<small> %</small></div><div class="t">全部门遗漏率</div><div class="s">在线 0 / KICP 0 / KuaiBuddy 1.30% / SCRM 2.86%</div></div>
+    <div class="kpi"><div class="n">2<small> 个</small></div><div class="t">线上有效遗漏</div><div class="s">SCRM 2（均 3 级已修复）；KuaiBuddy 92278 复核为 4 级不计遗漏；环比 8 月 6 个下降 67%</div></div>
+    <div class="kpi"><div class="n">0.40<small> %</small></div><div class="t">全部门遗漏率</div><div class="s">在线 0 / KICP 0 / KuaiBuddy 0% / SCRM 2.86%</div></div>
     <div class="kpi"><div class="n">36<small> 条</small></div><div class="t">pw 脚本迁移收官</div><div class="s">SCRM 34 + 云客 2，每日 8 点定时运行</div></div>
   </div>
-  <div class="notice warn"><b>待确认/待补充事项（详见附录B）：</b>① KICP 线上冲刺 4 条均为 4 级，按「严重等级 3 级及以上才计遗漏」约定不计遗漏（等级以禅道为准）；② KB 线上 5 条中 92268 为 4 级，按同一约定不计遗漏；③ 考勤数据、SLA 达成值待补充。（用例 Bug 产出比已按禅道关联用例统计补充；KuaiBuddy 复盘文档与算法迭代明细已补充归档）</div>
+  <div class="notice warn"><b>待确认/待补充事项（详见附录B）：</b>① KICP 线上冲刺 4 条均为 4 级，按「严重等级 3 级及以上才计遗漏」约定不计遗漏（等级以禅道为准）；② KB 线上 5 条中 92268、92278 经复核均为 4 级，按同一约定不计遗漏；③ 考勤数据、SLA 达成值待补充。（用例 Bug 产出比已按禅道关联用例统计补充；KuaiBuddy 复盘文档与算法迭代明细已补充归档）</div>
 </section>
 
 <!-- ============ 一、上个月目标回顾 ============ -->
@@ -221,7 +221,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <td class="c">2</td>
 <td><strong>O2（40%）：提高迭代质量，减少线上 bug</strong><br>（各级 bug 扣分与遗漏率目标：在线≤6%、KICP&amp;话术宝≤2%、SCRM≤6%）</td>
 <td>
-<p>在线遗漏率 <strong>0%</strong>（线上登记 3 条均为数据/外部原因类无效问题）；KICP 无线上有效遗漏（线上冲刺 4 条均为 4 级，按「3 级及以上才计遗漏」约定不计遗漏，归类见线上清单）；SCRM 线上有效 <strong>2 个</strong>（均 3 级、已修复），遗漏率 <strong>2.86%</strong>（≤6% 达标，较 8 月 2.97% 略有回落）；KuaiBuddy 线上登记 5 条，主测复盘认定线上有效遗漏 <strong>1 个</strong>（92278，已解决，根因为任务产物未入库叠加 skill 提示词缺陷），遗漏率 <strong>1.30%</strong>（主测复盘填报口径 1.4%，基于线下有效 70 个）。全部门遗漏率 <strong>0.60%</strong>（3/496）。</p>
+<p>在线遗漏率 <strong>0%</strong>（线上登记 3 条均为数据/外部原因类无效问题）；KICP 无线上有效遗漏（线上冲刺 4 条均为 4 级，按「3 级及以上才计遗漏」约定不计遗漏，归类见线上清单）；SCRM 线上有效 <strong>2 个</strong>（均 3 级、已修复），遗漏率 <strong>2.86%</strong>（≤6% 达标，较 8 月 2.97% 略有回落）；KuaiBuddy 线上登记 5 条：92278（对话分析产物未入库，已解决）经禅道复核严重等级为 <strong>4 级</strong>，按「3 级及以上才计遗漏」约定<b>不计遗漏</b>（主测复盘曾按根因分析口径计 1.4%），KuaiBuddy 遗漏率 <strong>0%</strong>。全部门遗漏率 <strong>0.40%</strong>（2/496）。</p>
 </td>
 <td>SCRM 遗漏率贴近 3% 改进线，2 条遗漏均与历史/配置逻辑相关；KuaiBuddy「对话执行超 200 步不回复」8 月问题（91696）9 月复发 2 起，根治方案未落地；在线存量遗留 bug 积压、多轮排期未消化。</td>
 <td>KuaiBuddy 长链路压测与 200 步问题根治；SCRM 历史存在问题收敛延续；推动遗留 bug 排期消化机制。</td>
@@ -267,9 +267,9 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <tr><td>在线客服</td><td class="num">205</td><td class="num">190</td><td class="num">15</td><td class="num">3</td><td class="num">0</td><td class="num"><span class="b b-fix">0%</span></td><td>线上 3 条均为数据问题（2）/ 外部原因（1）类无效问题；V10.17/V10.18 迭代 7 次凌晨更新全部按计划</td></tr>
 <tr><td>KICP（千锤）</td><td class="num">123</td><td class="num">119</td><td class="num">4</td><td class="num">4</td><td class="num">0</td><td class="num"><span class="b b-fix">0%</span></td><td>千锤 V10.17×2 / V10.18×1 按期上线；线上冲刺 4 条：已修复 1、待观察 1、转问题单 1、性能排查中 1（归类见线上清单）</td></tr>
 <tr><td>SCRM</td><td class="num">70</td><td class="num">61</td><td class="num">9</td><td class="num">4</td><td class="num">2</td><td class="num"><span class="b b-obs">2.86%</span></td><td>V6.16/V6.17 迭代 + 4 次临时发版 + 销冠话术宝 V1.13（3 条）；线上有效 2 条均已修复；另工作手机类问题转云客处理</td></tr>
-<tr><td>KuaiBuddy</td><td class="num">77</td><td class="num">71</td><td class="num">6</td><td class="num">5</td><td class="num">1</td><td class="num"><span class="b b-obs">1.30%</span></td><td>线上 5 条：已修复 1、外部原因 2、重复 2（8 月 91696 复发）；其中 92278 禅道登记为转反馈，按主测复盘口径计线上有效遗漏（见遗漏情况表）</td></tr>
+<tr><td>KuaiBuddy</td><td class="num">77</td><td class="num">71</td><td class="num">6</td><td class="num">5</td><td class="num">0</td><td class="num"><span class="b b-fix">0%</span></td><td>线上 5 条：已修复 1、外部原因 2、重复 2（8 月 91696 复发）；其中 92278 复核为 4 级，按「3 级及以上才计遗漏」约定不计遗漏（见遗漏情况表）</td></tr>
 <tr><td>算法（AI算法中心）</td><td class="num">21</td><td class="num">21</td><td class="num">0</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td>算法线上识别 badcase 登记 21 条（地址服务为主，含 9.30 补登 9 条），转算法优化跟进，不计线上缺陷</td></tr>
-<tr class="sum"><td>合计</td><td class="num">496</td><td class="num">462</td><td class="num">34</td><td class="num">16</td><td class="num">3</td><td class="num">0.60%</td><td>有效率 93.1%；线上有效遗漏环比 8 月（6 个）下降 50%</td></tr>
+<tr class="sum"><td>合计</td><td class="num">496</td><td class="num">462</td><td class="num">34</td><td class="num">16</td><td class="num">2</td><td class="num">0.40%</td><td>有效率 93.1%；线上有效遗漏环比 8 月（6 个）下降 67%</td></tr>
 </tbody>
 </table>
 </div>
@@ -329,13 +329,13 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <tr><td>SCRM</td><td class="c"><span class="b b-lv">3</span></td><td class="c"><a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92350.html" target="_blank">92350</a></td><td>【工作手机】营销版手机关机后，SCRM 仍显示手机在线</td><td>云客侧问题</td><td><span class="b b-fix">已修复</span>（转云客）</td><td class="c">否</td><td class="c"><span class="b b-trans">转云客</span></td></tr>
 <tr><td>SCRM</td><td class="c"><span class="b b-lv">4</span></td><td class="c"><a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92277.html" target="_blank">92277</a></td><td>【工作手机】168168 反馈打电话突然没信号</td><td>云客侧问题</td><td>转云客跟进（复盘原文：4 个云客问题均已交云客修复）</td><td class="c">否</td><td class="c"><span class="b b-trans">转云客</span></td></tr>
 <tr><td>KuaiBuddy</td><td class="c"><span class="b b-lv">3</span></td><td class="c"><a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92274.html" target="_blank">92274</a> / <a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92275.html" target="_blank">92275</a></td><td>【对话核心】168168 / 625555 公司对话执行超 200 步不回复</td><td>8 月「200 步上限」问题（91696）同类场景复发</td><td><span class="b b-dup">重复bug</span>，并入 91696 跟踪</td><td class="c">是</td><td class="c"><span class="b b-dup">重复</span></td></tr>
-<tr><td>KuaiBuddy</td><td class="c"><span class="b b-lv">4</span></td><td class="c"><a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92278.html" target="_blank">92278</a></td><td>【对话核心】scrm 对话分析 html 产物未入库，导致预览报错</td><td>任务产物未调入库工具 + skill 预览提示词缺陷致 AI 自编地址；已改提示词解决</td><td><span class="b b-fix">已解决</span>（禅道登记为转反馈，主测复盘认定有效）</td><td class="c">是</td><td class="c"><span class="b b-fix">有效·遗漏</span></td></tr>
+<tr><td>KuaiBuddy</td><td class="c"><span class="b b-lv">4</span></td><td class="c"><a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92278.html" target="_blank">92278</a></td><td>【对话核心】scrm 对话分析 html 产物未入库，导致预览报错</td><td>任务产物未调入库工具 + skill 预览提示词缺陷致 AI 自编地址；已改提示词解决</td><td><span class="b b-fix">已解决</span>（禅道登记为转反馈）</td><td class="c">否</td><td class="c"><span class="b b-fix">有效·非遗漏</span></td></tr>
 <tr><td>KuaiBuddy</td><td class="c"><span class="b b-lv">4</span></td><td class="c"><a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92267.html" target="_blank">92267</a></td><td>【对话核心】AI 生图指定文件名与实际入库文件名不一致</td><td>模型与文件库行为差异</td><td><span class="b b-ext">外部原因</span></td><td class="c">否</td><td class="c"><span class="b b-cfm">待确认</span></td></tr>
 <tr><td>KuaiBuddy</td><td class="c"><span class="b b-lv">4</span></td><td class="c"><a class="a" href="http://pm.kuaishang.cn/zentao/bug-view-92268.html" target="_blank">92268</a></td><td>【IMA 配置】已配置 appkey/clientId，对话仍返回「凭证未配置」</td><td>配置读取链路缺陷</td><td><span class="b b-fix">已修复</span></td><td class="c">否</td><td class="c"><span class="b b-fix">有效·非遗漏</span></td></tr>
 </tbody>
 </table>
 </div>
-<p class="tnote">注：① 「归类」为月度复盘统计口径：仅「有效·遗漏」计入线上有效 bug 与遗漏率；② KuaiBuddy 92268 与 KICP 线上冲刺 4 条（92433/92279/92089/91958）均为 4 级，按「严重等级 3 级及以上才计遗漏」约定归为有效·非遗漏（等级以禅道为准）；③ KuaiBuddy 92278 禅道登记为「转反馈」，主测复盘依据根因分析（产物未入库 + 提示词缺陷）认定为线上有效遗漏，本报告<b>采纳主测口径</b>；④ SCRM 另有工作手机类云客问题转云客侧修复；⑤ 算法中心 21 条识别 badcase 在「9月份迭代说明」节单独说明，不计线上缺陷。</p>
+<p class="tnote">注：① 「归类」为月度复盘统计口径：仅「有效·遗漏」计入线上有效 bug 与遗漏率；② KuaiBuddy 92268、92278 与 KICP 线上冲刺 4 条（92433/92279/92089/91958）均为 4 级，按「严重等级 3 级及以上才计遗漏」约定归为有效·非遗漏（等级以禅道为准）；③ KuaiBuddy 92278 禅道登记为「转反馈」，主测复盘曾依据根因分析认定为线上有效遗漏，经复核其严重等级为 4 级，按约定不计遗漏；④ SCRM 另有工作手机类云客问题转云客侧修复；⑤ 算法中心 21 条识别 badcase 在「9月份迭代说明」节单独说明，不计线上缺陷。</p>
 
 <h5 id="g-miss">9月份各产品线遗漏情况</h5>
 <div class="tw">
@@ -345,8 +345,8 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <tr><td class="c">在线客服</td><td class="num">205</td><td class="num">0</td><td class="num"><span class="b b-fix">0%</span></td><td class="num">≤6%</td><td>线上 3 条登记均为数据/外部类无效</td></tr>
 <tr><td class="c">KICP</td><td class="num">123</td><td class="num">0</td><td class="num"><span class="b b-fix">0%</span></td><td class="num">≤2%</td><td>线上冲刺 4 条均为 4 级，按「3 级及以上才计遗漏」约定不计遗漏</td></tr>
 <tr><td class="c">SCRM</td><td class="num">70</td><td class="num">2</td><td class="num"><span class="b b-obs">2.86%</span></td><td class="num">≤6%</td><td>2 条均为 3 级且已修复；较 8 月 2.97% 略有回落，8 月改进目标（≤3%）达成</td></tr>
-<tr><td class="c">KuaiBuddy</td><td class="num">77</td><td class="num">1</td><td class="num"><span class="b b-obs">1.30%</span></td><td class="num">—（基线观察）</td><td>主测复盘认定 92278 有效遗漏（已解决）；92268 为 4 级，按约定不计遗漏；200 步复发 2 起并入 91696 跟踪</td></tr>
-<tr class="sum"><td class="c">全部门</td><td class="num">496</td><td class="num">3</td><td class="num">0.60%</td><td>—</td><td>遗漏环比 8 月（SCRM 3 + KuaiBuddy 3 = 6 个）下降 50%</td></tr>
+<tr><td class="c">KuaiBuddy</td><td class="num">77</td><td class="num">0</td><td class="num"><span class="b b-fix">0%</span></td><td class="num">—（基线观察）</td><td>92278 复核为 4 级，按约定不计遗漏（已解决）；92268 亦为 4 级，按约定不计遗漏；200 步复发 2 起并入 91696 跟踪</td></tr>
+<tr class="sum"><td class="c">全部门</td><td class="num">496</td><td class="num">2</td><td class="num">0.40%</td><td>—</td><td>遗漏环比 8 月（SCRM 3 + KuaiBuddy 3 = 6 个）下降 67%</td></tr>
 </tbody>
 </table>
 </div>
@@ -359,8 +359,8 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <tr><td>KICP</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><b>0</b></td><td class="num">0</td><td class="num">—</td></tr>
 <tr><td>SCRM</td><td class="num">12</td><td class="num">6</td><td class="num">2</td><td class="num">3</td><td class="num">5</td><td class="num">6</td><td class="num">1</td><td class="num">3</td><td class="num"><b>2</b></td><td class="num">-1</td><td class="num">-33.3%</td></tr>
 <tr><td>在线客服</td><td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num"><b>0</b></td><td class="num">0</td><td class="num">—</td></tr>
-<tr><td>KuaiBuddy</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">3</td><td class="num"><b>1</b></td><td class="num">-2</td><td class="num">-66.7%</td></tr>
-<tr class="sum"><td>合计</td><td class="num">21</td><td class="num">10</td><td class="num">2</td><td class="num">4</td><td class="num">8</td><td class="num">7</td><td class="num">1</td><td class="num">9 *</td><td class="num"><b>3</b></td><td class="num">-3</td><td class="num">-50%</td></tr>
+<tr><td>KuaiBuddy</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">3</td><td class="num"><b>0</b></td><td class="num">-3</td><td class="num">-100%</td></tr>
+<tr class="sum"><td>合计</td><td class="num">21</td><td class="num">10</td><td class="num">2</td><td class="num">4</td><td class="num">8</td><td class="num">7</td><td class="num">1</td><td class="num">9 *</td><td class="num"><b>2</b></td><td class="num">-7</td><td class="num">-77.8%</td></tr>
 </tbody>
 </table>
 </div>
@@ -377,7 +377,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
     <g font-size="9.5" fill="#8195AB" text-anchor="end">
       <text x="32" y="23">20</text><text x="32" y="58">15</text><text x="32" y="93">10</text><text x="32" y="128">5</text>
     </g>
-    <!-- 每月堆叠柱: 21,10,2,4,8,7,1,6(分线),3  高度=值*7 -->
+    <!-- 每月堆叠柱: 21,10,2,4,8,7,1,6(分线),2  高度=值*7 -->
     <!-- 1月: SCRM12 KICP0 在线9 KB0 =21 -->
     <g>
       <rect x="52"  y="76"  width="34" height="84"  fill="#2C5580"/><rect x="52"  y="13"  width="34" height="63"  fill="#B45309"/>
@@ -388,12 +388,12 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
       <rect x="362" y="118" width="34" height="42"  fill="#2C5580"/><rect x="362" y="111" width="34" height="7"   fill="#B45309"/>
       <rect x="424" y="153" width="34" height="7"   fill="#2C5580"/>
       <rect x="486" y="139" width="34" height="21"  fill="#2C5580"/><rect x="486" y="118" width="34" height="21"  fill="#15803D"/>
-      <rect x="548" y="153" width="34" height="14"  fill="#2C5580"/><rect x="548" y="146" width="34" height="7"   fill="#15803D"/>
+      <rect x="548" y="153" width="34" height="14"  fill="#2C5580"/>
     </g>
     <!-- 合计标注 -->
     <g font-size="10" font-weight="700" fill="#1F2937" text-anchor="middle">
       <text x="69" y="8">21</text><text x="131" y="43">10</text><text x="193" y="141">2</text><text x="255" y="127">4</text>
-      <text x="317" y="106">8</text><text x="379" y="106">7</text><text x="441" y="148">1</text><text x="503" y="113">6 *</text><text x="565" y="134">3</text>
+      <text x="317" y="106">8</text><text x="379" y="106">7</text><text x="441" y="148">1</text><text x="503" y="113">6 *</text><text x="565" y="141">2</text>
     </g>
     <!-- 月份轴 -->
     <g font-size="10" fill="#5A6B7D" text-anchor="middle">
@@ -432,7 +432,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 </div>
 
 <h5 id="g-iter">9月份迭代说明</h5>
-<p><strong>总述：</strong>9 月各业务线共完成 <strong>21 个版本 / 批次</strong>交付（不含算法迭代），全部按期交付、无延期：在线客服 7 次凌晨更新（V10.16 / V10.17 / V10.18 及服务器拉平），提测与上线均未出现延期；KICP 完成 V10.17、V10.18 各两次共 4 个批次（V10.18 第二次正常封板，经产品确认调整至 10.08 节后上线）；SCRM 发布 v6.16 / v6.17 及 4 次临时版本共 6 个版本；KuaiBuddy 完成 V1.06 / V1.07 / V1.08 三个迭代并分别于 9.11 / 9.21 / 9.30 上线，交付需求 18 个（全部关闭）；销冠话术宝 V1.13 于 9 月内交付；算法模块全月共迭代 42 次，分布在 7 个服务模块。各线明细清单如下：</p>
+<p><strong>总述：</strong>9 月各业务线共完成 <strong>21 个版本 / 批次</strong>交付（不含算法迭代），全部按期交付、无延期：在线客服交付需求 30 个（V10.17_C 14 + V10.18_C 16，全部关闭），7 次凌晨更新（V10.16 / V10.17 / V10.18 及服务器拉平）提测与上线均未出现延期；KICP 交付需求 23 个（V10.17_K 11 / V10.18_K 12，V10.18 第二次封板后经产品确认调整至 10.08 节后上线）；SCRM 交付需求 19 个（V6.16 7 + V6.17 12，全部关闭），发布 v6.16 / v6.17 及 4 次临时版本共 6 个版本；KuaiBuddy 完成 V1.06 / V1.07 / V1.08 三个迭代并分别于 9.11 / 9.21 / 9.30 上线，交付需求 18 个（全部关闭）；销冠话术宝 V1.13 于 9 月内交付；算法模块全月共迭代 42 次，分布在 7 个服务模块。各线明细清单如下（需求均自禅道需求库按冲刺读取）：</p>
 <p><strong>① 各业务线版本发布清单</strong></p>
 <div class="tw">
 <table class="t compact">
@@ -455,16 +455,193 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <tr><td>v6.16 临时</td><td>9.11</td><td>「下一步怎么聊」拆分为推荐话术 + AI 客户分析</td></tr>
 <tr><td>v6.17 临时</td><td>9.15</td><td>一级菜单内嵌 KuaiBuddy、录音补偿机制</td></tr>
 <tr><td>v6.17 迭代</td><td>9.23</td><td>CLI 增值提示、埋点补齐、ASR 扣费配置与模型切换等</td></tr>
-<tr><td rowspan="3">KuaiBuddy</td><td>V1.06（202608 冲刺）</td><td>9.11</td><td>9.11 收官；平台能力基建（需求 7 个，见②）</td></tr>
-<tr><td>V1.07（202609）</td><td>9.21</td><td>9.14–9.21 迭代；渠道与登录扩展（需求 7 个，见②）</td></tr>
-<tr><td>V1.08（202609）</td><td>9.30</td><td>9.21–9.28 迭代；定时任务推送体系重构（需求 4 个，见②）</td></tr>
+<tr><td rowspan="3">KuaiBuddy</td><td>V1.06（202608 冲刺）</td><td>9.11</td><td>9.11 收官；平台能力基建（需求 7 个，见⑤）</td></tr>
+<tr><td>V1.07（202609）</td><td>9.21</td><td>9.14–9.21 迭代；渠道与登录扩展（需求 7 个，见⑤）</td></tr>
+<tr><td>V1.08（202609）</td><td>9.30</td><td>9.21–9.28 迭代；定时任务推送体系重构（需求 4 个，见⑤）</td></tr>
 <tr><td>销冠话术宝</td><td>V1.13（202609 冲刺）</td><td>9 月内</td><td>周卓醒 / 林瑞卿协同测试</td></tr>
-<tr><td>算法中心</td><td>算法服务迭代 42 次</td><td>全月</td><td>分布在 7 个服务模块（明细见③）</td></tr>
+<tr><td>算法中心</td><td>算法服务迭代 42 次</td><td>全月</td><td>分布在 7 个服务模块（明细见⑥）</td></tr>
 </tbody>
 </table>
 </div>
 <p class="tnote">注：在线客服更新详情见钉钉「智能客服更新内容通知群」；SCRM 更新详情见钉钉「见鱼私域回访 SCRM Agent 项目研发群」。</p>
-<p><strong>② KuaiBuddy 迭代需求清单（18 个，全部关闭）</strong></p>
+<p><strong>② 在线客服迭代需求清单（30 个，V10.17_C 14 + V10.18_C 16，全部关闭）</strong></p>
+<p>在线客服 9 月迭代覆盖 V10.17_C、V10.18_C 两个冲刺（另含 V10.16 第二批、两次服务器拉平及抖音来客提前上线批次，详见上表）：V10.17_C 聚焦抖音生态（企业号团购商品、来客新界面适配）、美团订单接入与 KuaiBuddy 接入；V10.18_C 以渠道扩展（哔哩哔哩/小红书留资卡、飞书群机器人@）、巨量本地推与后台配置化优化为主。需求明细如下（据禅道需求库整理）：</p>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th style="width:17%">冲刺</th><th>需求内容</th><th style="width:8%">优先级</th><th style="width:9%">状态</th></tr></thead>
+<tbody>
+<tr><td rowspan="14"><b>V10.17_C（202609）</b><br><span class="tnote" style="margin:0">8.28–9.15 冲刺；9.1 / 9.2 / 9.15 分批上线</span></td>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7975.html" target="_blank">7975</a> 【雍禾定制】对话创建前请求访客信息</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7962.html" target="_blank">7962</a> 【抖音来客】优化抖音来客新界面对话</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7959.html" target="_blank">7959</a> 【网页渠道】无机器人场景获联分配客服回填名片所属人</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7945.html" target="_blank">7945</a> 【抖音来客】适配来客又有的新界面</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7942.html" target="_blank">7942</a> 【抖音企业号】支持抖音企业号渲染团购商品</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7941.html" target="_blank">7941</a> 【优化】过期数据清理</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7939.html" target="_blank">7939</a> 【腾讯咨询页】来源类型为腾讯咨询页的访客，获取/展示线索id</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7938.html" target="_blank">7938</a> 【话术优化】客户话术问题反馈</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7937.html" target="_blank">7937</a> 【KuaiBuddy】在线客服接入 KuaiBuddy &amp; 下一句怎么聊</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7936.html" target="_blank">7936</a> 来源渠道下拉框排序调整</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7935.html" target="_blank">7935</a> 抖音私信意向采集数据展示</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7934.html" target="_blank">7934</a> 【美团】支持拉取订单信息</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7933.html" target="_blank">7933</a> 【获联分配】对话结束后也能获取对话中的报联信息</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7932.html" target="_blank">7932</a> 【唤醒sop】渠道账号选择优化</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr><td rowspan="16"><b>V10.18_C（202609）</b><br><span class="tnote" style="margin:0">9.16–9.29 冲刺；9.29 凌晨上线</span></td>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8030.html" target="_blank">8030</a> 【删除微信公众号客户管理菜单】</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8029.html" target="_blank">8029</a> 【美莱API推送映射配置】</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8028.html" target="_blank">8028</a> 【撤回机器人消息并自动取消机器人接待】</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8027.html" target="_blank">8027</a> 【哔哩哔哩】渠道物料支持留资卡，企微卡，链接卡</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8013.html" target="_blank">8013</a> 【支持机器人在飞书群@具体人员】</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8012.html" target="_blank">8012</a> 【抖音企业号】巨量本地推</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8011.html" target="_blank">8011</a> 访客信息增加条件</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8010.html" target="_blank">8010</a> 【默认报联支持非必填及删除】</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8009.html" target="_blank">8009</a> 【机器人接入设置异常定位】</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8008.html" target="_blank">8008</a> 【新增添加机器人搜索栏】</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8007.html" target="_blank">8007</a> 【定制】线索推送字段定制</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8006.html" target="_blank">8006</a> 客服对话分配权重默认值调整</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8005.html" target="_blank">8005</a> 【DIY】小红书人工接待场景支持自动保存留资卡客资</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8004.html" target="_blank">8004</a> 历史对话名片标签操作日志需求</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8003.html" target="_blank">8003</a> 百度营销对话标签过滤需求说明</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7980.html" target="_blank">7980</a> web版登录支持kuaibuddy</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+</tbody>
+</table>
+</div>
+<p class="tnote">注：需求状态以禅道 10.6 为准，30 个需求均已 closed。两次服务器拉平（9.7 / 9.22）为运维操作，无关联需求。</p>
+
+<p><strong>③ KICP（千锤）迭代需求清单（23 个：V10.17_K 11 全部关闭；V10.18_K 12 个中 7 个激活、待 10.8 节后上线验证后关闭）</strong></p>
+<p>KICP 9 月迭代覆盖 V10.17_K、V10.18_K 两个冲刺：V10.17_K 以对话设计 2.0（触发条件、提示词管理）、暖场语首句/就近意图与话术反馈闭环为主；V10.18_K 延续对话设计 2.0 优化并新增渠道物料 B 站留资卡、发送次数限制等（第二次批次 9.28 封板、10.8 节后上线）。需求明细如下（据禅道需求库整理）：</p>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th style="width:17%">冲刺</th><th>需求内容</th><th style="width:8%">优先级</th><th style="width:9%">状态</th></tr></thead>
+<tbody>
+<tr><td rowspan="11"><b>V10.17_K（202609）</b><br><span class="tnote" style="margin:0">9.1–9.15 冲刺；9.03 / 9.15 两批上线</span></td>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7986.html" target="_blank">7986</a> 【成本管理】优化</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7974.html" target="_blank">7974</a> 【对话设计2.0】增加对话触发条件</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7973.html" target="_blank">7973</a> 【话术反馈闭环】完成系统内部训练师话术反馈与在线对接</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7972.html" target="_blank">7972</a> 【智能话术节点】勾选不触发知识库，默认子选项全部勾选</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7963.html" target="_blank">7963</a> 【成本管理】优化</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7960.html" target="_blank">7960</a> 【版本机器人管理】新增千锤入口</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7957.html" target="_blank">7957</a> 【对话设计 2.0】提示词管理</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7956.html" target="_blank">7956</a> 【机器人耗时】接收智能话术节点返回的时间片段并展示</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7955.html" target="_blank">7955</a> 【后处理策略】物料回复顺序</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7954.html" target="_blank">7954</a> 【暖场语】增加首句意图跟就近意图</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7953.html" target="_blank">7953</a> 【基础话术】访客消息条件增加是否当日首次进线</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr><td rowspan="12"><b>V10.18_K（202609）</b><br><span class="tnote" style="margin:0">9.16–9.29 冲刺；9.22 上线，第二批 9.28 封板 10.8 上线</span></td>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8026.html" target="_blank">8026</a> 【渠道物料】增加支持配置B站留资卡</td><td class="c">P2</td><td class="c">激活</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8025.html" target="_blank">8025</a> 【对话设计2.0】优化触发器跳转流程场景，导致不触发知识库不生效的问题</td><td class="c">P2</td><td class="c">激活</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8023.html" target="_blank">8023</a> 【千锤】修改记录区别高亮展示</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8022.html" target="_blank">8022</a> 【千锤】自定义提示词UI优化</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8021.html" target="_blank">8021</a> 【对话设计2.0】匹配模板问答，不发送流程话术，可以设置是否包含首轮</td><td class="c">P2</td><td class="c">激活</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8020.html" target="_blank">8020</a> 【千锤】增强AI修改前后提示词的区别展示</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8019.html" target="_blank">8019</a> 【千锤】千锤跟旧配置页面增加按钮切换</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8018.html" target="_blank">8018</a> 【总后台】机器人管理列表增加字段</td><td class="c">P3</td><td class="c">激活</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8017.html" target="_blank">8017</a> 【后处理策略】随机替换话术，移除话术快捷回复按钮</td><td class="c">P2</td><td class="c">激活</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8016.html" target="_blank">8016</a> 【对话设计2.0】访客信息增加条件距离上次留联天数</td><td class="c">P2</td><td class="c">激活</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8015.html" target="_blank">8015</a> 【总后台】总后台的成本优化计算</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-8014.html" target="_blank">8014</a> 【渠道物料】渠道物料限制发送次数</td><td class="c">P2</td><td class="c">激活</td></tr>
+</tbody>
+</table>
+</div>
+<p class="tnote">注：需求状态以禅道 10.6 为准；V10.18_K 的 7 个激活需求属 9.28 封板批次，10.8 节后上线验证后关闭（与版本发布清单中「V10.18 第二次」对应）。</p>
+
+<p><strong>④ SCRM 迭代需求清单（19 个：V6.16 7 + V6.17 12，全部关闭）</strong></p>
+<p>SCRM 9 月迭代覆盖 V6.16、V6.17 两个冲刺：V6.16 完成地图更换（腾讯→其它）、企微语音通话 CLI + 现场录音、ASR 收费核算与多模型接入（声纹云/火山/阿里/腾讯/科大）；V6.17 围绕 ASR 体系深化（扣费配置、模型切换、单条重新转录）与回访工作台、埋点补齐展开。需求明细如下（据禅道需求库整理）：</p>
+<div class="tw">
+<table class="t compact">
+<thead><tr><th style="width:17%">冲刺</th><th>需求内容</th><th style="width:8%">优先级</th><th style="width:9%">状态</th></tr></thead>
+<tbody>
+<tr><td rowspan="7"><b>V6.16（26.09）</b><br><span class="tnote" style="margin:0">8.31–9.17 冲刺；9.1 上线 + 3 次临时发版</span></td>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7952.html" target="_blank">7952</a> 修改使用到的腾讯地图为其它地图</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7951.html" target="_blank">7951</a> bug转需求</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7950.html" target="_blank">7950</a> 企微语音通话CLI+现场录音CLI</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7949.html" target="_blank">7949</a> 回访工作台回访时间流程优化</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7948.html" target="_blank">7948</a> 总后台增值优化</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7947.html" target="_blank">7947</a> ASR收费成本核算</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7946.html" target="_blank">7946</a> 新增ASR支持模型（声纹云、火山、阿里、腾讯、科大）</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr><td rowspan="12"><b>V6.17（26.09）</b><br><span class="tnote" style="margin:0">9.18–9.30 冲刺；9.23 迭代上线</span></td>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7998.html" target="_blank">7998</a> 云客电话录音地址补偿功能</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7997.html" target="_blank">7997</a> 【ASR】无声录音按转写失败原因提示</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7996.html" target="_blank">7996</a> 【设备管理】政企版展示微信状态</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7995.html" target="_blank">7995</a> 【CLI】未开通增值时提示联系商务或管家</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7994.html" target="_blank">7994</a> 【个微语音通话】优化360画像与自动分析的联动提示</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7993.html" target="_blank">7993</a> 【回访工作台】新建回访任务在列表中正确显示</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7992.html" target="_blank">7992</a> 【回访工作台】优化KuaiBuddy标签页布局与收缩</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7991.html" target="_blank">7991</a> 【SCRM】补齐产品设计埋点（含KuaiBuddy与推荐话术）</td><td class="c">P2</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7989.html" target="_blank">7989</a> 【ASR】基础总后台新增扣费配置页</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7988.html" target="_blank">7988</a> 【ASR】已有录音支持单条重新转录及AI重新分析</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7987.html" target="_blank">7987</a> 【ASR】客户后台支持阿里、腾讯、科大模型切换</td><td class="c">P1</td><td class="c">已关闭</td></tr>
+<tr>
+<td><a class="a" href="http://pm.kuaishang.cn/zentao/story-view-7961.html" target="_blank">7961</a> 升级快商通工作手机端支持最新版本微信</td><td class="c">P3</td><td class="c">已关闭</td></tr>
+</tbody>
+</table>
+</div>
+<p class="tnote">注：需求状态以禅道 10.6 为准，19 个需求均已 closed。临时发版内容（9.3 CLI 语音/现场录音、9.11「下一步怎么聊」拆分、9.15 内嵌 KuaiBuddy）对应冲刺内相关需求。</p>
+
+<p><strong>⑤ KuaiBuddy 迭代需求清单（18 个，全部关闭）</strong></p>
 <p>KuaiBuddy 本月跨 V1.06 / V1.07 / V1.08 三个冲刺：V1.06 完成技能市场、文件沉淀、对话交互模板化等平台能力基建；V1.07 打通 IM 通道与 web 版登录并支持大模型 auto 模式；V1.08 重构定时任务推送体系（结果推送 IM 并支持在 IM 内续聊）。需求明细如下（据禅道需求库整理，与主测复盘一致）：</p>
 <div class="tw">
 <table class="t compact">
@@ -493,7 +670,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 </div>
 <p class="tnote">注：V1.06 为 202608 冲刺、9 月内收官；需求状态以禅道 9.30 为准，18 个需求均已 closed（done）。V1.06/V1.07/V1.08 分别对应冲刺 bug 12/45/7 条（见上表）。UI 自动化本月正常执行，渠道联调类用例需先配置绑定渠道，未配置的自动跳过。</p>
 
-<p><strong>③ 算法版本迭代清单（42 次）</strong></p>
+<p><strong>⑥ 算法版本迭代清单（42 次）</strong></p>
 <p>9 月算法模块<strong>共迭代 42 次</strong>（8 月对照：45 次，环比 -6.7%），分布在 7 个服务模块，其中医疗对话（14 次）、地址服务（10 次）、NER 统一服务（7 次）三个模块占 74%。按模块汇总如下：</p>
 <div class="tw">
 <table class="t">
@@ -579,12 +756,12 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 </tr>
 <tr>
 <td>钟志鹏</td>
-<td>【优点】1、Python 功底扎实，能独立承接算法对接各业务线的需求测试；2、9 月登记算法线上识别问题 21 条（地址服务为主，含 9.30 补登 9 条），为算法优化提供 badcase 输入。<br>【缺点】1、9 月算法迭代明细由运维记录事后补齐（42 次），尚未形成随复盘固定提交机制；2、算法自动化分散于 Apipost、UI-automation、AlgorithmRegression-master 三块，尚未系统规整（延续 8 月）。</td>
+<td>【优点】1、Python 功底扎实，能独立承接算法对接各业务线的需求测试；2、9 月登记算法线上识别问题 21 条（地址服务为主，含 9.30 补登 9 条），为算法优化提供 badcase 输入；3、推动算法自动化脚本以嵌入方式统一接入 pwtest 平台。<br>【缺点】1、9 月算法迭代明细由运维记录事后补齐（42 次），尚未形成随复盘固定提交机制；2、算法自动化原分散于 Apipost、UI-automation、AlgorithmRegression-master 三块，9 月已通过嵌入方式接入 pwtest 平台统一调度，存量脚本迁移与维护仍需持续推进。</td>
 <td>能稳妥承接日常算法版本迭代、线上问题处理等本职工作，心态平稳。</td>
 <td>算法需求迭代测试、Python+pytest 接口脚本能力较好，badcase 登记与分析规范。</td>
 <td>9 月算法模块迭代 42 次（医疗对话 14、地址服务 10、NER 统一 7、意图/实体 6 等 7 个模块）；登记 AI 算法中心线上识别问题 21 条（9 月上旬 12 条：区/省市识别 9、小区未识别 1、意图误识别 1、其他 1；9.30 补登 9 条：地址服务 7、名片/kicp中控微信抽取 2，涉及三棵树、急修到家、雍和客户）。</td>
-<td>1、21 条算法识别 badcase 全部登记并转算法优化跟进；2、支撑地址服务、意图识别方向问题闭环。</td>
-<td>1、迭代明细随复盘固定提交，将迭代统计纳入月度复盘固定项；2、推动算法自动化三块整合归一；3、建立 badcase→迭代→回归验证闭环。</td>
+<td>1、21 条算法识别 badcase 全部登记并转算法优化跟进；2、支撑地址服务、意图识别方向问题闭环；3、算法自动化脚本以嵌入方式接入 pwtest 平台，实现统一调度执行。</td>
+<td>1、迭代明细随复盘固定提交，将迭代统计纳入月度复盘固定项；2、算法自动化已嵌入 pwtest 平台，持续推进存量脚本迁移与平台化调度；3、建立 badcase→迭代→回归验证闭环。</td>
 </tr>
 <tr>
 <td>沙淑琼</td>
@@ -673,7 +850,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <thead><tr><th style="width:72%">三好事项</th><th>是否可复制(是/否)</th></tr></thead>
 <tbody>
 <tr><td>pw 智能测试平台脚本迁移全面收官：SCRM 34 条 + 云客 2 条链路迁移完毕并配置每日 8 点定时运行，千锤重要模块（常规问答/模板问答/触发器/变量/实体/导入）迁移完成、全部执行通过</td><td class="c">是</td></tr>
-<tr><td>9 月 5 条产品线 20 次发版全部按期、零延期（含在线 7 次凌晨更新），跨版本更新节奏平稳，遗漏率 0.60%（8 月 1.16%）明显回落</td><td class="c">是</td></tr>
+<tr><td>9 月 5 条产品线 20 次发版全部按期、零延期（含在线 7 次凌晨更新），跨版本更新节奏平稳，遗漏率 0.40%（8 月 1.16%）明显回落</td><td class="c">是</td></tr>
 <tr><td>月度复盘质量数据实现禅道 API 自动拉取统计：各线 bug 分布、有效/无效判定、线上问题清单、冲刺分布一键生成，统计口径可复现、可核对</td><td class="c">是</td></tr>
 </tbody>
 </table>
@@ -720,7 +897,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <tr><td class="c">3</td><td>SCRM 遗漏率收敛至 ≤2%</td><td>9 月遗漏率 2.86%，2 条遗漏均与历史/配置逻辑相关</td><td>历史存在问题回归验证清单；跨项目改动评审延续；利用 AI 辅助定期排查历史模块</td><td>周卓醒</td></tr>
 <tr><td class="c">4</td><td>在线遗留 bug 排期消化</td><td>存量 bug 数量较多，多轮排期未消化，存在质量回归风险</td><td>与产品建立遗留 bug 排期消化机制；月度更新重复问题清单；非缺陷类反馈自助排查手册落地</td><td>沙淑琼 / 在线产品</td></tr>
 <tr><td class="c">5</td><td>接口自动化持续完善与定时任务运营</td><td>SCRM 36 条链路、千锤重要模块迁移收官并定时运行；在线 V10.17/V10.18 回归按时提交</td><td>定时任务结果监控与失败重跑机制；千锤 V10.18 第二次、各线新增功能脚本同步补充；SCRM 脚本覆盖度评估</td><td>林金堂 / 沙淑琼 / 周卓醒 / 林瑞卿</td></tr>
-<tr><td class="c">6</td><td>算法 badcase 闭环与迭代统计规范化</td><td>9 月登记算法识别 badcase 21 条（含 9.30 补登 9 条），全部 active；算法迭代次数未纳入月度统计</td><td>建立 badcase→算法迭代→回归验证闭环；算法迭代统计纳入月度复盘固定项；自动化三块整合方案启动</td><td>钟志鹏</td></tr>
+<tr><td class="c">6</td><td>算法 badcase 闭环与迭代统计规范化</td><td>9 月登记算法识别 badcase 21 条（含 9.30 补登 9 条），全部 active；算法迭代次数未纳入月度统计</td><td>建立 badcase→算法迭代→回归验证闭环；算法迭代统计纳入月度复盘固定项；算法自动化已于 9 月以嵌入方式接入 pwtest 平台，存量脚本迁移持续推进</td><td>钟志鹏</td></tr>
 </tbody>
 </table>
 </div>
@@ -752,7 +929,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <li><strong>业务线归属：</strong>按禅道产品映射：在线客服=营销客服Agent（45）、KICP=快商通千锤Agent生产平台（54）、SCRM=见鱼私域回访CRM Agent（58）+ 销冠话术宝Agent（81）、KuaiBuddy=KuaiBuddy（98）、算法=AI算法中心（39）；测试人员表按提交人账号统计。</li>
 <li><strong>有效/无效判定：</strong>解决方案为「设计如此 / 无法重现 / 重复 bug / 转问题单 / 不予修复 / 转为需求 / 需补充数据」等非缺陷类计为无效，其余（含已修复、待观察、外部原因、环境问题、延期处理、未解决）计为有效。</li>
 <li><strong>用例 Bug 产出比：</strong>bug 由用例产出 = 该 bug 在禅道中关联了测试用例（case 字段非 0），按提交人统计 9 月提交 bug 中的占比，口径与 8 月复盘一致；团队合计 412/493 = 83.6%。</li>
-<li><strong>线上问题口径：</strong>「线上登记」= 禅道各线「线上问题」冲刺内 9 月新增记录（在线 785 / KICP 786 / SCRM 787 / KuaiBuddy 842），共 16 条；「线上有效/遗漏」= 项目复盘归类口径（本月 SCRM 2 条 + KuaiBuddy 1 条，92278 采纳主测复盘口径）。算法中心「算法线上问题」冲刺为识别 badcase 登记机制，不计线上缺陷。</li>
+<li><strong>线上问题口径：</strong>「线上登记」= 禅道各线「线上问题」冲刺内 9 月新增记录（在线 785 / KICP 786 / SCRM 787 / KuaiBuddy 842），共 16 条；「线上有效/遗漏」= 项目复盘归类口径（本月 SCRM 2 条；KuaiBuddy 92278 复核为 4 级，按「3 级及以上才计遗漏」约定不计遗漏）。算法中心「算法线上问题」冲刺为识别 badcase 登记机制，不计线上缺陷。</li>
 <li><strong>环比历史：</strong>1–8 月数据沿用 8 月份复盘报告原表。</li>
 </ul>
 <h5>B. 待补充/待确认清单</h5>
@@ -764,7 +941,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <tr><td><span class="b b-todo">待补充</span> SLA 达成值</td><td>在线客服、KICP 月度平均 SLA（O3 目标 ≥99.99%）</td><td class="c">运维 / 杜跃斌</td></tr>
 <tr><td><span class="b b-fix">已补充</span> 用例 Bug 产出比</td><td>已按禅道统计（口径同 8 月）：bug 由用例产出 = 关联用例（case ≠ 0），团队 412/493 = 83.6%（沙 100.0% / 林 99.2% / 杨 97.8% / 周 92.6% / 杜 9.1% / 钟·林金堂 0.0%）</td><td class="c">禅道统计</td></tr>
 <tr><td><span class="b b-fix">已确认</span> KICP 线上冲刺 4 条归类</td><td>92433（排查中）/ 92279（已修复）/ 92089（待观察）/ 91958（转问题单）登记等级均为 4 级，按「3 级及以上才计遗漏」约定不计遗漏；等级以禅道为准，建议回司后在禅道抽查复核</td><td class="c">林瑞卿</td></tr>
-<tr><td><span class="b b-fix">已确认</span> KuaiBuddy 92268 归类</td><td>IMA 凭证问题（已修复）为 4 级，按「3 级及以上才计遗漏」约定归为有效·非遗漏；92267 外部原因归类仍待核实（92278 已按主测复盘口径计有效遗漏）</td><td class="c">杜跃斌</td></tr>
+<tr><td><span class="b b-fix">已确认</span> KuaiBuddy 92268 归类</td><td>IMA 凭证问题（已修复）为 4 级，按「3 级及以上才计遗漏」约定归为有效·非遗漏；92267 外部原因归类仍待核实；92278 经复核亦为 4 级，已按约定不计遗漏</td><td class="c">杜跃斌</td></tr>
 </tbody>
 </table>
 </div>
