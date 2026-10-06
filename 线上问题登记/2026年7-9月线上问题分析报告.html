@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>在线产品线线上问题分析报告（2026年7-9月）</title>
+<style>
+:root{
+  --c-primary:#1F3D63; --c-head:#2C5580; --c-deep:#16293F;
+  --c-soft:#EDF2F8; --c-zebra:#F5F8FC; --c-line:#C6D4E3;
+  --c-text:#1F2937; --c-muted:#5A6B7D; --c-bg:#E9EEF5; --c-card:#FFFFFF;
+  --c-accent:#B45309; --c-green:#15803D; --c-red:#B91C1C;
+  --radius:12px; --shadow:0 1px 3px rgba(22,41,63,.09),0 6px 18px rgba(22,41,63,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--c-bg);color:var(--c-text);font-size:14px;line-height:1.75}
+.layout{display:flex;max-width:1460px;margin:0 auto}
+.sidebar{width:268px;flex:0 0 268px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:linear-gradient(180deg,var(--c-deep) 0%,#1B3450 100%);color:#CBD8E8;padding:26px 0 40px}
+.main{flex:1;min-width:0;padding:26px 34px 90px}
+.sidebar::-webkit-scrollbar{width:6px}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:3px}
+.brand{padding:0 24px 16px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:12px}
+.brand b{display:block;color:#fff;font-size:17px;letter-spacing:.04em}
+.brand span{font-size:10.5px;color:#8FA6C2;letter-spacing:.24em}
+.sidebar nav a{display:block;padding:5px 24px;color:#B9C9DD;text-decoration:none;font-size:12.5px;
+  border-left:3px solid transparent;line-height:1.5}
+.sidebar nav a.lv1{color:#fff;font-weight:700;margin-top:12px;font-size:13.5px}
+.sidebar nav a.lv2{padding-left:38px}
+.sidebar nav a.lv3{padding-left:52px;font-size:11.5px;color:#93A9C4}
+.sidebar nav a:hover{background:rgba(255,255,255,.08);border-left-color:#5B84B4;color:#fff}
+/* 封面 */
+.cover{background:linear-gradient(135deg,var(--c-deep) 0%,var(--c-primary) 58%,#2E5A8C 100%);
+  border-radius:var(--radius);color:#fff;padding:64px 56px 52px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.cover::after{content:"";position:absolute;right:-70px;top:-70px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 68%)}
+.cover .mark{font-size:12px;letter-spacing:.3em;color:#A9C2DE;font-weight:700;margin-bottom:18px}
+.cover h1{font-size:42px;font-weight:700;letter-spacing:.02em;line-height:1.25;margin-bottom:10px}
+.cover .sub{font-size:15px;color:#C7D8EC;margin-bottom:34px}
+.cover .meta{display:flex;flex-wrap:wrap;gap:26px;font-size:12.5px;color:#9FB6D2;border-top:1px solid rgba(255,255,255,.18);padding-top:18px}
+.cover .meta b{color:#E4EEF8;font-weight:600}
+/* 卡片与章节 */
+.doc{margin-top:22px}
+.card{background:var(--c-card);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px 34px;margin-bottom:22px}
+h2.ch{font-size:24px;color:var(--c-primary);padding-bottom:12px;border-bottom:3px solid var(--c-primary);margin-bottom:20px;letter-spacing:.02em}
+h2.ch small{font-size:12px;color:var(--c-muted);font-weight:400;margin-left:12px;letter-spacing:.14em}
+h3{font-size:18px;color:var(--c-primary);margin:30px 0 12px;padding-left:12px;border-left:5px solid var(--c-head);line-height:1.4}
+h4{font-size:15.5px;color:var(--c-deep);margin:24px 0 10px}
+h5{font-size:13.5px;color:var(--c-head);margin:20px 0 8px;letter-spacing:.02em}
+.lead{font-size:13px;color:var(--c-muted);margin:-6px 0 14px}
+p+ p{margin-top:8px}
+ul.dots{margin:6px 0 10px 1.4em}
+ul.dots li{margin:4px 0}
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin:16px 0 6px}
+.kpi{background:linear-gradient(180deg,#F7FAFD 0%,#EFF4FA 100%);border:1px solid var(--c-line);border-radius:10px;padding:14px 16px 12px;position:relative}
+.kpi::before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:4px;border-radius:2px;background:var(--c-head)}
+.kpi .n{font-size:26px;font-weight:700;color:var(--c-primary);line-height:1.2;font-variant-numeric:tabular-nums}
+.kpi .n small{font-size:13px;font-weight:600;color:var(--c-head)}
+.kpi .t{font-size:12px;color:var(--c-deep);font-weight:600;margin-top:2px}
+.kpi .s{font-size:11px;color:var(--c-muted);line-height:1.5;margin-top:2px}
+/* 表格 */
+.tw{overflow-x:auto;margin:10px 0 6px}
+table.t{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.55}
+table.t th{background:var(--c-head);color:#fff;font-weight:600;padding:8px 10px;border:1px solid var(--c-head);text-align:center;white-space:nowrap}
+table.t td{padding:7px 10px;border:1px solid var(--c-line);vertical-align:top}
+table.t tbody tr:nth-child(even){background:var(--c-zebra)}
+table.t tbody tr:hover{background:#EDF3FA}
+table.t .c{text-align:center}
+table.t .num{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+table.t tr.sum td{background:#E3ECF5;font-weight:700;color:var(--c-deep)}
+table.t.compact{font-size:11.5px}
+table.t.compact td,table.t.compact th{padding:5px 7px}
+.tnote{font-size:11.5px;color:var(--c-muted);margin:6px 0 4px;line-height:1.6}
+/* 徽标 */
+.b{display:inline-block;font-size:11px;font-weight:600;border-radius:20px;padding:1px 9px;line-height:1.7;white-space:nowrap}
+.b-fix{background:#DCFCE7;color:var(--c-green)}
+.b-obs{background:#FEF3C7;color:#92400E}
+.b-open{background:#FEE2E2;color:var(--c-red)}
+.b-dup,.b-trans,.b-ext,.b-data{background:#E5EAF0;color:#41566E}
+.b-lv{background:#fff;border:1.5px solid var(--c-head);color:var(--c-head);padding:0 8px}
+.b-todo{background:#FEF9C3;color:#854D0E;border:1px dashed #CAAB37}
+.b-cfm{background:#FFF7ED;color:#9A3412;border:1px solid #F3B98A}
+.a{color:var(--c-head);text-decoration:none;border-bottom:1px dotted #8FAFC9}
+.a:hover{color:var(--c-primary);border-bottom-style:solid}
+/* 提示块 */
+.notice{background:var(--c-soft);border-left:4px solid var(--c-head);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:12.8px}
+.notice.warn{background:#FFFBEB;border-left-color:var(--c-accent)}
+.notice b{color:var(--c-deep)}
+/* 图表 */
+.chart-wrap{background:#FBFCFE;border:1px solid var(--c-line);border-radius:10px;padding:18px 18px 8px;margin:12px 0}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:11.5px;color:var(--c-muted);padding:4px 4px 8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+/* 移动端目录 */
+.mtoc{display:none}
+@media (max-width:1080px){
+  .sidebar{display:none}
+  .main{padding:18px 16px 60px}
+  .cover{padding:44px 26px 38px}
+  .cover h1{font-size:30px}
+  .card{padding:20px 16px}
+  .mtoc{display:block;background:var(--c-deep);border-radius:10px;color:#fff;margin-bottom:16px;overflow:hidden}
+  .mtoc summary{padding:12px 18px;font-weight:700;cursor:pointer;list-style:none}
+  .mtoc summary::before{content:"☰ "}
+  .mtoc a{display:block;color:#C7D8EC;text-decoration:none;padding:7px 22px;font-size:13px;border-top:1px solid rgba(255,255,255,.09)}
+  .mtoc a.lv1{color:#fff;font-weight:700}
+  .mtoc a.lv2{padding-left:38px;font-size:12.5px}
+}
+@media print{
+  body{background:#fff}
+  .sidebar,.mtoc{display:none}
+  .layout{display:block;max-width:none}
+  .main{padding:0}
+  .card{box-shadow:none;border:1px solid var(--c-line);padding:14px 18px;page-break-inside:avoid;margin-bottom:12px}
+  .cover{border-radius:0}
+  table.t{font-size:10px}
+}
+
+/* 报告补充样式 */
+.hbars{margin:8px 0 4px}
+.hbar{display:flex;align-items:center;gap:10px;margin:6px 0}
+.hbar .lb{flex:0 0 168px;font-size:12.5px;color:var(--c-deep);text-align:right;line-height:1.3}
+.hbar .tk{flex:1;background:#EEF3F9;border-radius:5px;height:18px;overflow:hidden}
+.hbar .fl{height:100%;background:linear-gradient(90deg,#2C5580,#4A7BAB);border-radius:5px 3px 3px 5px}
+.hbar .vl{flex:0 0 118px;font-size:11.5px;color:var(--c-muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hbar .vl b{color:var(--c-primary);font-size:12.5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px 26px}
+@media (max-width:900px){.grid2{grid-template-columns:1fr}}
+.num-sm{font-size:12px;color:var(--c-muted)}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand"><b>线上问题登记 · 数据分析</b><span>ONLINE ISSUE REVIEW</span></div>
+    <nav>
+      <a class="lv1" href="#summary">执行摘要</a>
+      <a class="lv1" href="#sec1">一、数据总览与趋势</a>
+      <a class="lv2" href="#sec1-1">1、总体规模与月度走势</a>
+      <a class="lv2" href="#sec1-2">2、反馈来源分布</a>
+      <a class="lv1" href="#sec2">二、问题分类分析</a>
+      <a class="lv2" href="#sec2-1">1、处理结论（解决方案）分类</a>
+      <a class="lv2" href="#sec2-2">2、涉及系统（问题方）分布</a>
+      <a class="lv2" href="#sec2-3">3、问题性质与响应时效</a>
+      <a class="lv1" href="#sec3">三、重复问题专项分析</a>
+      <a class="lv2" href="#sec3-1">1、显式标记的重复问题（跨月）</a>
+      <a class="lv2" href="#sec3-2">2、季度内同类主题反复出现</a>
+      <a class="lv2" href="#sec3-3">3、重复根因归类</a>
+      <a class="lv1" href="#sec4">四、深度洞察</a>
+      <a class="lv1" href="#sec5">五、结论与改进建议</a>
+      <a class="lv1" href="#appendix">附录A：91 条登记明细</a>
+      <a class="lv1" href="#caliber">附录B：统计口径说明</a></nav>
+  </aside>
+  <div class="main">
+
+<section class="cover" id="cover">
+  <div class="mark">ONLINE ISSUE ANALYSIS · 2026 Q3</div>
+  <h1>在线产品线线上问题分析报告<br>（2026年7 – 9月）</h1>
+  <div class="sub">总量趋势 · 分类结构 · 重复问题专项 · 深度洞察 · 改进建议</div>
+  <div class="meta">
+    <span>数据来源：<b>《在线产品线线上问题登记.xlsx》7 / 8 / 9 月表</b></span>
+    <span>分析范围：<b>91 条登记（逐条统计）</b></span>
+    <span>编制：<b>测试部 · 林金堂</b></span>
+    <span>编制日期：<b>2026年10月6日</b></span>
+  </div>
+</section>
+
+<nav class="mtoc"><summary>目录</summary>
+      <a class="lv1" href="#summary">执行摘要</a>
+      <a class="lv1" href="#sec1">一、数据总览与趋势</a>
+      <a class="lv2" href="#sec1-1">1、总体规模与月度走势</a>
+      <a class="lv2" href="#sec1-2">2、反馈来源分布</a>
+      <a class="lv1" href="#sec2">二、问题分类分析</a>
+      <a class="lv2" href="#sec2-1">1、处理结论（解决方案）分类</a>
+      <a class="lv2" href="#sec2-2">2、涉及系统（问题方）分布</a>
+      <a class="lv2" href="#sec2-3">3、问题性质与响应时效</a>
+      <a class="lv1" href="#sec3">三、重复问题专项分析</a>
+      <a class="lv2" href="#sec3-1">1、显式标记的重复问题（跨月）</a>
+      <a class="lv2" href="#sec3-2">2、季度内同类主题反复出现</a>
+      <a class="lv2" href="#sec3-3">3、重复根因归类</a>
+      <a class="lv1" href="#sec4">四、深度洞察</a>
+      <a class="lv1" href="#sec5">五、结论与改进建议</a>
+      <a class="lv1" href="#appendix">附录A：91 条登记明细</a>
+      <a class="lv1" href="#caliber">附录B：统计口径说明</a></nav>
+
+<div class="doc">
+
+<!-- ============ 执行摘要 ============ -->
+<section class="card" id="summary">
+  <h2 class="ch">执行摘要<small>EXECUTIVE SUMMARY</small></h2>
+  <div class="kpis">
+    <div class="kpi"><div class="n">91<small> 条</small></div><div class="t">登记总量</div><div class="s">7月 45 / 8月 29 / 9月 17</div></div>
+    <div class="kpi"><div class="n">0<small> 条</small></div><div class="t">定性为 bug</div><div class="s">91 条全部“是否为bug=否”，零发版修复</div></div>
+    <div class="kpi"><div class="n">100<small>%</small></div><div class="t">当天响应率</div><div class="s">91 条回复时间均为反馈当天</div></div>
+    <div class="kpi"><div class="n">-62.2<small>%</small></div><div class="t">9月 vs 7月</div><div class="s">17 条为 2026 年以来单月最低</div></div>
+    <div class="kpi"><div class="n">7<small> 条</small></div><div class="t">显式重复标记</div><div class="s">占 7.7%，备注均注明此前已同步</div></div>
+    <div class="kpi"><div class="n">11<small> 次</small></div><div class="t">公司网络波动</div><div class="s">季度内反复出现，8 月 5 次为峰值</div></div>
+  </div>
+  <p style="margin-top:14px">2026 年第三季度，在线客服各反馈群共登记线上问题 <strong>91 条</strong>（7月 45 条、8月 29 条、9月 17 条），全部来自“线上问题快速对接群、三方渠道对接群、技术问题反馈群（在线客服）”及 9 月起纳入的“企微群”。核心结论有四点：</p>
+  <ul class="dots">
+    <li><strong>零缺陷、零发版：</strong>91 条问题全部定性为“非 bug”，无一条需要发版修复（计划 / 实际上线时间均为“无”）。登记表承载的主要是<strong>环境保障、第三方协调与产品使用澄清</strong>，而非测试遗漏证据；唯一挂禅道单号的 92432（9.26 问候语延迟）最终定性也是“美团自身延迟”的外部原因。</li>
+    <li><strong>分类高度集中：</strong>“设计如此”（24 条，26.4%）、“环境问题”（19 条，20.9%）、“外部原因”（17 条，18.7%）三类合计 65.9%；叠加“配置问题”后，<strong>非缺陷类合计 100%</strong>。</li>
+    <li><strong>重复问题突出：</strong>显式标记重复 7 条（7.7%），全部备注“此前已同步 / 已知问题”；按主题聚类，公司网络波动（11 次）、总后台切换（9 次）、抖音系平台异常（9 条）、美团渠道（8 条）等主题在季度内反复出现，其中<strong>至少 5 条指向长期未排期的已知性能问题</strong>。</li>
+    <li><strong>趋势明显收敛：</strong>登记量从 7 月 45 条峰值逐月回落至 9 月 17 条（2026 年以来最低），主要由网络 / 环境类收敛驱动（环境+网络合计 7、8 月各 11 条 → 9 月 4 条）。</li>
+  </ul>
+</section>
+
+<!-- ============ 一、数据总览与趋势 ============ -->
+<section class="card" id="sec1">
+  <h2 class="ch">一、数据总览与趋势<small>OVERVIEW &amp; TREND</small></h2>
+
+  <h3 id="sec1-1">1、总体规模与月度走势</h3>
+  <p>第三季度共登记 <strong>91 条</strong>。7 月环比 6 月（23 条）接近翻倍（+95.7%），为季度峰值；8 月环比回落 35.6%；9 月继续回落 41.4%，降至 <strong>17 条，为 2026 年 1-9 月单月最低</strong>。</p>
+  <div class="chart-wrap">
+    <div class="legend"><span><i style="background:#C7D5E4"></i>2026年 1-6 月</span><span><i style="background:#2C5580"></i>第三季度（本报告范围）</span></div>
+    <svg viewBox="0 0 780 235" width="100%" height="235" role="img" aria-label="2026年1-9月登记条数趋势"><rect x="44.0" y="24.0" width="46" height="172.0" rx="3" fill="#C7D5E4"/><text x="67.0" y="17.0" text-anchor="middle" font-size="12" font-weight="700" fill="#8195AB">61</text><rect x="127.0" y="122.7" width="46" height="73.3" rx="3" fill="#C7D5E4"/><text x="150.0" y="115.7" text-anchor="middle" font-size="12" font-weight="700" fill="#8195AB">26</text><rect x="210.0" y="88.9" width="46" height="107.1" rx="3" fill="#C7D5E4"/><text x="233.0" y="81.9" text-anchor="middle" font-size="12" font-weight="700" fill="#8195AB">38</text><rect x="293.0" y="119.9" width="46" height="76.1" rx="3" fill="#C7D5E4"/><text x="316.0" y="112.9" text-anchor="middle" font-size="12" font-weight="700" fill="#8195AB">27</text><rect x="376.0" y="114.2" width="46" height="81.8" rx="3" fill="#C7D5E4"/><text x="399.0" y="107.2" text-anchor="middle" font-size="12" font-weight="700" fill="#8195AB">29</text><rect x="459.0" y="131.1" width="46" height="64.9" rx="3" fill="#C7D5E4"/><text x="482.0" y="124.1" text-anchor="middle" font-size="12" font-weight="700" fill="#8195AB">23</text><rect x="542.0" y="69.1" width="46" height="126.9" rx="3" fill="#2C5580"/><text x="565.0" y="62.1" text-anchor="middle" font-size="12" font-weight="700" fill="#2C5580">45</text><rect x="625.0" y="114.2" width="46" height="81.8" rx="3" fill="#2C5580"/><text x="648.0" y="107.2" text-anchor="middle" font-size="12" font-weight="700" fill="#2C5580">29</text><rect x="708.0" y="148.1" width="46" height="47.9" rx="3" fill="#2C5580"/><text x="731.0" y="141.1" text-anchor="middle" font-size="12" font-weight="700" fill="#2C5580">17</text><line x1="40" y1="24" x2="762" y2="24" stroke="#E3EAF2" stroke-width="1"/><text x="34" y="28" text-anchor="end" font-size="10" fill="#9DB2C8">60</text><line x1="40" y1="67" x2="762" y2="67" stroke="#E3EAF2" stroke-width="1"/><text x="34" y="71" text-anchor="end" font-size="10" fill="#9DB2C8">40</text><line x1="40" y1="110" x2="762" y2="110" stroke="#E3EAF2" stroke-width="1"/><text x="34" y="114" text-anchor="end" font-size="10" fill="#9DB2C8">40</text><line x1="40" y1="153" x2="762" y2="153" stroke="#E3EAF2" stroke-width="1"/><text x="34" y="157" text-anchor="end" font-size="10" fill="#9DB2C8">20</text><line x1="40" y1="196" x2="762" y2="196" stroke="#E3EAF2" stroke-width="1"/><text x="34" y="200" text-anchor="end" font-size="10" fill="#9DB2C8">0</text><text x="67.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">1月</text><text x="150.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">2月</text><text x="233.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">3月</text><text x="316.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">4月</text><text x="399.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">5月</text><text x="482.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">6月</text><text x="565.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">7月</text><text x="648.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">8月</text><text x="731.0" y="214" text-anchor="middle" font-size="11" fill="#5A6B7D">9月</text><line x1="40" y1="196" x2="762" y2="196" stroke="#9DB2C8" stroke-width="1.2"/></svg>
+    <div class="tnote">图：2026 年 1-9 月在线客服登记线上问题条数（登记表含 2025 年 11 月 82 条、12 月 77 条，因早期表单列结构不同，未纳入本图与分类对比，仅作总量参考）。</div>
+  </div>
+  <div class="tw">
+  <table class="t compact">
+    <thead><tr><th style="width:16%">月份</th><th class="num">线上问题快速对接群</th><th class="num">技术问题反馈群（在线客服）</th><th class="num">三方渠道对接群</th><th class="num">企微群</th><th class="num">合计</th><th class="num">其中：环境+网络类</th></tr></thead>
+    <tbody>
+      <tr><td class="c">7月</td><td class="num">24</td><td class="num">13</td><td class="num">8</td><td class="num">—</td><td class="num"><b>45</b></td><td class="num">11</td></tr>
+      <tr><td class="c">8月</td><td class="num">10</td><td class="num">15</td><td class="num">4</td><td class="num">—</td><td class="num"><b>29</b></td><td class="num">11</td></tr>
+      <tr><td class="c">9月</td><td class="num">7</td><td class="num">7</td><td class="num">2</td><td class="num">1</td><td class="num"><b>17</b></td><td class="num">4</td></tr>
+      <tr class="sum"><td class="c">合计</td><td class="num">41</td><td class="num">35</td><td class="num">14</td><td class="num">1</td><td class="num">91</td><td class="num">26</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="notice"><b>口径提示：</b>7 月登记使用了“网络问题”标签（7 条），8-9 月同类问题大多记为“环境问题”。因此跨月对比建议采用“环境+网络”合并口径（上表末列），避免因登记习惯差异误读趋势。</div>
+
+  <h3 id="sec1-2">2、反馈来源分布</h3>
+  <p>问题主要来自两个群：<strong>线上问题快速对接群（41 条，45.1%）</strong>与<strong>技术问题反馈群·在线客服（35 条，38.5%）</strong>；三方渠道对接群 14 条（15.4%），9 月起企微群开始纳入登记（1 条，客户直接反馈企微外部群提醒不推送）。</p>
+  <div class="hbars"><div class="hbar"><div class="lb">线上问题快速对接群</div><div class="tk"><div class="fl" style="width:100.0%"></div></div><div class="vl"><b>41</b> 条 · 45.1%</div></div><div class="hbar"><div class="lb">技术问题反馈群（在线客服）</div><div class="tk"><div class="fl" style="width:85.4%"></div></div><div class="vl"><b>35</b> 条 · 38.5%</div></div><div class="hbar"><div class="lb">三方渠道对接群</div><div class="tk"><div class="fl" style="width:34.1%"></div></div><div class="vl"><b>14</b> 条 · 15.4%</div></div><div class="hbar"><div class="lb">企微群</div><div class="tk"><div class="fl" style="width:2.4%"></div></div><div class="vl"><b>1</b> 条 · 1.1%</div></div></div>
+  <p class="num-sm">各月末备注显示，对接服务器情况、渠道额度确认、验证小程序域名、运维绑定域名验证等日常事务未逐条登记，本报告趋势仅反映“登记口径”内的问题。</p>
+</section>
+
+<!-- ============ 二、问题分类分析 ============ -->
+<section class="card" id="sec2">
+  <h2 class="ch">二、问题分类分析<small>CATEGORIZATION</small></h2>
+
+  <h3 id="sec2-1">1、处理结论（解决方案）分类</h3>
+  <p>按登记表“解决方案”字段归一统计（复合标记计入“重复问题”并加注），10 个类别分布如下：</p>
+  <div class="hbars"><div class="hbar"><div class="lb">设计如此</div><div class="tk"><div class="fl" style="width:100.0%"></div></div><div class="vl"><b>24</b> 条 · 26.4%</div></div><div class="hbar"><div class="lb">环境问题</div><div class="tk"><div class="fl" style="width:79.2%"></div></div><div class="vl"><b>19</b> 条 · 20.9%</div></div><div class="hbar"><div class="lb">外部原因</div><div class="tk"><div class="fl" style="width:70.8%"></div></div><div class="vl"><b>17</b> 条 · 18.7%</div></div><div class="hbar"><div class="lb">配置问题</div><div class="tk"><div class="fl" style="width:50.0%"></div></div><div class="vl"><b>12</b> 条 · 13.2%</div></div><div class="hbar"><div class="lb">网络问题</div><div class="tk"><div class="fl" style="width:29.2%"></div></div><div class="vl"><b>7</b> 条 · 7.7%</div></div><div class="hbar"><div class="lb">重复问题</div><div class="tk"><div class="fl" style="width:29.2%"></div></div><div class="vl"><b>7</b> 条 · 7.7%</div></div><div class="hbar"><div class="lb">未标注</div><div class="tk"><div class="fl" style="width:8.3%"></div></div><div class="vl"><b>2</b> 条 · 2.2%</div></div><div class="hbar"><div class="lb">旧版问题</div><div class="tk"><div class="fl" style="width:4.2%"></div></div><div class="vl"><b>1</b> 条 · 1.1%</div></div><div class="hbar"><div class="lb">排期处理</div><div class="tk"><div class="fl" style="width:4.2%"></div></div><div class="vl"><b>1</b> 条 · 1.1%</div></div><div class="hbar"><div class="lb">待反馈</div><div class="tk"><div class="fl" style="width:4.2%"></div></div><div class="vl"><b>1</b> 条 · 1.1%</div></div></div>
+  <div class="tw">
+  <table class="t compact">
+    <thead><tr><th style="width:12%">类别</th><th class="num" style="width:7%">条数</th><th class="num" style="width:9%">占比</th><th>含义与典型场景</th></tr></thead>
+    <tbody><tr><td class="c"><b>设计如此</b></td><td class="num">24</td><td class="num">26.4%</td><td>产品既有逻辑/规则导致，与客户预期不一致，解释说明或引导提需求</td></tr><tr><td class="c"><b>环境问题</b></td><td class="num">19</td><td class="num">20.9%</td><td>服务器、网络、ELK 等运行环境异常，多为公司网络波动或环境未更新</td></tr><tr><td class="c"><b>外部原因</b></td><td class="num">17</td><td class="num">18.7%</td><td>抖音、美团、腾讯、企微等第三方平台侧波动、限制或变更</td></tr><tr><td class="c"><b>配置问题</b></td><td class="num">12</td><td class="num">13.2%</td><td>客户侧或客服侧配置不当，调整配置后恢复</td></tr><tr><td class="c"><b>网络问题</b></td><td class="num">7</td><td class="num">7.7%</td><td>网络连通性问题（该标签仅 7 月使用，8-9 月同类多记为环境问题）</td></tr><tr><td class="c"><b>重复问题</b></td><td class="num">7</td><td class="num">7.7%</td><td>登记时已注明此前反馈过的已知问题（含复合标记 2 条：设计、重复问题 / 重复、转需求）</td></tr><tr><td class="c"><b>未标注</b></td><td class="num">2</td><td class="num">2.2%</td><td>解决方案字段为“-”，未填写归类</td></tr><tr><td class="c"><b>旧版问题</b></td><td class="num">1</td><td class="num">1.1%</td><td>旧版历史/旧端能力不再维护导致</td></tr><tr><td class="c"><b>排期处理</b></td><td class="num">1</td><td class="num">1.1%</td><td>KICP 返回逻辑限流，已排期下版本优化</td></tr><tr><td class="c"><b>待反馈</b></td><td class="num">1</td><td class="num">1.1%</td><td>ELK 日志过期、证据不足，无法进一步定性</td></tr>
+      <tr class="sum"><td class="c">合计</td><td class="num">91</td><td class="num">100%</td><td>—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="notice"><b>结构解读：</b>“设计如此 + 配置问题 + 旧版问题”合计 37 条（40.7%），本质是<strong>产品认知 / 使用成本类问题</strong>，最适合用 FAQ 文档与客服培训消化；“环境 + 网络问题”合计 26 条（28.6%），指向<strong>基础设施稳定性</strong>；“外部原因”17 条（18.7%）反映<strong>对第三方平台的强依赖</strong>。</div>
+
+  <h3 id="sec2-2">2、涉及系统（问题方）分布</h3>
+  <p>按“问题方”字段归并为 6 大类：<strong>在线产品自身（38 条，41.8%）</strong>最多——但需注意其中多数结论为“设计如此”或“配置问题”，属于产品使用澄清而非缺陷；<strong>运维/基础设施（22 条，24.2%）</strong>次之，主要为服务器切换、公司网络与 ELK；<strong>第三方平台合计 16 条（17.6%）</strong>，明细：抖音第三方4、腾讯第三方2、企微2、第三方2、抖音私信第三方1、美团第三方1、来客私信第三方1、抖音来客第三方1、抖音1、第三方美团1。</p>
+  <div class="hbars"><div class="hbar"><div class="lb">在线产品</div><div class="tk"><div class="fl" style="width:100.0%"></div></div><div class="vl"><b>38</b> 条 · 41.8%</div></div><div class="hbar"><div class="lb">运维/基础设施</div><div class="tk"><div class="fl" style="width:57.9%"></div></div><div class="vl"><b>22</b> 条 · 24.2%</div></div><div class="hbar"><div class="lb">第三方平台</div><div class="tk"><div class="fl" style="width:42.1%"></div></div><div class="vl"><b>16</b> 条 · 17.6%</div></div><div class="hbar"><div class="lb">客户/客服侧</div><div class="tk"><div class="fl" style="width:23.7%"></div></div><div class="vl"><b>9</b> 条 · 9.9%</div></div><div class="hbar"><div class="lb">KICP</div><div class="tk"><div class="fl" style="width:13.2%"></div></div><div class="vl"><b>5</b> 条 · 5.5%</div></div><div class="hbar"><div class="lb">其他我方产品</div><div class="tk"><div class="fl" style="width:2.6%"></div></div><div class="vl"><b>1</b> 条 · 1.1%</div></div></div>
+
+  <h3 id="sec2-3">3、问题性质与响应时效</h3>
+  <ul class="dots">
+    <li><strong>是否为 bug：</strong>91 条全部为“否”。唯一关联禅道的 92432（9.26 发送问候语延迟）Bug 状态为“外部原因（美团自身延迟）”。另有 2 条虽非 bug 但触发了研发动作：7.28 机器人统计差异（在线开发排查并修复 21 年重复问题，另转 KICP 需求）、8.12 KICP 返回限流（排期下版本优化）。</li>
+    <li><strong>响应时效：</strong>91 条回复时间均为反馈当天（含企微群 9.18 当天答复），<strong>当天响应率 100%</strong>，无积压。</li>
+    <li><strong>修复动作：</strong>计划上线时间、问题上线时间全部为“无”——季度内没有因客服反馈而安排的发版修复，进一步印证本登记表以“快速响应 + 澄清协调”为主的工作模式。</li>
+    <li><strong>跟进人负载：</strong>徐志明（登记表“徐哥”）跟进 53 条（58.2%），沙淑琼（“小沙”）20 条（22.0%），两人合计 80.2%；其余为代杰、杜珅、佳伟、晨树等分摊。存在明显的<strong>单点负载集中</strong>。</li>
+  </ul>
+</section>
+
+<!-- ============ 三、重复问题专项 ============ -->
+<section class="card" id="sec3">
+  <h2 class="ch">三、重复问题专项分析<small>REPEAT ISSUES</small></h2>
+  <p>重复问题分两个口径：<strong>① 跨月重复</strong>——登记时“解决方案”显式标记“重复问题”（含复合标记），备注直接注明此前已同步；<strong>② 季度内重复</strong>——同一主题在本季度内多次出现。两个口径存在交叉，<strong>不可相加</strong>。</p>
+
+  <h3 id="sec3-1">1、显式标记的重复问题（跨月，7 条，占 7.7%）</h3>
+  <div class="tw">
+  <table class="t compact">
+    <thead><tr><th style="width:9%">日期</th><th style="width:34%">问题描述</th><th class="c" style="width:11%">解决方案</th><th>登记备注（重复证据）</th></tr></thead>
+    <tbody><tr><td class="num">7月7.18</td><td>2345803 @徐志明徐哥，帮看下这家抖音来客点击登录提示正在修复</td><td class="c">重复问题</td><td>已知n年的性能问题，一直没排期外挂性能优化（但多试几下就能正常）</td></tr><tr><td class="num">7月7.20</td><td>美团解除授权不了</td><td class="c">设计、重复问题</td><td>1：这个账号增值是停用的，这个要问订单为啥这家给他停用了
+2：这个我同步杜珅很多次，入参美团助手地址为空…</td></tr><tr><td class="num">7月7.23</td><td>帮忙看下，关闭机器人托管后 机器人还是会回复，这个设置不生效</td><td class="c">重复问题</td><td>这种并发问题，之前有同步过，解决的代价比较高，有客户反馈可以解释说明就好，概率是比较低的</td></tr><tr><td class="num">7月7.28</td><td>632029济南天使 帮看下25号就设置了两个机器人一起承接，怎么数据相差这么大</td><td class="c">重复、转需求</td><td>1、在线开发自己排查21年重复问题并修复
+2、但还没满足客户，客户要在机器人统计按账号查询，后面文茹提K…</td></tr><tr><td class="num">7月7.31</td><td>一张抖音来客报错截图</td><td class="c">重复问题</td><td>报错忽略，这个同步永城、杜珅等n人过，性能问题一直没优化，遇到等一会再点下就行</td></tr><tr><td class="num">9月9.26</td><td>发送问候语的时间比较久</td><td class="c">重复问题</td><td>美团自身延迟</td></tr><tr><td class="num">9月9.30</td><td>298659，自定义报表筛选26年1月份的数据，数据出不来帮忙看下怎么解决哈</td><td class="c">重复问题</td><td>已知性能问题，集群的clickhouse，查不动了</td></tr></tbody>
+  </table>
+  </div>
+  <p>7 条中有 <strong>6 条备注明确写着“已知 / n 年问题 / 同步过很多次 / 一直没排期”</strong>：抖音来客点击登录“正在修复”（性能问题长期未排期）、机器人托管并发关闭不生效（“解决代价比较高”）、clickhouse 集群报表查不动等。这类问题的处理方式目前仍是“遇到→解释→等下次遇到”，未进入排期通道。</p>
+
+  <h3 id="sec3-2">2、季度内同类主题反复出现</h3>
+  <div class="tw">
+  <table class="t compact">
+    <thead><tr><th style="width:22%">主题</th><th class="num">7月</th><th class="num">8月</th><th class="num">9月</th><th class="num">合计</th><th>说明</th></tr></thead>
+    <tbody><tr><td>我方公司网络波动 / 断网</td><td class="num">4</td><td class="num">5</td><td class="num">2</td><td class="num"><b>11</b></td><td>备注均为“公司网络问题（波动）自己恢复/没网”，含总后台、ELK、公共表格等连带打不开</td></tr><tr><td>总后台 / zong 服务器切换或打不开</td><td class="num">3</td><td class="num">4</td><td class="num">2</td><td class="num"><b>9</b></td><td>9 条中 8 条备注与网络相关，1 条为服务器未更新好（8.4）</td></tr><tr><td>抖音系平台相关（波动 / 限制 / 变更）</td><td class="num">5</td><td class="num">2</td><td class="num">2</td><td class="num"><b>9</b></td><td>服务波动、巨量队列堆积、权限集变更、平台列表积压、新版不兼容、三方故意限制等</td></tr><tr><td>美团渠道相关</td><td class="num">5</td><td class="num">1</td><td class="num">2</td><td class="num"><b>8</b></td><td>授权 / 地址不足、解除授权、对话不结束、同步不生效、消息延迟；8.24 另 1 条表象为美团、实为抖音来客新版问题</td></tr><tr><td>ELK 日志平台访问异常</td><td class="num">1</td><td class="num">3</td><td class="num">0</td><td class="num"><b>4</b></td><td>重启处理 1 条、公司网络 2 条、日志过期导致无法举证 1 条</td></tr><tr><td>性能 / 慢 / 延迟类反馈</td><td class="num">5</td><td class="num">2</td><td class="num">3</td><td class="num"><b>10</b></td><td>含历史查询高峰负载、clickhouse 集群报表、抖音来客外挂性能、美团消息延迟等</td></tr><tr><td>旧版历史 / 旧端问题</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td class="num"><b>4</b></td><td>旧版历史不维护、旧端打不开重装新端正常</td></tr><tr><td>企微外部群提醒 / 推送</td><td class="num">1</td><td class="num">2</td><td class="num">2</td><td class="num"><b>5</b></td><td>表情包入库失败（已知风险）、企微登出、规则类型不匹配、服务器资源不足</td></tr><tr><td>⭐ 登记时显式标记“重复问题”</td><td class="num">5</td><td class="num">0</td><td class="num">2</td><td class="num"><b>7</b></td><td>跨月重复：登记备注直接注明“此前已同步 / 已知 / n 年问题”</td></tr></tbody>
+  </table>
+  </div>
+  <p class="num-sm">注：主题之间存在交叉（如“美团消息延迟”同时属于性能类与美团类），各行不可相加；⭐ 表示与显式重复标记口径交叉。</p>
+
+  <h3 id="sec3-3">3、重复根因归类与治理方向</h3>
+  <div class="tw">
+  <table class="t">
+    <thead><tr><th style="width:14%">根因类</th><th class="num" style="width:10%">涉及条数</th><th style="width:40%">典型问题</th><th>治理方向</th></tr></thead>
+    <tbody>
+      <tr><td class="c"><b>A · 已知性能问题未排期</b></td><td class="num">≥5</td><td>抖音来客“正在修复”（备注：n 年问题一直没排期）、clickhouse 集群报表查不动、历史查询高峰负载（“多年来高峰期都会这样”）、托管并发关闭不生效</td><td>纳入月度《重复问题清单》评审排期；与 9 月已启动的性能测试专项（在线 6 条、KICP 2 条）合并推进</td></tr>
+      <tr><td class="c"><b>B · 第三方平台依赖</b></td><td class="num">22</td><td>抖音系 9 条（波动 / 队列堆积 / 权限集变更 / 新版不兼容）、美团 8 条（授权地址不足等）、企微提醒 5 条（三者无交叉）</td><td>延续复盘已确立的“第三方变更前置通知与评审机制”，推动抖音 / 美团侧建立变更同步渠道</td></tr>
+      <tr><td class="c"><b>C · 办公网络基础设施</b></td><td class="num">18</td><td>公司网络波动 11 次（含总后台打不开、ELK 无法登录、公共表格打不开等连带反馈），zong 服务器切换 9 次（主题间有交叉，已去重）</td><td>办公网络双链路备份与断网告警；反馈升级前置自检（先确认网络状态再升级问题）</td></tr>
+      <tr><td class="c"><b>D · 旧版长尾</b></td><td class="num">4</td><td>旧版历史不支持 / 不维护、旧版导入异常、旧端打不开需重装新端</td><td>存量客户迁移引导 + 旧版能力下线公告，减少“旧版预期”类反馈</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="notice"><b>正面案例：</b>美团授权“地址不足多点几下”类问题，8 月登记备注显示<strong>“常反馈的问题已形成文档并同步”</strong>——知识沉淀后同类反馈只需引用文档即可闭环。建议将 A 类性能问题、C 类网络自检清单按同样方式文档化。</div>
+</section>
+
+<!-- ============ 四、深度洞察 ============ -->
+<section class="card" id="sec4">
+  <h2 class="ch">四、深度洞察<small>INSIGHTS</small></h2>
+  <ul class="dots">
+    <li><strong>① 本登记表不构成测试遗漏证据，但暴露“支持型工作量”的真实成本。</strong>91 条全部非 bug、零发版，按《禅道问题说明》“线上登记 / 线上有效 / 遗漏”三级口径，本表问题均不属于遗漏；但每条平均仍消耗测试 / 技术 1 次以上的排查、定位与回复（当天闭环），月均约 30 条，是一块<strong>稳定消耗资深人力（徐志明 58.2%）的支持成本</strong>，应在人力规划中显性化。</li>
+    <li><strong>② 环境 / 网络类占比显著抬升，是 Q3 区别于上半年的最大特征。</strong>“环境+网络”合计占比 Q3 为 28.6%，而 2026 上半年仅 6.9%（14/204 条）；其中 8 月环境问题 11 条为 2026 年以来单月峰值，备注高度雷同（“公司网络问题自己恢复”）。<strong>办公网络稳定性是当前线上反馈的第一大可控变量</strong>，治理收益最直接。</li>
+    <li><strong>③ 第三方依赖是全年性、结构性风险。</strong>“外部原因”在 2026 年 1-9 月合计 67 条（占 22.7%），常年位居分类前二；Q3 内抖音系 9 条、美团 8 条，且修复节奏受制于对方（如 8.24 抖音来客新版需借账号调研、8.4-6 巨量队列堆积只能等第三方处理）。<strong>我方可控手段只有：变更前置知晓 + 兼容预案 + 客户侧解释口径标准化。</strong></li>
+    <li><strong>④ “设计如此”类反馈是产品体验债的信号。</strong>24 条（26.4%）中多条备注为“n 年前设计如此 / 18 年至今都是这个逻辑”，说明老产品的部分既有逻辑与当前客户预期已脱节；单纯解释只能治标，建议将高频“设计如此”项（公众号结束语限制、未读消息撤回、获联分配规则、机器人统计维度等）打包为<strong>体验优化需求清单</strong>提交产品评估。</li>
+    <li><strong>⑤ 9 月回落需谨慎归因。</strong>9 月 17 条为年内最低，直接驱动因素是网络 / 环境类收敛（11 → 4）与配置类减少（9 → 1）；但 7-8 月存在断网、抖音波动等<strong>偶发事件抬高基数</strong>，且各月末均有“其他事务未逐条登记”的备注，登记口径本身可能随工作重心波动。建议以“环境+网络类”“显式重复数”两个可复核指标做长期跟踪，而非只看总量。</li>
+    <li><strong>⑥ 登记质量有小幅改进空间。</strong>2 条解决方案为“-”未标注；公司 ID 列混填公司名 / 集群名 / 多个 ID；问题描述含大段聊天记录粘贴。建议给出填写模板（公司 ID 纯数字、解决方案限枚举值、问题描述一句话 + 截图链接），可显著提升后续统计自动化程度。</li>
+  </ul>
+</section>
+
+<!-- ============ 五、结论与建议 ============ -->
+<section class="card" id="sec5">
+  <h2 class="ch">五、结论与改进建议<small>ACTIONS</small></h2>
+  <p>总体评价：Q3 客服侧线上反馈<strong>响应及时（100% 当天）、定性准确（零误判 bug）、趋势收敛（-62.2%）</strong>；短板集中在<strong>重复问题缺乏排期出口、办公网络反复波动、跟进人力单点集中</strong>三方面。建议行动项如下：</p>
+  <div class="tw">
+  <table class="t">
+    <thead><tr><th style="width:26%">改进项</th><th style="width:40%">具体动作</th><th class="c" style="width:12%">建议责任</th><th class="c" style="width:12%">时间</th><th>目标</th></tr></thead>
+    <tbody>
+      <tr><td>建立月度《重复问题清单》评审机制</td><td>将本报告显式重复 7 条 + A 类已知性能问题（抖音来客外挂性能、clickhouse 报表、托管并发、历史查询负载）形成清单，每月与产品 / 研发评审排期；参照美团“地址不足”文档化经验，每条给出标准解释口径</td><td class="c">林金堂 / 在线产品</td><td class="c">10月起，每月</td><td>显式重复条数逐季下降</td></tr>
+      <tr><td>办公网络稳定性治理</td><td>双链路备份 + 断网告警；制定“反馈升级前置自检清单”（先查网络 / 服务器状态再升级），减少 11 次公司网络类反馈的排查消耗</td><td class="c">运维</td><td class="c">10-11月</td><td>公司网络类反馈 ≤2 条/月</td></tr>
+      <tr><td>第三方变更前置同步机制落地</td><td>延续 8-9 月复盘改进项：与抖音 / 美团 / 企微侧确认变更通知渠道，变更前评审兼容方案；月度更新重复问题清单</td><td class="c">林金堂 / 运维</td><td class="c">持续</td><td>第三方变更提前知晓率 100%</td></tr>
+      <tr><td>高频“设计如此 / 配置”问题 FAQ 化</td><td>将 36 条设计 / 配置类中高频项沉淀知识库（含公众号结束语、消息撤回、获联分配、指定接待可见性等），同步客服培训</td><td class="c">沙淑琼 / 产品</td><td class="c">Q4</td><td>同类咨询当月闭环率提升</td></tr>
+      <tr><td>跟进人 AB 角备份</td><td>徐志明当前承接 58.2%，为其名下“快速对接群”问题设置 AB 角（小沙 / 建伟轮值），避免单点</td><td class="c">测试部内部分工</td><td class="c">10月</td><td>单人承接占比 ≤40%</td></tr>
+      <tr><td>登记模板与口径固化</td><td>解决方案限枚举值（含“未标注”不允许为空）；公司 ID 列只填数字 ID；明确“线上登记 / 有效 / 遗漏”三级口径与本表（客服群反馈口径）的关系，月度复盘逐线核对</td><td class="c">林金堂</td><td class="c">10.1-10.15</td><td>未标注率 0%，口径差异清零</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============ 附录A ============ -->
+<section class="card" id="appendix">
+  <h2 class="ch">附录A：91 条登记明细<small>APPENDIX</small></h2>
+  <p class="num-sm">完整描述与备注较长，此处截断显示（详见源登记表）。日期为登记表原始格式。</p>
+  <h4>7月（45 条）</h4>
+  <div class="tw"><table class="t compact">
+    <thead><tr><th style="width:7%">日期</th><th style="width:38%">问题描述</th><th class="c" style="width:9%">解决方案</th><th class="c" style="width:9%">问题方</th><th class="c" style="width:8%">跟进人</th><th>备注（截断）</th></tr></thead>
+    <tbody><tr><td class="num">7.2</td><td>公司网络问题</td><td class="c">-</td><td class="c">运维</td><td class="c">代杰</td><td>没网</td></tr><tr><td class="num">7.2</td><td>兄弟们，现在机器人回复的，访客端看不到，也有客户反馈重新授权之后就提示这个内容了</td><td class="c">外部原因</td><td class="c">抖音第三方</td><td class="c">小沙</td><td>抖音那边的服务波动问题导致的</td></tr><tr><td class="num">7.2</td><td>抖音来客消息对象匹配不上</td><td class="c">外部原因</td><td class="c">抖音第三方</td><td class="c">小沙</td><td>抖音那边的服务波动问题导致的</td></tr><tr><td class="num">7.3</td><td>CSID208433宁波博视眼科医院（快商通机器人对接群）这家看下，客服端客服登录提示链接服务器失败</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>反馈厂商处理</td></tr><tr><td class="num">7.3</td><td>刚刚服务器是否有异常，客户客户反馈历史记录加载发，发送消息也吗， 分配好像也慢</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">孙哥</td><td>反馈一样问题，反馈厂商处理</td></tr><tr><td class="num">7.3</td><td>KICP总后台打不开</td><td class="c">-</td><td class="c">运维</td><td class="c">代杰</td><td>没网</td></tr><tr><td class="num">7.3</td><td>这个没有重新开启托管，为什么自动开启了呢</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">小沙</td><td>13：42：22admin3离线了，所以自动托管</td></tr><tr><td class="num">7.6</td><td>@徐志明https://www.bjhgyjs.com/page222222222222222222222222…</td><td class="c">配置问题</td><td class="c">电脑网站</td><td class="c">徐哥</td><td>客户的网站 referrer  获取不到</td></tr><tr><td class="num">7.6</td><td>681492，重新授权后，客户反馈他们还是不能看到具体的号码。辛苦帮忙看下问题点</td><td class="c">设计如此</td><td class="c">抖音第三方</td><td class="c">伟达</td><td>抖音还没上线，目前第三方抖音故意这么限制的</td></tr><tr><td class="num">7.8</td><td>741965、595951、922161都说在线客服登入不了 麻烦看下是什么情况</td><td class="c">网络问题</td><td class="c">在线</td><td class="c">小沙</td><td>客户自己大集团公司网络问题</td></tr><tr><td class="num">7.9</td><td>sop唤醒的能不能给客户不要限制字符</td><td class="c">设计如此</td><td class="c">产品</td><td class="c">小沙</td><td>产品故意限制的</td></tr><tr><td class="num">7.9</td><td>右键也没看到结束对话，徐哥，麻烦看下是什么问</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">小沙</td><td>18年至今都是这个逻辑，公众号结束语内容就是不能这么设置，需要提需求</td></tr><tr><td class="num">7.11</td><td>161059@徐志明徐哥客户说基本每天都这样，他们说他们的网络没有问题没有限制，您看下要不要远程一下</td><td class="c">网络问题</td><td class="c">电脑网络</td><td class="c">徐哥</td><td></td></tr><tr><td class="num">7.11</td><td>zong60的无法切换总后台服务器</td><td class="c">网络问题</td><td class="c">运维</td><td class="c">徐哥</td><td></td></tr><tr><td class="num">7.11</td><td>辛苦看下，这个熟客不发送勾选了就自动取消</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td></td></tr><tr><td class="num">7.12</td><td>机器人获联推送重复推送两次，小红书渠道的，辛苦看下</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td>上面是两个不同的推送类型</td></tr><tr><td class="num">7.12</td><td>未读的消息无法撤回吗</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td>机器人不支持撤回</td></tr><tr><td class="num">7.12</td><td>排班表系统里面有6个，导出来只有4个，麻烦看下</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>客户把两个离职员工的账号 暂停了</td></tr><tr><td class="num">7.12</td><td>设置了美团对话结束时间，这些对话都没自动结束</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>昨天的记录，让客户手动结下，昨天下午服务器，结束对话有问题</td></tr><tr><td class="num">7.12</td><td>成都云尚摄影有限责任公司 这个账号的数据回传不对，目标转化量变成了留资回传</td><td class="c">外部原因</td><td class="c">腾讯第三方</td><td class="c">徐哥</td><td>客户腾讯后台的记录是不是其他第三方回传记， 查我们后台是没有回传记录的</td></tr><tr><td class="num">7.14</td><td>问题： 客户通过接口，在服务客户的时候，整体的平均客服回复时间在 10 秒左右，基本上客户因为响应时间太长导致流…</td><td class="c">网络问题</td><td class="c">电脑网络</td><td class="c">伟达</td><td>现状：
+1. 07:00~18:30，请求客户的服务器有出现响应超时，或者无法连接的问题，18:30恢复
+2. 跟客户一…</td></tr><tr><td class="num">7.15</td><td>辛苦帮忙看下603888这个公司ID的企微外部群提醒是否是正常的，群名字是 初七客资分配群 ，客户反馈有一条对话…</td><td class="c">待反馈</td><td class="c">在线</td><td class="c">建伟</td><td>elk过期了，反馈以前的访客id，没法证明是设计如此</td></tr><tr><td class="num">7.16</td><td>http://192.168.1.41:55/app/kibana#/discover?_g=(refreshI…</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>故意限制流量</td></tr><tr><td class="num">7.16</td><td>这个查询太慢了，有没有办法给增加下速度</td><td class="c">外部原因</td><td class="c">运维</td><td class="c">小沙</td><td>这张你自己看就好，别发给客户。  想跟你证明下是因为太多客户查历史记录，导致负载高</td></tr><tr><td class="num">7.18</td><td>625116济南远大zong3_vipy2 62511601015f888db9c-6bef-56ce-92bc…</td><td class="c">配置问题</td><td class="c">KICP</td><td class="c">徐哥</td><td>客服调了配置</td></tr><tr><td class="num">7.18</td><td>Id469981 221715都出现了这个情况</td><td class="c">外部原因</td><td class="c">抖音私信第三方</td><td class="c">徐哥</td><td>三方自己限制的</td></tr><tr><td class="num">7.18</td><td>2345803 @徐志明徐哥，帮看下这家抖音来客点击登录提示正在修复</td><td class="c">重复问题</td><td class="c">在线</td><td class="c">徐哥</td><td>已知n年的性能问题，一直没排期外挂性能优化（但多试几下就能正常）</td></tr><tr><td class="num">7.18</td><td>徐哥，帮忙看下我们上帝账号进不去是啥情况呢</td><td class="c">网络问题</td><td class="c">运维</td><td class="c">徐哥</td><td>自己公司断网恢复了</td></tr><tr><td class="num">7.18</td><td>189469 超视立光学(上海)有限公司 zong70(☆集团管理-集群☆) 76099459fc3c8de26…</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>这两条  b站发过来的，算 客服消息数</td></tr><tr><td class="num">7.18</td><td>长沙市瑶笙科技有限公司 zong60(☆传统集群☆) @徐志明帮看下这个快手访客没有进入对话</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td></td></tr><tr><td class="num">7.18</td><td>138870山西爱尔zong21 2c933cc58446471287f8d09e0640dfe5 他家是按照排…</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td></td></tr><tr><td class="num">7.18、19</td><td>这边进不去上帝账号了</td><td class="c">网络问题</td><td class="c">运维</td><td class="c">徐哥</td><td>断网</td></tr><tr><td class="num">7.18-20</td><td>552965 上海中佑肛肠医院有限公司 zong2_vip1(☆大攻击客户☆) 访客ID：ohUL0shX-ab…</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td>客服 46秒里已发送消息，所以 欢迎语不发送了</td></tr><tr><td class="num">7.20</td><td>美团解除授权不了</td><td class="c">设计、重复问题</td><td class="c">在线</td><td class="c">小沙</td><td>1：这个账号增值是停用的，这个要问订单为啥这家给他停用了
+2：这个我同步杜珅很多次，入参美团助手地址为空的话，需要临时授…</td></tr><tr><td class="num">7.21</td><td>帮忙看下这个问题，目前有多家客户收到这个公告</td><td class="c">设计如此</td><td class="c">总后台</td><td class="c">徐哥</td><td>伟杰自己开了配置提醒</td></tr><tr><td class="num">7.22</td><td>广告系统追踪ID：__CLICKID__ 这个有搜索选项吗？</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">小沙</td><td>旧版历史不支持且不维护了，要的话提新版历史需求</td></tr><tr><td class="num">7.22</td><td>379670 现在是不能同步机器人了吗，上帝账号进来，点击继续确认后提示保存成功，但不生效</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">小沙</td><td>线上操作正常，且美团是按商铺同步的，非同个商铺是同步不了</td></tr><tr><td class="num">7.23</td><td>抖音第三方刚刚权限集有变，没通知我们，我们需要临时去掉下线权限，大家知悉下，等会处理好了通知大家</td><td class="c">外部原因</td><td class="c">抖音第三方</td><td class="c">小沙</td><td>发现了抖音授权变更问题，马上同步群里兼容</td></tr><tr><td class="num">7.23</td><td>帮忙看下，关闭机器人托管后 机器人还是会回复，这个设置不生效</td><td class="c">重复问题</td><td class="c">在线</td><td class="c">小沙</td><td>这种并发问题，之前有同步过，解决的代价比较高，有客户反馈可以解释说明就好，概率是比较低的</td></tr><tr><td class="num">7.24</td><td>670684 辛苦看下勾选抖音企业号，会把来客私信勾上</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td>客户修改抖音企业号 的账号名称</td></tr><tr><td class="num">7.28</td><td>这个前面授权是正常的，因为会话进不来已经引导客户重新授权，但是客户那边想了解下原因，是否与修改密码或者修改了什么…</td><td class="c">外部原因</td><td class="c">美团第三方</td><td class="c">小沙</td><td>美团自己的问题，但我们是外挂，且这个问题我们兼容不了</td></tr><tr><td class="num">7.28</td><td>632029济南天使 帮看下25号就设置了两个机器人一起承接，怎么数据相差这么大</td><td class="c">重复、转需求</td><td class="c">在线、KICP</td><td class="c">多人</td><td>1、在线开发自己排查21年重复问题并修复
+2、但还没满足客户，客户要在机器人统计按账号查询，后面文茹提KICP需求了</td></tr><tr><td class="num">7.30</td><td>总后台无法访问了</td><td class="c">网络问题</td><td class="c">运维</td><td class="c">徐哥</td><td>网络问题</td></tr><tr><td class="num">7.30</td><td>美团开店宝授权不上，点了没反应</td><td class="c">环境问题</td><td class="c">在线</td><td class="c">小沙</td><td>这家授权不上去原因是新界面，已帮忙授权我们之前更新的服务器了</td></tr><tr><td class="num">7.31</td><td>一张抖音来客报错截图</td><td class="c">重复问题</td><td class="c">在线</td><td class="c">小沙</td><td>报错忽略，这个同步永城、杜珅等n人过，性能问题一直没优化，遇到等一会再点下就行</td></tr></tbody></table></div>
+  <h4>8月（29 条）</h4>
+  <div class="tw"><table class="t compact">
+    <thead><tr><th style="width:7%">日期</th><th style="width:38%">问题描述</th><th class="c" style="width:9%">解决方案</th><th class="c" style="width:9%">问题方</th><th class="c" style="width:8%">跟进人</th><th>备注（截断）</th></tr></thead>
+    <tbody><tr><td class="num">8.1</td><td>帮看下访客没有分配给客服，客服是有在线的</td><td class="c">配置问题</td><td class="c">客服</td><td class="c">徐哥</td><td>代码n年没动，以前设计就是这样，目前可先配置排班，还有疑问再提需求</td></tr><tr><td class="num">8.1</td><td>开增值：拉取快手线索id@徐志明@杜珅，这个客户快手增值没开成功，得空帮忙看看</td><td class="c">环境问题</td><td class="c">客服</td><td class="c">徐哥</td><td>zong16服务器没更新（每次更新服务器都是客服、产品自己提供，我们按提供服务器更新）</td></tr><tr><td class="num">8.1</td><td>帮看下公众号访客留联了没有回传</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>主要问题是这个访客不是广告流量的访客，所以没法回传</td></tr><tr><td class="num">8.4</td><td>看下zong20服务器是否有异常，登陆不上</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>没更新好</td></tr><tr><td class="num">8.4、6</td><td>来客私信消息进线快商通有延迟，有多家出现，辛苦看一下哈</td><td class="c">外部原因</td><td class="c">来客私信第三方</td><td class="c">杜珅</td><td>来客私信消息延迟问题，是巨量平台的队列堆积 导致的，第三方已处理</td></tr><tr><td class="num">8.4</td><td>帮忙看下这个对话，我看有识别到获联，并且有设置已提醒规则，获联分配明细中是有的，但是提醒明细中没有是什么情况呢</td><td class="c">外部原因</td><td class="c">企微</td><td class="c">佳伟、建伟</td><td>包含2个问题，第一个提醒明细为空，是已知风险点，因为数据包含表情包，导致入库失败
+；第二个推送失败，主要原因还是企微异常…</td></tr><tr><td class="num">8.7</td><td>美团重新授权提醒这个，服务器都有地址的 ，客户机器人不回消息 然后还会延迟回复消息就解除重新授权，授权不上去</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">小沙</td><td>出现地址不足，可多点几下，群里同步很多次
+（常反馈的问题已形成文档并同步）</td></tr><tr><td class="num">8.7</td><td>elk wechat访问不了</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">晨树</td><td>重启处理</td></tr><tr><td class="num">8.8</td><td>帮看下号码检测微信不存在</td><td class="c">外部原因</td><td class="c">微聊通</td><td class="c">徐哥、骁敏</td><td>产品回复：微聊通的 现在是跟他们邓登在沟通 3个微信号 一天请求600个 如果频率超了 也会有检测问题 现在邓登超了 就…</td></tr><tr><td class="num">8.10</td><td>235766 zong11_vipl15 @徐志明 客户反馈这个历史记录下载出现问题 删除本地历史记录、db文件…</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>1、客服没有负责对应的站点，客服没排查出来
+2、旧版历史产品不维护了，没引导客户用新版历史</td></tr><tr><td class="num">8.10</td><td>徐哥，辛苦帮忙看下这个对话，机器人有识别到联系方式，但是获联分配明细和提醒明细中查不到这个对话是什么情况呢 访客…</td><td class="c">设计如此</td><td class="c">KICP</td><td class="c">杜珅</td><td>获联是根据kicp返回给在线侧 的获联标识来判断的，不是根据机器人这边的实体</td></tr><tr><td class="num">8.12</td><td>812562南京长江帮忙看下这个为什么保存不了</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">小沙</td><td>因为其他账号没选择机器人才会提示这个，n年前产品设计如此</td></tr><tr><td class="num">8.12</td><td>辛苦看下这个消息是没有推给机器人，这边KICP查看没有消息</td><td class="c">排期处理</td><td class="c">KICP</td><td class="c">徐哥</td><td>kicp返回逻辑限流，下期有优化</td></tr><tr><td class="num">8.14</td><td>总后台zong9的切换不过去了</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>网络恢复正常</td></tr><tr><td class="num">8.16</td><td>登不上，网络连接不上</td><td class="c">环境问题</td><td class="c">客户那边的网络</td><td class="c">徐哥</td><td>网络自己恢复，可以登了</td></tr><tr><td class="num">8.17</td><td>总后台zong 16的切换不过去了</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>网络恢复正常</td></tr><tr><td class="num">8.18</td><td>客户导入提示语失败，自己导入正常</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>1、客户导入失败，是因为导入文件中存在空数据；客服能导入成功是，因为旧版本，旧版本导入成功后，重新登录会有问题，该问题之…</td></tr><tr><td class="num">8.18</td><td>西安新城中大耳鼻喉(kicp耳鼻喉) 帮忙看下怎么机器人接待规则无法设置【快手】这个</td><td class="c">设计如此</td><td class="c">KICP</td><td class="c">徐哥</td><td>Kicp机器人业务停用</td></tr><tr><td class="num">8.20</td><td>现在如果是我们kicp机器人发送的话术，发送者都会显示这个吗？以前没有的，只会显示机器人的名字</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">小沙</td><td>新版跨平台一直这么显示的</td></tr><tr><td class="num">8.20</td><td>c7fb9939463a4046a4731c58494d13ef 帮忙看下对话先获联分配给杜伟，设置了获联分配给…</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>原因： 新名片提醒这条链路设计上就不会用报联的客服进行获联分配</td></tr><tr><td class="num">8.22</td><td>为什么在线总后台没登录一会就提示报错呢</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">晨树</td><td>公司网络问题自己恢复</td></tr><tr><td class="num">8.22</td><td>获联分配明细有记录，但【提醒明细】中没找到成功或失败的记录，这个也是没接收到提醒的</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>公司网络问题自己恢复</td></tr><tr><td class="num">8.24</td><td>美团下线了吗开始</td><td class="c">外部原因</td><td class="c">抖音来客第三方</td><td class="c">小沙</td><td>8.20已同步群里，最近抖音来客有新版，客户用新版使用不了，需要借账号调研开发25上线</td></tr><tr><td class="num">8.25</td><td>这个elk一输入密码要登录就卡住，没法登录；总后台转不出来</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>公司网络问题自己恢复</td></tr><tr><td class="num">8.28、29</td><td>辛苦看下，这边显示成功，客户反馈群里没收到客</td><td class="c">外部原因</td><td class="c">企微</td><td class="c">佳伟、建伟</td><td>1、客户自己退出了企微
+2、服务器资源不足，运维释放资源并重启了</td></tr><tr><td class="num">8.29</td><td>帮看下客户那边保存权限提示</td><td class="c">配置问题</td><td class="c">在线</td><td class="c">徐哥</td><td>总后台没有这个客服</td></tr><tr><td class="num">8.29</td><td>两家都出现请求频率超出限制</td><td class="c">外部原因</td><td class="c">腾讯第三方</td><td class="c">徐哥</td><td>是超出第腾讯 那边的限制了</td></tr><tr><td class="num">8.30</td><td>elk无法进入</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>公司网络问题自己恢复</td></tr><tr><td class="num">8.31</td><td>客户公共表格进不去</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">代杰、晨树</td><td>客服自己的维护公共表格（非个项目产品），公司网络导致打不开</td></tr></tbody></table></div>
+  <h4>9月（17 条）</h4>
+  <div class="tw"><table class="t compact">
+    <thead><tr><th style="width:7%">日期</th><th style="width:38%">问题描述</th><th class="c" style="width:9%">解决方案</th><th class="c" style="width:9%">问题方</th><th class="c" style="width:8%">跟进人</th><th>备注（截断）</th></tr></thead>
+    <tbody><tr><td class="num">9.2</td><td>徐哥。这家帮远程看下复制网址后显示的是乱码。重新安装10.15.04版本也不行</td><td class="c">外部原因</td><td class="c">第三方</td><td class="c">徐哥</td><td>浏览器自己转码的</td></tr><tr><td class="num">9.3</td><td>客户反馈说抖音有一半对话进入不了快商通之前有没有排查过是什么原因</td><td class="c">设计如此</td><td class="c">客户</td><td class="c">小沙</td><td>没登录账号肯定就不会进对话</td></tr><tr><td class="num">9.3</td><td>20：42留资获联提醒推送 后到21:13 对话结束又重复推送一次</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>第二个是小红书后台留资的</td></tr><tr><td class="num">9.5</td><td>辛苦帮忙看下这个ID的企微外部群是不是掉了，客户反馈没有接收到提醒了， 但是我们客户端后台看到的是正常的，公司I…</td><td class="c">设计如此</td><td class="c">客户</td><td class="c">徐哥</td><td>客户企微自己登出了</td></tr><tr><td class="num">9.5</td><td>徐哥这个时候什么情况,开启信息提取就会保存名片吗</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>产品设计如此</td></tr><tr><td class="num">9.9</td><td>总后台切换不了，zong3的</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">晨树</td><td>公司网络波动</td></tr><tr><td class="num">9.12</td><td>656557 zong21(☆传统集群-爱尔眼科☆)@徐志明目前多家反馈渠道记录打不开，辛苦看下</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥、剑和</td><td>这么多年来，只要客户查询高峰期都会这样</td></tr><tr><td class="num">9.15</td><td>客户提交不了 什么原因呢</td><td class="c">环境问题</td><td class="c">KICP</td><td class="c">徐哥、佳伟</td><td>KICP项目还没更新</td></tr><tr><td class="num">9.18</td><td>812562南京长江zong13_vips8抖音机器人不回复了</td><td class="c">外部原因</td><td class="c">抖音</td><td class="c">杜珅</td><td>第三方抖音平台列表积压</td></tr><tr><td class="num">9.18</td><td>用户获联后，企微外部群没有收到通知</td><td class="c">配置问题</td><td class="c">客户</td><td class="c"></td><td>客户在13:47修改提醒规则中获联类型为重复获联；但用户的获联类型为首次获联，所以不会走提醒，也就不会推；解决方案：和客…</td></tr><tr><td class="num">9.21</td><td>抖音渠道的复制粘贴图片发送提示不支持，腾讯渠道是正常发送的</td><td class="c">外部原因</td><td class="c">第三方</td><td class="c">徐哥</td><td>渠道图片电脑打不开</td></tr><tr><td class="num">9.25</td><td>辛苦看下历史记录、设置中心打不开，跨平台和经典版都打不开</td><td class="c">旧版问题</td><td class="c">在线</td><td class="c">徐哥</td><td>旧端有问题，重新安装新端正常</td></tr><tr><td class="num">9.25</td><td>看下这个,客服设置了指定接待,为什么不在指定里面的,客服可以看到访客</td><td class="c">设计如此</td><td class="c">在线</td><td class="c">徐哥</td><td>按站点设置就可以。客服不要负责这个站点，就看不到这个站点的访客。</td></tr><tr><td class="num">9.26</td><td>辛苦看下总后台一直无法加载</td><td class="c">环境问题</td><td class="c">运维</td><td class="c">徐哥</td><td>公司网络问题</td></tr><tr><td class="num">9.26</td><td>发送问候语的时间比较久</td><td class="c">重复问题</td><td class="c">第三方美团</td><td class="c">徐哥</td><td>美团自身延迟</td></tr><tr><td class="num">9.27</td><td>快商通发出去的消息，美团不显示，帮看下</td><td class="c">外部原因</td><td class="c">在线</td><td class="c">徐哥</td><td>端断线了</td></tr><tr><td class="num">9.30</td><td>298659，自定义报表筛选26年1月份的数据，数据出不来帮忙看下怎么解决哈</td><td class="c">重复问题</td><td class="c">在线</td><td class="c">佳伟</td><td>已知性能问题，集群的clickhouse，查不动了</td></tr></tbody></table></div>
+</section>
+
+<!-- ============ 附录B ============ -->
+<section class="card" id="caliber">
+  <h2 class="ch">附录B：统计口径说明<small>CALIBER NOTES</small></h2>
+  <ul class="dots">
+    <li><strong>数据来源：</strong>《在线产品线线上问题登记.xlsx》“7月份 / 8月份 / 9月份”三个工作表，按“反馈群”分块逐条统计，共 91 条（7月 45、8月 29、9月 17）。所有数字由脚本从源表解析生成，可复现核对。</li>
+    <li><strong>登记范围：</strong>本表登记客服反馈群中需要测试 / 技术跟进的问题；各月末备注的日常事务（对接服务器情况、渠道额度、验证小程序域名、运维绑定域名验证等）未逐条登记。本报告趋势均基于“登记口径”，不等于全部客服反馈量。</li>
+    <li><strong>分类口径：</strong>按“解决方案”字段原文归一：含“重复”字样计入“重复问题”（复合值“设计、重复问题”“重复、转需求”各 1 条加注）；“-”计为“未标注”。7 月使用的“网络问题”标签在 8-9 月多并入“环境问题”，跨月对比建议用两者合计口径。</li>
+    <li><strong>涉及系统口径：</strong>按“问题方”字段归并为 6 大类：在线产品（在线 / 总后台 / 产品）、运维/基础设施（运维）、第三方平台（各抖音 / 美团 / 腾讯 / 企微等三方）、客户/客服侧（客户 / 客服 / 电脑网络 / 电脑网站 / 客户网络）、KICP、其他我方产品（微聊通）。</li>
+    <li><strong>重复问题双口径：</strong>显式标记（解决方案含“重复”）7 条为跨月重复；主题聚类为季度内同主题多次出现，两者有交叉、不可相加。</li>
+    <li><strong>与禅道“线上问题冲刺”口径的区别：</strong>月度复盘口径 9 月全部门线上问题冲刺登记 16 条（在线 3 / KICP 4 / SCRM 4 / KuaiBuddy 5），来源为禅道各线冲刺；本表 9 月 17 条来源为客服反馈群登记，<strong>两套机制口径不同，不可直接对比</strong>。</li>
+    <li><strong>早期月份：</strong>登记表另含 2025 年 11 月（82 条）、12 月（77 条），因表单列结构与 2026 年不同，仅用于总量参考，未做分类对比。</li>
+  </ul>
+</section>
+
+</div><!-- /doc -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+</body>
+</html>
