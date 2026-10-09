@@ -168,18 +168,18 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <!-- ============ 执行摘要 ============ -->
 <section id="summary" class="card">
 <h2 class="ch">执行摘要<small>EXECUTIVE SUMMARY</small></h2>
-<p>2026年Q3，测试部围绕<b>「按期交付、质量收敛、自动化与AI能力建设」</b>三条主线开展工作：三条主线全部达成——5 条产品线季度内 50 余次发版<b>零延期</b>；线上有效遗漏仅 <b>8 条</b>、季度遗漏率 <b>0.55%</b>，在线客服与 KICP 全季零遗漏；pw 智能测试平台接口用例迁移 9 月完成约 <b>60%</b>（累计 409 条）、计划 10 月收官，并保持每日定时运行，agent 测试、知识库、月度质量数据自动化统计等 AI 能力持续落地。</p>
+<p>2026年Q3，测试部围绕<b>「按期交付、质量收敛、自动化与AI能力建设」</b>三条主线开展工作：三条主线全部达成——5 条产品线季度内 50 余次发版<b>零延期</b>；线上有效遗漏 <b>9 条</b>、季度遗漏率 <b>0.66%</b>（线上有效÷有效总数口径），在线客服全季零遗漏、KICP 仅 1 条；pwtest 平台接口用例迁移 9 月完成约 <b>60%</b>（累计 409 条）、计划 10 月收官，并保持每日定时运行，agent 测试、知识库、月度质量数据自动化统计等 AI 能力持续落地。</p>
 
 <div class="kpis">
-  <div class="kpi"><div class="n">0 <small>次</small></div><div class="t">版本延期 · 全季零延期</div><div class="s">9月20次发版全部按期，含在线7次凌晨更新</div></div>
+  <div class="kpi"><div class="n">0 <small>次</small></div><div class="t">版本延期 · 全季零延期</div><div class="s">7月在线11次发布、8月千锤2期/KB 3迭代等、9月20次发版（含在线7次凌晨更新），季度50余次全部按期</div></div>
   <div class="kpi"><div class="n">1444 <small>个</small></div><div class="t">提交 Bug（有效 1365）</div><div class="s">7月430 / 8月518 / 9月496，有效率约 94.5%</div></div>
-  <div class="kpi"><div class="n">0.55<small>%</small></div><div class="t">Q3 全部门遗漏率</div><div class="s">线上有效遗漏 8 条，8月 6 条 → 9月 2 条回落</div></div>
-  <div class="kpi"><div class="n">0 <small>%</small></div><div class="t">在线 / KICP 全季遗漏率</div><div class="s">KICP 连续 9 个月线上有效遗漏≤1条</div></div>
+  <div class="kpi"><div class="n">0.66<small>%</small></div><div class="t">Q3 全部门遗漏率</div><div class="s">线上有效遗漏 9 条（7月0 / 8月6 / 9月3），÷ 有效 1365 条</div></div>
+  <div class="kpi"><div class="n">0.27<small>%</small></div><div class="t">KICP 季度遗漏率</div><div class="s">在线客服全季零遗漏；KICP 季度仅 1 条（91969，3 级）</div></div>
   <div class="kpi"><div class="n">409 <small>条</small></div><div class="t">pwtest 接口用例 · 迁移约60%</div><div class="s">9月新增277（千锤150/在线83/SCRM 44），每日定时运行，计划10月收官</div></div>
   <div class="kpi"><div class="n">148 <small>次</small></div><div class="t">算法版本迭代</div><div class="s">7月61 / 8月45 / 9月42，覆盖 7 个服务模块</div></div>
 </div>
 
-<div class="notice"><b>季度要点：</b>① 延期率与遗漏率双达标，Q3 原定 OKR 目标全部达成；② SCRM 遗漏率 8月 2.97%、9月 3.28%（同口径 3.23% 基本持平），围绕 ≤3% 改进线波动、尚未稳定达标，历史存在问题与跨项目代码改动评审为主要收敛方向；③ KuaiBuddy 7月中旬新介入，完成 V1.03~V1.08 六个迭代交付，「200 步不回复」8 月修复后 9 月复发 2 起（并入 91696 跟踪），10 月以长链路压测根治；④ 发布管控方面，继 7 月 3 起「上线即故障」事件后，9月10日又发生总后台多产品线串线发布事件——SCRM 发布涉及总后台更新时带出 KICP 未测试通过的功能，9月11日确认 KICP 流程编辑报错后版本回滚，KuaiBuddy Skill Hub 2 个非关键性功能延期发布；连同非缺陷类线上反馈占比偏高，均作为 Q3 过程改进重点，已沉淀 commit 规范、beta 分支核对、回滚后置事件处理等 Q4 系统建设事项。</div>
+<div class="notice"><b>季度要点：</b>① 延期率与遗漏率双达标，Q3 原定 OKR 目标全部达成；② SCRM 遗漏率 8月 3.23%、9月 3.28%（同口径基本持平），围绕 ≤3% 改进线波动、尚未稳定达标，历史存在问题与跨项目代码改动评审为主要收敛方向；③ KuaiBuddy 7月中旬新介入，完成 V1.03~V1.08 六个迭代交付，「200 步不回复」8 月修复后 9 月复发 2 起（并入 91696 跟踪），10 月以长链路压测根治；④ 发布管控方面，继 7 月 3 起「上线即故障」事件后，9月10日又发生总后台多产品线串线发布事件——SCRM 发布涉及总后台更新时带出 KICP 未测试通过的功能，9月11日确认 KICP 流程编辑报错后版本回滚，KuaiBuddy Skill Hub 2 个非关键性功能延期发布；连同非缺陷类线上反馈占比偏高，均作为 Q3 过程改进重点，已沉淀 commit 规范、beta 分支核对、回滚后置事件处理等 Q4 系统建设事项。</div>
 </section>
 
 <!-- ============ 一、上季度目标达成情况说明 ============ -->
@@ -212,20 +212,21 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
   <li>千锤OS 完成 1 期测试与 2 期上线（8.6）；销冠话术宝完成 V1.13 交付（9月）。</li>
 </ul>
 
-<p><b>3、Bug 遗漏率：Q3 各业务线遗漏率均控制在 KR 目标范围内。</b>在线客服、KICP 全季零遗漏；SCRM 季度遗漏率 1.71%（≤6% 达标；月度 8月 2.97%、9月 3.28%，围绕 3% 改进线波动、尚未稳定达标）；KuaiBuddy 遗漏 3 条且全部集中在 8 月（新项目基线观察，9 月经「3 级及以上才计遗漏」等级复核归零）。全部门季度遗漏率 <b>0.55%</b>（8/1444）。</p>
+<p><b>3、Bug 遗漏率：Q3 各业务线遗漏率均控制在 KR 目标范围内。</b>在线客服全季零遗漏；KICP 季度 1 条（91969，渠道重大挂载群不回复预警，日常运维过程中发现、核实为 3 级线上 bug 并已修复），遗漏率 0.27%；SCRM 季度遗漏率 2.49%（≤6% 达标；月度 8月 3.23%、9月 3.28% 同口径基本持平，围绕 3% 改进线波动、尚未稳定达标）；KuaiBuddy 遗漏 3 条且全部集中在 8 月（新项目基线观察，9 月经「3 级及以上才计遗漏」等级复核归零）。全部门季度遗漏率 <b>0.66%</b>（线上有效 9 ÷ 有效 1365，有效数口径）。</p>
+<p><b>4、SLA 服务可用性（O3）：9 月在线客服 SLA 100%、KICP 99.995%，均达成 ≥99.99% 的季度目标。</b>7—8 月月度 SLA 值此前未纳入统计留存，已要求运维自 Q4 起按月提供并接入质量数据看板（详见支持事项）。</p>
 
 <div class="tw">
 <table class="t">
 <thead><tr><th style="width:14%">产品线</th><th>Q3 季度线上有效 Bug（不含 P4 级）</th><th>Q3 季度 Bug 提交总数</th><th>Q3 季度总遗漏率</th><th>KR 目标</th><th>达成情况</th></tr></thead>
 <tbody>
   <tr><td class="c">在线客服</td><td class="num">0</td><td class="num">566</td><td class="num">0.00%</td><td class="c">≤6%</td><td class="c"><span class="b b-fix">达标</span></td></tr>
-  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">306</td><td class="num">0.00%</td><td class="c">≤2%</td><td class="c"><span class="b b-fix">达标</span></td></tr>
-  <tr><td class="c">SCRM（拓客CRM，含销冠话术宝）</td><td class="num">5</td><td class="num">292</td><td class="num">1.71%</td><td class="c">≤6%</td><td class="c"><span class="b b-fix">达标（8月2.97%、9月3.28%，贴近3%改进线）</span></td></tr>
-  <tr><td class="c">KuaiBuddy</td><td class="num">3</td><td class="num">247</td><td class="num">1.21%</td><td class="c">—（基线观察）</td><td class="c"><span class="b b-obs">基线观察（遗漏集中8月，9月等级复核归零）</span></td></tr>
-  <tr class="sum"><td class="c">全部门合计</td><td class="num">8</td><td class="num">1444</td><td class="num">0.55%</td><td class="c">—</td><td class="c">—</td></tr>
+  <tr><td class="c">KICP</td><td class="num">1</td><td class="num">306</td><td class="num">0.27%</td><td class="c">≤2%</td><td class="c"><span class="b b-fix">达标（91969 为日常运维中发现的渠道预警，3 级、已修复）</span></td></tr>
+  <tr><td class="c">SCRM（拓客CRM，含销冠话术宝）</td><td class="num">5</td><td class="num">292</td><td class="num">2.49%</td><td class="c">≤6%</td><td class="c"><span class="b b-fix">达标（月度 8月 3.23%、9月 3.28%，贴近3%改进线）</span></td></tr>
+  <tr><td class="c">KuaiBuddy</td><td class="num">3</td><td class="num">247</td><td class="num">1.84%</td><td class="c">—（基线观察）</td><td class="c"><span class="b b-obs">基线观察（遗漏集中8月，9月等级复核归零）</span></td></tr>
+  <tr class="sum"><td class="c">全部门合计</td><td class="num">9</td><td class="num">1444</td><td class="num">0.66%</td><td class="c">—</td><td class="c">—</td></tr>
 </tbody>
 </table>
-<p class="tnote">口径说明：① Bug 总数按各月复盘业务线口径汇总（在线 167+194+205、KICP 64+119+123、SCRM 121+101+70、KuaiBuddy 66+104+77）；② KuaiBuddy 7 月中旬新介入，66 条为 7 月冲刺提交数，遗漏率自 8 月纳入统计；③ SCRM 7 月登记 1 条 P4 级线上问题（无法复现），按口径不纳入遗漏率计算，销冠话术宝 bug 归入 SCRM 线统计；④ KuaiBuddy 9 月线上问题 92278 经复核严重等级为 4 级，按「严重等级 3 级及以上才计遗漏」约定不计遗漏；⑤ 全部门合计按各月复盘提交总数计（430+518+496=1444），其中 7 月含其他/性能/线上冲刺 12 条、9 月含算法线 badcase 登记 21 条（均不计遗漏），四条产品线分线合计 1411 条；季度遗漏率按「线上有效遗漏 ÷ 提交总数」计，9 月复盘月度口径为 0.43%（2/462，按有效数口径）。</p>
+<p class="tnote">口径说明：① Bug 总数按各月复盘业务线口径汇总（在线 167+194+205、KICP 64+119+123、SCRM 121+101+70、KuaiBuddy 66+104+77）；② KuaiBuddy 7 月中旬新介入，66 条为 7 月冲刺提交数，遗漏率自 8 月纳入统计；③ SCRM 7 月登记 1 条 P4 级线上问题（无法复现），按口径不纳入遗漏率计算，销冠话术宝 bug 归入 SCRM 线统计；④ KuaiBuddy 9 月线上问题 92278 经复核严重等级为 4 级，按「严重等级 3 级及以上才计遗漏」约定不计遗漏；KICP 91969（日常运维中发现的渠道重大挂载群不回复预警）经核实为 3 级线上 bug，计入 KICP 遗漏；⑤ 全部门合计按各月复盘提交总数计（430+518+496=1444），其中 7 月含其他/性能/线上冲刺 12 条、9 月含算法线 badcase 登记 21 条（均不计遗漏），四条产品线分线合计 1411 条；⑥ <strong>遗漏率 = 线上有效遗漏 ÷ 有效 bug 总数</strong>（与 9 月复盘口径一致，分母不含无效 bug），分线有效数为各月复盘有效数合计（在线 197+186+190=573、KICP 130+116+119=365、SCRM 47+93+61=201、KuaiBuddy 92+71=163，全部门 416+487+462=1365）；9 月复盘月度口径为 0.65%（3/462）。</p>
 </div>
 
 <div class="tw">
@@ -233,10 +234,10 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <thead><tr><th style="width:16%">产品线</th><th>7月总遗漏数</th><th>8月总遗漏数</th><th>9月总遗漏数</th><th>7月Bug总数</th><th>8月Bug总数</th><th>9月Bug总数</th></tr></thead>
 <tbody>
   <tr><td class="c">在线客服</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">167</td><td class="num">194</td><td class="num">205</td></tr>
-  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">64</td><td class="num">119</td><td class="num">123</td></tr>
+  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">64</td><td class="num">119</td><td class="num">123</td></tr>
   <tr><td class="c">SCRM</td><td class="num">0</td><td class="num">3</td><td class="num">2</td><td class="num">121</td><td class="num">101</td><td class="num">70</td></tr>
   <tr><td class="c">KuaiBuddy</td><td class="num">—</td><td class="num">3</td><td class="num">0</td><td class="num">66</td><td class="num">104</td><td class="num">77</td></tr>
-  <tr class="sum"><td class="c">全部门合计</td><td class="num">0</td><td class="num">6</td><td class="num">2</td><td class="num">430</td><td class="num">518</td><td class="num">496</td></tr>
+  <tr class="sum"><td class="c">全部门合计</td><td class="num">0</td><td class="num">6</td><td class="num">3</td><td class="num">430</td><td class="num">518</td><td class="num">496</td></tr>
 </tbody>
 </table>
 </div>
@@ -246,14 +247,14 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <table class="t compact">
 <thead><tr><th>业务线</th><th>1月</th><th>2月</th><th>3月</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>Q3合计</th><th>环比趋势</th></tr></thead>
 <tbody>
-  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="c"><span class="b b-fix">持续平稳</span></td></tr>
+  <tr><td class="c">KICP</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">1</td><td class="c"><span class="b b-obs">9月新增1条（91969 日常运维中发现）</span></td></tr>
   <tr><td class="c">SCRM</td><td class="num">12</td><td class="num">6</td><td class="num">2</td><td class="num">3</td><td class="num">5</td><td class="num">6</td><td class="num">1</td><td class="num">3</td><td class="num">2</td><td class="num">6</td><td class="c"><span class="b b-fix">1月12条→季度末2条</span></td></tr>
   <tr><td class="c">在线客服</td><td class="num">9</td><td class="num">3</td><td class="num">0</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="c"><span class="b b-fix">持续平稳</span></td></tr>
   <tr><td class="c">KuaiBuddy</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">3</td><td class="num">0</td><td class="num">3</td><td class="c"><span class="b b-obs">新项目基线观察</span></td></tr>
-  <tr class="sum"><td class="c">合计</td><td class="num">21</td><td class="num">10</td><td class="num">2</td><td class="num">4</td><td class="num">8</td><td class="num">7</td><td class="num">1</td><td class="num">6</td><td class="num">2</td><td class="num">9</td><td class="c">—</td></tr>
+  <tr class="sum"><td class="c">合计</td><td class="num">21</td><td class="num">10</td><td class="num">2</td><td class="num">4</td><td class="num">8</td><td class="num">7</td><td class="num">1</td><td class="num">6</td><td class="num">3</td><td class="num">10</td><td class="c">—</td></tr>
 </tbody>
 </table>
-<p class="tnote">历史数据沿用各月复盘原表；SCRM 与 KuaiBuddy 的 8 月数据按各线复盘归类口径统计（8 月 SCRM 线上有效 6 条中 3 条归类遗漏、KuaiBuddy 3 条）；KuaiBuddy 9 月线上问题 92278 复核为 4 级、按「3 级及以上才计遗漏」约定不计遗漏；Q3 合计含 SCRM 6 条、KuaiBuddy 3 条。</p>
+<p class="tnote">历史数据沿用各月复盘原表；SCRM 与 KuaiBuddy 的 8 月数据按各线复盘归类口径统计（8 月 SCRM 线上有效 6 条中 3 条归类遗漏、KuaiBuddy 3 条）；KuaiBuddy 9 月线上问题 92278 复核为 4 级、按「3 级及以上才计遗漏」约定不计遗漏；KICP 91969（日常运维中发现）经核实为 3 级线上 bug、计入遗漏；Q3 合计含 SCRM 6 条、KuaiBuddy 3 条、KICP 1 条。</p>
 </div>
 
 <div class="chart-wrap">
@@ -276,11 +277,11 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
     <rect x="390" y="127" width="34" height="33"  fill="#8A9BB0"></rect>
     <rect x="458" y="155" width="34" height="5"   fill="#2C5580"></rect>
     <rect x="526" y="131" width="34" height="29"  fill="#2C5580"></rect>
-    <rect x="594" y="150" width="34" height="10"  fill="#2C5580"></rect>
+    <rect x="594" y="145" width="34" height="15"  fill="#2C5580"></rect>
   </g>
   <g font-size="10" font-weight="700" fill="#1F2937" text-anchor="middle">
     <text x="67" y="52">21</text><text x="135" y="104">10</text><text x="203" y="142">2</text><text x="271" y="133">4</text>
-    <text x="339" y="114">8</text><text x="407" y="119">7</text><text x="475" y="147">1</text><text x="543" y="123">6</text><text x="611" y="143">2</text>
+    <text x="339" y="114">8</text><text x="407" y="119">7</text><text x="475" y="147">1</text><text x="543" y="123">6</text><text x="611" y="138">3</text>
   </g>
   <g font-size="10" fill="#5A6B7D" text-anchor="middle">
     <text x="67" y="175">1月</text><text x="135" y="175">2月</text><text x="203" y="175">3月</text><text x="271" y="175">4月</text>
@@ -293,7 +294,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <h4>与年度目标对比，季度达成情况分析：</h4>
 <ul class="dots">
   <li><b>延期率：</b>年度目标为各产品线按计划上线，Q3 连续三个月零延期，较 Q1（话术宝 V1.09 延期 12 天）显著改善，交付节奏进入稳定区间；</li>
-  <li><b>遗漏率：</b>Q1 拓客CRM 遗漏率 3.60% 为主要短板，Q3 SCRM 季度遗漏率收敛至 1.71%（月度 8月 2.97%、9月 3.28%，围绕 3% 改进线波动），在线客服/KICP 保持零遗漏，各线均优于年度目标线；</li>
+  <li><b>遗漏率：</b>Q1 拓客CRM 遗漏率 3.60% 为主要短板，Q3 SCRM 季度遗漏率收敛至 2.49%（月度 8月 3.23%、9月 3.28%，围绕 3% 改进线波动），在线客服保持零遗漏、KICP 季度仅 1 条（0.27%），各线均优于年度目标线；</li>
   <li><b>新变量：</b>KuaiBuddy 7 月新介入（无既有 KR 目标），从无需求文档、无验收标准的基线起步，已建立测试体系并暴露安全/稳定性/模型额度三类风险，Q4 需纳入正式 OKR 管理。</li>
 </ul>
 
@@ -311,11 +312,11 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
   <tr><td><b>在线客服临时插单频繁，交付节奏依赖个人承压</b></td><td>7月定制/临时需求占发布次数 54.5%，V10.14 被拆为三批灰度发布，测试人力仅 2 人，节奏依赖个人加班，缺乏缓冲，属可持续性风险而非能力风险；8—9月跨版本更新频繁、版本拉平滞后，跨版本更新风险较高。<b>原因：</b>与产品未提前约定月度临时需求配额与影响评估流程，插单缺乏约束机制。</td></tr>
   <tr><td><b>发布/变更管控不足，多起「上线即故障」可预防事件</b></td><td>7月发生 3 起典型线上事件（美团开店宝授权页换新界面后单台灰度遗漏 39 台服务器、KICP 全局配置默认全量开放引发性能问题、SCRM wkph→wkph-gateway 切换存量长连接下行丢失），均发生在「上线/变更」环节且可预防。<b>原因：</b>全局性/性能敏感配置变更上线前未做性能评估与灰度；第三方 UI/接口变更时单台灰度不足以覆盖全部受影响客户；长连接类服务切换未处理存量连接。</td></tr>
   <tr><td><b>总后台多产品线共用缺版本隔离，串线发布致回滚与功能延期</b></td><td>9月10日 SCRM 发布涉及总后台更新时（当期多个产品线均有总后台更新部分），将 KICP 未测试通过的功能一并发布到线上；9月11日晨间确认 KICP 流程编辑报错，采取版本回滚处置，KuaiBuddy 原计划随版发布的 Skill Hub 2 个功能（非关键性更新）因此延期发布，事后规范化整理 commit 信息并按方案补充发布。<b>原因：</b>总后台为多产品线共用服务，当期并行更新缺乏版本区分与代码分离；beta 分支合并内容未与更新功能清单逐一核对，发布申请流程未附 commit 清单，串线发布在发布前无从拦截；回滚后也未第一时间按机制登记通告并安排补充发布。</td></tr>
-  <tr><td><b>SCRM 遗漏率偏高，历史存在问题收敛不足</b></td><td>8月 SCRM 6 个线上有效 bug 中 4 个为历史存在现象，遗漏率一度达 4.9%（归类口径 2.97%）；9月 3.28%（同口径 8 月 3.23% 基本持平），2 条遗漏中 92112 为 8 月变更引入、92349 为配置异常分支，均已修复，8 月定下的 ≤3% 改进目标未稳定达成。<b>原因：</b>历史问题缺专项回归验证清单；跨项目代码改动（KuaiBuddy 迭代引入变量污染 SCRM 代码，91764）缺少评审与影响评估。</td></tr>
+  <tr><td><b>SCRM 遗漏率偏高，历史存在问题收敛不足</b></td><td>8月 SCRM 6 个线上有效 bug 中 4 个为历史存在现象，项目自报遗漏率一度达 4.9%（按现行有效数口径为 3.23%）；9月 3.28%（同口径 8 月 3.23% 基本持平），2 条遗漏中 92112 为 8 月变更引入、92349 为配置异常分支，均已修复，8 月定下的 ≤3% 改进目标未稳定达成。<b>原因：</b>历史问题缺专项回归验证清单；跨项目代码改动（KuaiBuddy 迭代引入变量污染 SCRM 代码，91764）缺少评审与影响评估。</td></tr>
   <tr><td><b>KuaiBuddy 新介入风险：需求缺失 + 稳定性问题根治不彻底</b></td><td>7月介入时项目无需求文档、无验收标准（仅对标 WorkBuddy），「设计如此」类无效 bug 占比高（8月无效 bug 31 个多数源于此）；「对话执行超 200 步不回复」8 月修复后 9 月复发 2 起（168168/625555，并入 91696 跟踪），长链路压测与根治方案推动不足；复杂任务执行步骤多、积分消耗偏高，需从 CLI 侧优化执行路径。<b>原因：</b>介入初期未锁定需求基线；修复时未同步建立步数/额度监控告警与修复效果专项回归。</td></tr>
   <tr><td><b>非缺陷类线上反馈占比过高，消耗大量排查人力</b></td><td>7月非缺陷类线上反馈占比 98.1%（「设计如此」10 条、「配置问题」9 条等），大量人力消耗在重复解释与排查；运维环境（断网/总后台不可访问）与第三方渠道（抖音/美团/腾讯）稳定性问题频发。<b>原因：</b>缺《线上反馈自助排查手册》与入群前一线自查环节；第三方渠道变更无前置通知机制。</td></tr>
   <tr><td><b>跨部门协作障碍：需求同步与统计口径</b></td><td>① CLI 类需求与测试范围未同步，前期测试计划缺失、场景覆盖不全；② 禅道统计指标口径不一致（任务被移出冲刺导致冲刺范围变化、线上问题登记口径不明确）；③ KICP 线上冲刺登记 4 条与项目复盘填报「暂无」口径不一致。<b>原因：</b>需求评审环节未强制纳入测试范围确认；「线上登记/线上有效/遗漏」三级口径未固化核对机制。</td></tr>
-  <tr><td><b>KICP 性能类问题外溢</b></td><td>7月出现消息延时线上问题，9月「机器人消息发送慢」（92433）仍在排查中。<b>原因：</b>性能容量评估尚未纳入 KICP 常规回归，功能上线缺性能评估环节。</td></tr>
+  <tr><td><b>KICP 性能类问题外溢</b></td><td>7月出现消息延时线上问题；9月「机器人消息发送慢」（92433）仍在排查中；渠道重大挂载群不回复预警（91969，日常运维过程中发现）经核实为 3 级线上 bug、计遗漏——性能类问题仍主要依赖测试/运维过程事后暴露，上线前拦截机制缺位。<b>原因：</b>性能容量评估尚未纳入 KICP 常规回归，功能上线缺性能评估环节，运维监控告警发现后缺少自动化归因与登记联动。</td></tr>
 </tbody>
 </table>
 </div>
@@ -362,7 +363,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
   <tr><td class="c">8月</td><td>实现 agent trace 分析中心（规则 + LLM 裁判）+ 钉钉接入，快速分析 agent 质量</td><td class="c">是</td></tr>
   <tr><td class="c">8月</td><td>知识库重新 AI 分析整理后再入库，提升知识库文档质量</td><td class="c">是</td></tr>
   <tr><td class="c">9月</td><td>pwtest 平台接口用例批量迁移：9 月新增 277 条（千锤 150 / 在线客服 83 / SCRM 44，累计 409 条、整体完成约 60%），SCRM 链路配置每日 8 点定时运行，千锤重要模块（常规问答/模板问答/触发器/变量/实体/导入）迁移完成、全部执行通过</td><td class="c">是</td></tr>
-  <tr><td class="c">9月</td><td>5 条产品线 20 次发版全部按期、零延期（含在线 7 次凌晨更新），跨版本更新节奏平稳，遗漏率 0.43%（8 月同口径 1.23%）明显回落</td><td class="c">是</td></tr>
+  <tr><td class="c">9月</td><td>5 条产品线 20 次发版全部按期、零延期（含在线 7 次凌晨更新），跨版本更新节奏平稳，遗漏率 0.65%（8 月同口径 1.23%）明显回落</td><td class="c">是</td></tr>
   <tr><td class="c">9月</td><td>月度复盘质量数据实现禅道 API 自动拉取统计：各线 bug 分布、线上问题清单、冲刺分布一键生成，统计口径可复现、可核对</td><td class="c">是</td></tr>
 </tbody>
 </table>
@@ -376,7 +377,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
   <tr><td class="c">林金堂 / 各业务线负责人</td><td>发布/变更管控不足，多起「上线即故障」可预防事件（美团开店宝灰度遗漏、KICP 全局配置性能、SCRM 存量长连接）</td><td>建立变更上线前检查清单：第三方灰度覆盖度、全局配置性能评估、存量连接/链路切换预案、切换前后关键指标对比；第三方平台变更影响的灰度需覆盖全部受影响客户</td><td class="c">2026/8~10</td><td>同类「上线即故障」可预防事件归零，检查清单落地</td><td class="c">部门负责人 / 运维</td></tr>
   <tr><td class="c">林金堂 / 各业务线研发负责人</td><td>总后台多产品线串线发布（9.10 SCRM 发布带出 KICP 未测试功能，9.11 回滚处置，KuaiBuddy Skill Hub 2 个功能延期发布）</td><td>① 规范化 git commit 格式：多产品线混合项目采用「type:(产品线) 描述」格式（如 feat:(online)、fix:(scrm)，common 为共用模块），不规范 commit（类型错误、bug 修复未标编号、频繁提交未测内容）登记并反馈研发经理整改；② beta 分支 commit 内容 AI 分析整理后与更新功能清单逐一核对（必做环节），commit 清单随发布申请流程附上；③ 多产品线共用总后台时做好版本区分与代码分离；④ 回滚后修正发布内容及时补充发布，回滚事件登记为重要事件并通告相关研发/产品负责人</td><td class="c">2026/10</td><td>串线发布归零；beta 分支更新内容与功能清单 100% 核对；回滚事件 100% 登记通告、补充发布按期完成</td><td class="c">部门负责人 / 研发经理</td></tr>
   <tr><td class="c">林金堂 / 在线产品负责人</td><td>在线客服临时插单频繁（7月占发布次数 54.5%），跨版本更新风险高</td><td>与产品约定月度临时需求配额与影响评估流程；提升接口/UI 自动化覆盖降低回归人力占用；推动版本拉平</td><td class="c">2026/8~10</td><td>临时需求占比下降至 30% 以内；核心迭代版本测试时长不被挤占</td><td class="c">部门负责人</td></tr>
-  <tr><td class="c">周卓醒</td><td>SCRM 遗漏率偏高（8月 2.97%、9月 3.28%），多数为历史存在现象，8 月定下的 ≤3% 改进目标未稳定达成</td><td>历史存在问题专项收敛，建立回归验证清单；跨项目代码改动（如 KuaiBuddy 引入变量）增加评审与影响评估；AI 辅助定期排查历史模块</td><td class="c">2026/9~10</td><td>10月 ≤3% 并保持稳定；历史存在问题闭环</td><td class="c">林金堂</td></tr>
+  <tr><td class="c">周卓醒</td><td>SCRM 遗漏率偏高（8月同口径 3.23%、9月 3.28%），多数为历史存在现象，8 月定下的 ≤3% 改进目标未稳定达成</td><td>历史存在问题专项收敛，建立回归验证清单；跨项目代码改动（如 KuaiBuddy 引入变量）增加评审与影响评估；AI 辅助定期排查历史模块</td><td class="c">2026/9~10</td><td>10月 ≤3% 并保持稳定；历史存在问题闭环</td><td class="c">林金堂</td></tr>
   <tr><td class="c">杜跃斌</td><td>KuaiBuddy「200 步不回复」8 月修复后 9 月复发 2 起；长链路压测与根治方案推动不足</td><td>长链路压测与根治方案落地；建立步数/额度监控告警；91696 修复效果专项回归验证</td><td class="c">2026/10</td><td>同类复发问题归零；建立 KB 额度/稳定性监控</td><td class="c">林金堂</td></tr>
   <tr><td class="c">沙淑琼 / 在线产品负责人</td><td>在线存量遗留 bug 积压，多轮排期未消化；非缺陷类线上反馈占比高（7月 98.1%），消耗排查人力</td><td>与产品建立遗留 bug 排期消化机制；建立《线上反馈自助排查手册》（设计如此/配置问题标准结论）并入群前一线自查；每月更新重复问题清单</td><td class="c">2026/8~10</td><td>存量遗留 bug 下降；非缺陷类反馈中「设计如此 + 配置问题」占比降至 30% 以内，重复问题归零</td><td class="c">林金堂</td></tr>
   <tr><td class="c">林金堂 / 各线主测</td><td>线上问题登记口径不一致（KICP 线上冲刺登记与项目复盘填报差异、禅道统计口径不一）</td><td>按《禅道问题说明》统一「线上登记/线上有效/遗漏」三级口径；月度复盘逐线核对差异并标注；产品、研发、测试统一统计口径</td><td class="c">2026/10</td><td>口径统一，差异清零</td><td class="c">部门负责人</td></tr>
@@ -445,7 +446,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
 <thead><tr><th style="width:9%">成员</th><th style="width:36%">季度成长与亮点</th><th>下季度能力提升策略</th></tr></thead>
 <tbody>
   <tr><td class="c">沙淑琼</td><td>产出稳居团队第一（7月153、8月140、9月137个，有效率 94%~98%），用例产出比最高达 100%；独立保障在线 7—9 月全部版本（含 7 次凌晨更新），遗漏率保持 0%~0.1%；主动帮助组内薄弱同学解决接口测试问题，承接在线全部接口/UI 自动化</td><td>推动遗留 bug 排期消化机制落地；第三方变更同步机制落地跟踪；加强与产品对齐版本节奏与临时需求配额</td></tr>
-  <tr><td class="c">林瑞卿</td><td>独立承接 KICP（含千锤2期）全季交付，三次以上迭代上线零延期，有效率最高达 98.3%（团队第一）；pw 智能测试平台千锤重要模块迁移 100% 执行通过（累计 227 条）；知识库文档累计整理 16 份；KICP 全季零线上遗漏</td><td>线上问题归类口径与复盘对齐；10.8 节后上线版本封板回归专项保障；KICP 性能容量纳入常规回归（配合杜跃斌）；AI 工具应用进一步提升</td></tr>
+  <tr><td class="c">林瑞卿</td><td>独立承接 KICP（含千锤2期）全季交付，三次以上迭代上线零延期，有效率最高达 98.3%（团队第一）；pw 智能测试平台千锤重要模块迁移 100% 执行通过（累计 227 条）；知识库文档累计整理 16 份；KICP 全季线上遗漏仅 1 条（91969，系日常运维过程中发现的渠道重大预警、发现即修复闭环）</td><td>线上问题归类口径与复盘对齐；10.8 节后上线版本封板回归专项保障；KICP 性能容量纳入常规回归（配合杜跃斌）；AI 工具应用进一步提升</td></tr>
   <tr><td class="c">周卓醒</td><td>独立承接 SCRM 全量测试并支援销冠话术宝 V1.13，全季 13 次发版有序完成；SCRM 历史脚本大幅优化（有效 HTTP 节点 1142→556、XML 节点减少 56.4%）；pw 平台 SCRM 接口用例 44 条迁移完毕并每日定时运行；线上有效 bug 逐一跟进修复闭环（91764、92112、92349 等）</td><td>SCRM 遗漏率控制在 ≤3% 以内；历史存在问题回归清单落地；定时任务结果监控与失败重跑机制建设</td></tr>
   <tr><td class="c">杜跃斌</td><td>独立承接性能测试与 KuaiBuddy 两条线：完成在线/KICP 多版本性能回归与灰度验证、KICP 专项性能测试；建成 KuaiBuddy 自动化框架并接入 Jenkins；输出 KuaiBuddy 服务器成本估算、KICP 成本重估（按产品线拆分）、碧莲盛 DIFY 转内部 GPT 成本估算；启动 KB 性能测试专项冲刺，沉淀故障排查和日志排查 Skill</td><td>10 月落地 KB 长链路压测，推动 200 步问题根治、复发归零；建立 KB 额度/稳定性监控；补强性能测试全局视野（容量规划、多模型并发系统性评估）</td></tr>
   <tr><td class="c">杨建伟</td><td>从新人成长为可独立承接在线迭代版本测试，9 月 bug 产出 90 个、环比 8 月（54 个）提升 67%、位列团队第三；跨线支援 KuaiBuddy V1.07 测试（15 条），跨线支援能力得到验证；用例产出比保持 92%~98%</td><td>加强提交前自查，降低数据/重复类无效提交；加强 AI 辅助测试（WorkBuddy 用例编写、agent 测试）实践；提升独立承接多版本与跨线测试能力</td></tr>
@@ -470,7 +471,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
   <tr>
     <td>1、Q3 各产品线迭代全部按期发布，零延期；<br>2、培训测试团队完成知识库收集整理；<br>3、持续优化迭代测试平台；<br>4、强化冲刺质量管理、规范线上问题登记与线上反馈收集分析。</td>
     <td>1、跟进各产品线迭代进度及测试情况，Q3 五条产品线 50 余次发版按期完成；<br>2、推动 pwtest 平台接口用例批量迁移：9 月新增 277 条（千锤 150 / 在线客服 83 / SCRM 44，累计 409 条、完成约 60%）并配置每日定时运行；<br>3、实现 mcp 服务、trace 分析中心、迁移 skill 脚本编写；agent 测试工作流设计及每日回归测试；<br>4、完成测试平台多次功能迭代（界面测试模块、Skill Hub 技能市场、知识库/性能报告/算法模块整合），满足成员快速迁移脚本与 AI 执行测试的需求；<br>5、实现月度质量数据禅道自动拉取统计（各线 bug、线上问题、冲刺分布可复现）；<br>6、KuaiBuddy 线上问题登记跟进（92278 等），跨线质量问题协调处理。</td>
-    <td>主体完成。待加强项：KuaiBuddy 复盘材料收集、算法迭代统计机制；SLA/考勤数据尚未接入月度统计自动化。</td>
+    <td>主体完成。待加强项：KuaiBuddy 复盘材料收集、算法迭代统计机制；SLA（9 月在线 100%、KICP 99.995%）与考勤数据已手动纳入统计，自动化接入待落地。</td>
   </tr>
 </tbody>
 </table>
@@ -558,7 +559,7 @@ table.t.compact td,table.t.compact th{padding:5px 7px}
   <tr><td class="c">4</td><td><b>KuaiBuddy 长链路压测资源：</b>200 步问题根治需压测环境、数据构造与研发配合；模型额度监控需平台/算法侧支持</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">KuaiBuddy 研发 / 运维</td><td class="c">否</td></tr>
   <tr><td class="c">5</td><td><b>算法地址识别 badcase 优化排期确认：</b>9 月登记 21 条（涉及三棵树、急修到家、雍和客户），需算法团队排期消化并建立闭环机制</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">算法团队</td><td class="c">否</td></tr>
   <tr><td class="c">6</td><td><b>运维环境稳定性专项：</b>7月至少 5 个工作日出现断网/总后台不可访问，腾讯云存储桶权限变更未提前同步曾引发 SCRM 线上故障，需建立变更前置评审与通知机制</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">运维部</td><td class="c">否</td></tr>
-  <tr><td class="c">7</td><td><b>SLA 数据接入月度统计：</b>在线客服、KICP 月度平均 SLA 达成值（O3 目标≥99.99%）需运维侧按月提供，接入质量数据自动统计看板</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">运维（剑和） / 杜跃斌</td><td class="c">否</td></tr>
+  <tr><td class="c">7</td><td><b>SLA 数据接入月度统计：</b>在线客服、KICP 月度平均 SLA 达成值（O3 目标≥99.99%）需运维侧按月提供，接入质量数据自动统计看板；9 月值已提供（在线 100%、KICP 99.995%，均达标），7—8 月值待补</td><td class="c">2026/10/1</td><td class="c">2026/10/31</td><td class="c">运维（剑和） / 杜跃斌</td><td class="c">否</td></tr>
 </tbody>
 </table>
 </div>
